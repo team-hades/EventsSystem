@@ -15,8 +15,6 @@
             this.events = new HashSet<Event>();
         }
 
-        public int Id { get; set; }
-
         public UserRole UserRole { get; set; }
 
         [MaxLength(ValidationConstants.MaxUserFirstName)]

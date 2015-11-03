@@ -4,6 +4,7 @@
     {
         public const int MaxUserFirstName = 25;
         public const int MaxUserLastName = 25;
+        public const int MaxUserShortBio = 1000;
 
         public const int MaxEventName = 100; 
         public const int MaxEventShortDescription = 250;
