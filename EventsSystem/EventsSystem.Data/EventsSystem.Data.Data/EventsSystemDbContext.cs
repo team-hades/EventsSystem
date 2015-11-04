@@ -24,7 +24,7 @@ namespace EventsSystem.Data.Data
 
 		public virtual IDbSet<Tag> Tags { get; set; }
 
-		public virtual IDbSet<Like> Likes { get; set; }
+		public virtual IDbSet<Rating> Ratings { get; set; }
 
 		public virtual IDbSet<Picture> Pictures { get; set; }
 

@@ -8,6 +8,9 @@
 		[Key]
         public int Id { get; set; }
 
+		[Range(0, 5.0f, ErrorMessage = "Value should be at range 0 and 5")]
+		public float Value { get; set; }
+
 		[Index("IX_EvenAndUserLike", 1, IsUnique = true)]
 		public string UserId { get; set; }
 

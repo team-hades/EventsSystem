@@ -19,7 +19,7 @@ namespace EventsSystem.Data.Data
 
 		IDbSet<Tag> Tags { get; set; }
 
-		IDbSet<Like> Likes { get; set; }
+		IDbSet<Rating> Ratings { get; set; }
 
 		IDbSet<Picture> Pictures { get; set; }
 
