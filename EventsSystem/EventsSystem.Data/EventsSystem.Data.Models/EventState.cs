@@ -5,6 +5,6 @@
 		Created = 0,
 		Active = 1,
 		Unactive = 2,
-		Archivd = 3
+		Archived = 3
 	}
 }

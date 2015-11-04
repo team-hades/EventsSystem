@@ -60,7 +60,9 @@
     <Compile Include="Category.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="EventState.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Picture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="User.cs" />
