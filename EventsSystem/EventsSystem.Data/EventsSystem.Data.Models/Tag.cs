@@ -19,6 +19,10 @@
         [MaxLength(ValidationConstants.MaxTagNameLenght)]
         public string Name { get; set; }
 
-        public virtual ICollection<Event> Events { get; set; }
-    }
+        public virtual ICollection<Event> Events
+		{
+			get { return this.events; }
+			set { this.events = value; }
+		}
+	}
 }

@@ -13,12 +13,14 @@
 		private ICollection<User> users;
 		private ICollection<Picture> gallery;
 		private ICollection<Comment> comments;
+		private ICollection<Tag> tags;
 
 		public Event()
         {
             this.users = new HashSet<User>();
 			this.gallery = new HashSet<Picture>();
 			this.comments = new HashSet<Comment>();
+			this.tags = new HashSet<Tag>();
 			this.Picture.Url = InitialPictureUrl;
 		}
 
@@ -71,6 +73,12 @@
 		{
 			get { return this.comments; }
 			set { this.comments = value; }
+		}
+
+		public virtual ICollection<Tag> Tags
+		{
+			get { return this.tags; }
+			set { this.tags = value; }
 		}
 	}
 }
