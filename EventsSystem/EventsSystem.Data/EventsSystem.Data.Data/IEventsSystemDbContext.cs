@@ -23,6 +23,8 @@ namespace EventsSystem.Data.Data
 
 		IDbSet<Picture> Pictures { get; set; }
 
+		IDbSet<Town> Towns { get; set; }
+
 		DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
 		DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)

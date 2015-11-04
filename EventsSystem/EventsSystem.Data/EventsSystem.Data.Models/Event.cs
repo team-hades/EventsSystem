@@ -24,6 +24,7 @@
 			this.Picture.Url = InitialPictureUrl;
 		}
 
+		[Key]
 		public int Id { get; set; }
 
         [Required]
@@ -56,6 +57,10 @@
 		public int CategoryId { get; set; }
 
 		public virtual Category Category { get; set; }
+
+		public int TownId { get; set; }
+
+		public virtual Town Town { get; set; }
 
 		public virtual ICollection<User> Users 
         { 

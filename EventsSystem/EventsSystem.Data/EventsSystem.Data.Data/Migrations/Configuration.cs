@@ -19,6 +19,36 @@ namespace EventsSystem.Data.Data.Migrations
 		protected override void Seed(EventsSystemDbContext context)
 		{
 			this.SeedAdmins(context);
+			this.SeedTowns(context);
+		}
+
+		private void SeedTowns(EventsSystemDbContext context)
+		{
+			if (context.Towns.Any())
+			{
+				return;
+			}
+
+			var sofiaTown = new Town
+			{
+				Name = "Sofia"
+			};
+
+			var burgasTown = new Town
+			{
+				Name = "Burgas"
+			};
+
+			var varnaTown = new Town
+			{
+				Name = "Varna"
+			};
+
+			context.Towns.Add(sofiaTown);
+			context.Towns.Add(burgasTown);
+			context.Towns.Add(varnaTown);
+
+			context.SaveChanges();
 		}
 
 		private void SeedAdmins(EventsSystemDbContext context)
@@ -29,6 +59,13 @@ namespace EventsSystem.Data.Data.Migrations
 			}
 
 			//TODO : Seed some hades admins :)
+			var pesho = new User
+			{
+				UserName = "Pesho"
+			};
+
+			context.Users.Add(pesho);
+			context.SaveChanges();	
 		}
 	}
 }
