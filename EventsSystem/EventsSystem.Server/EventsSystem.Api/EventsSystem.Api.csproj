@@ -213,7 +213,6 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -287,6 +286,16 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EventsSystem.Data\EventsSystem.Data.Data\EventsSystem.Data.Data.csproj">
+      <Project>{221f05d5-46fa-4204-8d22-9ac06acc320b}</Project>
+      <Name>EventsSystem.Data.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventsSystem.Data\EventsSystem.Data.Models\EventsSystem.Data.Models.csproj">
+      <Project>{8d3b01d3-83dc-4de5-bc0a-7afcbb441ce9}</Project>
+      <Name>EventsSystem.Data.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

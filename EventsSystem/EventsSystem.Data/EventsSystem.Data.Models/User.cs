@@ -1,37 +1,50 @@
 ﻿namespace EventsSystem.Data.Models
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+	using System.Collections.Generic;
+	using System.ComponentModel.DataAnnotations;
+	using System.Security.Claims;
+	using System.Threading.Tasks;
 
-    using Common.Constants;
+	using Microsoft.AspNet.Identity.EntityFramework;
+	using Microsoft.AspNet.Identity;
 
-    // TODO: User Microsofts Identity?
-    public class User
-    {
-        private ICollection<Event> events;
+	using Common.Constants;
 
-        public User()
-        {
-            this.events = new HashSet<Event>();
-        }
+	public class User : IdentityUser
+	{
+		// From User Microsofts Identity
+		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
+		{
+			// Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+			var userIdentity = await manager.CreateIdentityAsync(this, authenticationType);
+			// Add custom user claims here
+			return userIdentity;
+		}
+		
+		private ICollection<Event> events;
 
-        public UserRole UserRole { get; set; }
+		public User()
+		{
+			this.events = new HashSet<Event>();
+		}
 
-        [MaxLength(ValidationConstants.MaxUserFirstName)]
-        public string FirstName { get; set; }
+		public UserRole UserRole { get; set; }
 
-        [MaxLength(ValidationConstants.MaxUserLastName)]
-        public string LastName { get; set; }
+		[MaxLength(ValidationConstants.MaxUserFirstName)]
+		public string FirstName { get; set; }
 
-        public string ProfilePictureUrl { get; set; }
+		[MaxLength(ValidationConstants.MaxUserLastName)]
+		public string LastName { get; set; }
 
-        [MaxLength(ValidationConstants.MaxUserShortBio)]
-        public string ShortBio { get; set; }
+		public string ProfilePictureUrl { get; set; }
 
-        public virtual ICollection<Event> Events
-        {
-            get { return this.events; }
-            set { this.events = value; }
-        }
-    }
+		[MaxLength(ValidationConstants.MaxUserShortBio)]
+		public string ShortBio { get; set; }
+
+		public virtual ICollection<Event> Events
+		{
+			get { return this.events; }
+			set { this.events = value; }
+		}
+	}
 }
