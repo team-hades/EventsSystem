@@ -20,6 +20,35 @@ namespace EventsSystem.Data.Data.Migrations
 		{
 			this.SeedAdmins(context);
 			this.SeedTowns(context);
+			this.SeedEvents(context);
+		}
+
+		private void SeedEvents(EventsSystemDbContext context)
+		{
+			if (context.Events.Any())
+			{
+				return;
+			}
+
+			var user = context.Users.FirstOrDefault();
+
+			var party = new Event
+			{
+				Name = "Party",
+				ShortDescrtiption = "Some Party",
+				Author = user
+			};
+
+			var exam = new Event
+			{
+				Name = "Exam",
+				ShortDescrtiption = "Some Exam",
+				Author = user
+			};
+
+			context.Events.Add(party);
+			context.Events.Add(exam);
+			context.SaveChanges();
 		}
 
 		private void SeedTowns(EventsSystemDbContext context)
@@ -58,13 +87,27 @@ namespace EventsSystem.Data.Data.Migrations
 				return;
 			}
 
-			//TODO : Seed some hades admins :)
 			var pesho = new User
 			{
-				UserName = "Pesho"
+				FirstName = "Pesho",
+				UserName = "Peshkata"
+			};
+
+			var gosho = new User
+			{
+				FirstName = "Gosho",
+				UserName = "Gogata"
+			};
+
+			var tosho = new User
+			{
+				FirstName = "Tosho",
+				UserName = "Tosheto"
 			};
 
 			context.Users.Add(pesho);
+			context.Users.Add(gosho);
+			context.Users.Add(tosho);
 			context.SaveChanges();	
 		}
 	}

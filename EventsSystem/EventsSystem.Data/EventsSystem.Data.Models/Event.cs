@@ -21,7 +21,7 @@
 			this.gallery = new HashSet<Picture>();
 			this.comments = new HashSet<Comment>();
 			this.tags = new HashSet<Tag>();
-			this.Picture.Url = InitialPictureUrl;
+			this.Picture = new Picture { Url = InitialPictureUrl };
 		}
 
 		[Key]
@@ -42,23 +42,23 @@
 
 		public EventState State { get; set; }
 
-		public DateTime StartDate { get; set; }
+		public DateTime? StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
 		public string AuthorId { get; set; }
 
 		public virtual User Author { get; set; }
 
-		public int PictureId { get; set; }
+		public int? PictureId { get; set; }
 
 		public virtual Picture Picture { get; set; }
 
-		public int CategoryId { get; set; }
+		public int? CategoryId { get; set; }
 
 		public virtual Category Category { get; set; }
 
-		public int TownId { get; set; }
+		public int? TownId { get; set; }
 
 		public virtual Town Town { get; set; }
 

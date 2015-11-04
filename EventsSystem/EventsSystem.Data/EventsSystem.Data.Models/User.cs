@@ -13,7 +13,6 @@
 	public class User : IdentityUser
 	{
 		private const string InitialPictureUrl = @"http://velin.wendi101.com/wp-content/uploads/2013/02/blog_image-ninja.jpg";
-		private Picture InitialPicture;
 
 		// From User Microsofts Identity
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
@@ -29,10 +28,9 @@
 
 		public User()
 		{
-			InitialPicture = new Picture { Url = InitialPictureUrl };
             this.events = new HashSet<Event>();
 			this.comments = new HashSet<Comment>();
-			this.Picture = InitialPicture;
+			this.Picture = new Picture { Url = InitialPictureUrl };
 		}
 
 		public UserRole UserRole { get; set; }
