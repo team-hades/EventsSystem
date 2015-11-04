@@ -21,6 +21,8 @@ namespace EventsSystem.Data.Data
 
 		IDbSet<Like> Likes { get; set; }
 
+		IDbSet<Picture> Pictures { get; set; }
+
 		DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
 		DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)

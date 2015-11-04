@@ -6,21 +6,27 @@
     using Common.Constants;
 
     public class Event
-    {
-        private ICollection<User> users;
+	{
+		// TODO: In global constants
+		private const string InitialPictureUrl = @"http://www.wallpapersdb.org/wallpapers/abstract/party_1920x1200.jpg";
 
-        public Event()
+		private ICollection<User> users;
+		private ICollection<Picture> gallery;
+		private ICollection<Comment> comments;
+
+		public Event()
         {
             this.users = new HashSet<User>();
-        }
+			this.gallery = new HashSet<Picture>();
+			this.comments = new HashSet<Comment>();
+			this.Picture.Url = InitialPictureUrl;
+		}
 
-        public int Id { get; set; }
+		public int Id { get; set; }
 
         [Required]
         [MaxLength(ValidationConstants.MaxEventName)]
         public string Name { get; set; }
-
-        public string PictureUrl { get; set; }
 
         [Required]
         [MaxLength(ValidationConstants.MaxEventShortDescription)]
@@ -29,14 +35,42 @@
         [MaxLength(ValidationConstants.MaxEventLongDescription)]
         public string LongDescrtiption { get; set; }
 
-        public DateTime Start { get; set; }
+		public bool IsPrivate { get; set; }
 
-        public DateTime End { get; set; }
+		public EventState State { get; set; }
 
-        public virtual ICollection<User> Users 
+		public DateTime StartDate { get; set; }
+
+        public DateTime EndDate { get; set; }
+
+		public string AuthorId { get; set; }
+
+		public virtual User Author { get; set; }
+
+		public int PictureId { get; set; }
+
+		public virtual Picture Picture { get; set; }
+
+		public int CategoryId { get; set; }
+
+		public virtual Category Category { get; set; }
+
+		public virtual ICollection<User> Users 
         { 
             get { return this.users; } 
             set { this.users = value; } 
-        } 
-    }
+        }
+
+		public virtual ICollection<Picture> Gallery
+		{
+			get { return this.gallery; }
+			set { this.gallery = value; }
+		}
+
+		public virtual ICollection<Comment> Comments
+		{
+			get { return this.comments; }
+			set { this.comments = value; }
+		}
+	}
 }

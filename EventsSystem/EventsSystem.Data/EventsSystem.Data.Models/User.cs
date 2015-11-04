@@ -12,6 +12,8 @@
 
 	public class User : IdentityUser
 	{
+		private const string InitialPictureUrl = @"http://velin.wendi101.com/wp-content/uploads/2013/02/blog_image-ninja.jpg";
+
 		// From User Microsofts Identity
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
 		{
@@ -22,10 +24,13 @@
 		}
 		
 		private ICollection<Event> events;
+		private ICollection<Comment> comments;
 
 		public User()
 		{
 			this.events = new HashSet<Event>();
+			this.comments = new HashSet<Comment>();
+			this.Picture.Url = InitialPictureUrl;
 		}
 
 		public UserRole UserRole { get; set; }
@@ -35,16 +40,24 @@
 
 		[MaxLength(ValidationConstants.MaxUserLastName)]
 		public string LastName { get; set; }
-
-		public string ProfilePictureUrl { get; set; }
-
+		
 		[MaxLength(ValidationConstants.MaxUserShortBio)]
 		public string ShortBio { get; set; }
+
+		public int PictureId { get; set; }
+
+		public virtual Picture Picture { get; set; }
 
 		public virtual ICollection<Event> Events
 		{
 			get { return this.events; }
 			set { this.events = value; }
+		}
+
+		public virtual ICollection<Comment> Comments
+		{
+			get { return this.comments; }
+			set { this.comments = value; }
 		}
 	}
 }

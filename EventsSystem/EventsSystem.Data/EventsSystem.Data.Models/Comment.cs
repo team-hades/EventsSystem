@@ -19,8 +19,9 @@
 
         public virtual Event Event { get; set; }
 
-        public Guid UserId { get; set; }
+		// TODO: is this really a Guid?! Kenov beshe pokazval che mai ne e Guid ami e string
+        public Guid AuthorId { get; set; }
 
-        public virtual User User { get; set; }
+        public virtual User Author { get; set; }
     }
 }

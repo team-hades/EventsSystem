@@ -26,6 +26,8 @@ namespace EventsSystem.Data.Data
 
 		public virtual IDbSet<Like> Likes { get; set; }
 
+		public virtual IDbSet<Picture> Pictures { get; set; }
+		
 		public static EventsSystemDbContext Create()
 		{
 			return new EventsSystemDbContext();
