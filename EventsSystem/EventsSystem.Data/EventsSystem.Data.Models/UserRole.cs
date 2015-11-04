@@ -4,6 +4,6 @@
     {
         Administrator,
 
-        Competitor
+        BasicUser
     }
 }
