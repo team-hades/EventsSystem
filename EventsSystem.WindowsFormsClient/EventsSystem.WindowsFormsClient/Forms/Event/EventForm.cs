@@ -1,29 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EventsSystem.WindowsFormsClient.Forms.Event
+﻿namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
-    public partial class EventForm : Form
+    using System;
+    using System.Windows.Forms;
+
+    public partial class eventForm : Form
     {
-        private readonly string EVENTS_LABEL = "in Events";
+        private readonly string LABEL = "in Events";
         private MainForm parent;
 
-        public EventForm()
+        public eventForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         private void EventForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
-            this.parent.StatusLabel = this.EVENTS_LABEL;
+            this.parent.StatusLabel = this.LABEL;
+        }
+
+        private void getAllEvents_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void insertEvent_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void updateEvent_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void deleteEvent_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

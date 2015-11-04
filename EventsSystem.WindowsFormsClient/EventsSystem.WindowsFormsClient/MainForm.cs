@@ -1,5 +1,6 @@
 ﻿namespace EventsSystem.WindowsFormsClient
 {
+    using Forms;
     using Forms.Event;
     using System;
     using System.Windows.Forms;
@@ -9,7 +10,8 @@
         private readonly string DEFAULT_STATUS_LABEL = "Ready";
         private readonly string DEFAULT_STATUS_PATTERN = "Client: {0}.";
 
-        private EventForm eventForm = null;
+        private eventForm eventForm = null;
+        private loginForm loginView = null;
 
         public MainForm()
         {
@@ -35,7 +37,7 @@
         {
             if (this.eventForm == null)
             {
-                this.eventForm = new EventForm();
+                this.eventForm = new eventForm();
                 this.eventForm.MdiParent = this;
                 this.eventForm.FormClosed += new FormClosedEventHandler(this.eventForm_FormClosed);
                 this.eventForm.Show();
@@ -54,6 +56,31 @@
         private void MainForm_Shown(object sender, EventArgs e)
         {
             this.Initialize();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.loginView == null)
+            {
+                this.loginView = new loginForm();
+                this.loginView.MdiParent = this;
+                this.loginView.FormClosed += new FormClosedEventHandler(this.loginForm_FormClosed);
+                this.loginView.Show();
+            }
+            else
+            {
+                this.eventForm.Activate();
+            }
+        }
+
+        private void loginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.loginView = null;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
