@@ -15,5 +15,8 @@
 
         public const int MinCategoryNameLenght = 2;
         public const int MaxCategoryNameLenght = 25;
+
+        public const int MinTagNameLenght = 2;
+        public const int MaxTagNameLenght = 20;
     }
 }
