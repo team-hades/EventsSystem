@@ -8,7 +8,7 @@ namespace EventsSystem.Data.Data.Migrations
 	using System.Collections.Generic;
 	using System.Security.Claims;
 
-	internal sealed class Configuration : DbMigrationsConfiguration<EventsSystemDbContext>
+	public sealed class Configuration : DbMigrationsConfiguration<EventsSystemDbContext>
 	{
 		public Configuration()
 		{
