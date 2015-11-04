@@ -1,4 +1,4 @@
-﻿namespace EventsSystem.Models
+﻿namespace EventsSystem.Data.Models
 {
     public enum UserRole
     {

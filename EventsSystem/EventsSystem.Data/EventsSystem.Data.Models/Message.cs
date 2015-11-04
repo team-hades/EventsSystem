@@ -1,8 +1,7 @@
-﻿namespace EventsSystem.Models
+﻿namespace EventsSystem.Data.Models
 {
     using System;
     using System.ComponentModel.DataAnnotations;
-
     using Common.Constants;
 
     public class Message
