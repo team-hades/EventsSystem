@@ -1,6 +1,9 @@
 # Events System
 ---
 
+![Draft image for Events System](/EventsSystemDrawing.jpeg)
+
+
 ## Events System Description
 
 `User Roles`
