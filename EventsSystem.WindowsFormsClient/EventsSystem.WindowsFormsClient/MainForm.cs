@@ -11,6 +11,7 @@
         private readonly string DEFAULT_STATUS_PATTERN = "Client: {0}.";
 
         private eventForm eventForm = null;
+        private InsertEventForm insertForm = null;
         private loginForm loginView = null;
 
         public MainForm()
@@ -81,6 +82,26 @@
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void insertToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.insertForm == null)
+            {
+                this.insertForm = new InsertEventForm();
+                this.insertForm.MdiParent = this;
+                this.insertForm.FormClosed += new FormClosedEventHandler(this.insertForm_FormClosed);
+                this.insertForm.Show();
+            }
+            else
+            {
+                this.insertForm.Activate();
+            }
+        }
+
+        private void insertForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.insertForm = null;
         }
     }
 }

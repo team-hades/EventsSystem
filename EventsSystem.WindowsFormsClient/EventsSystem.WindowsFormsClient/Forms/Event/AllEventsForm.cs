@@ -1,15 +1,15 @@
 ﻿namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
-    using Newtonsoft.Json;
     using System;
     using System.Linq;
     using System.Net.Http;
     using System.Windows.Forms;
     using Data.Models;
+    using Newtonsoft.Json;
 
     public partial class eventForm : Form
     {
-        private readonly Uri WEB_API_ACCESS_POINT = new Uri("PROVIDE_HTTP_HERE");
+        private readonly Uri WEB_API_ACCESS_POINT = new Uri("http://localhost:80/api/{0}");
         private readonly string LABEL = "in Events";
         private MainForm parent;
 
@@ -26,7 +26,9 @@
 
         private void getAllEvents_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.getAllEvents.Enabled = false;
+            this.GetAllEvents();
+            this.getAllEvents.Enabled = true;
         }
 
         private async void GetAllEvents()

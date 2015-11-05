@@ -35,6 +35,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.insertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status_strip = new System.Windows.Forms.StatusStrip();
@@ -67,31 +68,39 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // newsToolStripMenuItem
             // 
             this.newsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eventsToolStripMenuItem});
+            this.eventsToolStripMenuItem,
+            this.insertToolStripMenuItem});
             this.newsToolStripMenuItem.Name = "newsToolStripMenuItem";
-            this.newsToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
-            this.newsToolStripMenuItem.Text = "News";
+            this.newsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.newsToolStripMenuItem.Text = "Events";
             // 
             // eventsToolStripMenuItem
             // 
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
             this.eventsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.eventsToolStripMenuItem.Text = "Events";
+            this.eventsToolStripMenuItem.Text = "View";
             this.eventsToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
+            // 
+            // insertToolStripMenuItem
+            // 
+            this.insertToolStripMenuItem.Name = "insertToolStripMenuItem";
+            this.insertToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.insertToolStripMenuItem.Text = "Insert";
+            this.insertToolStripMenuItem.Click += new System.EventHandler(this.insertToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -158,6 +167,7 @@
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem insertToolStripMenuItem;
     }
 }
 

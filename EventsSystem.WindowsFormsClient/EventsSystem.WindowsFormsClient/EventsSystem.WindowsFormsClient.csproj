@@ -50,11 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Event\EventForm.cs">
+    <Compile Include="Forms\Event\AllEventsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Event\EventForm.Designer.cs">
-      <DependentUpon>EventForm.cs</DependentUpon>
+    <Compile Include="Forms\Event\AllEventsForm.Designer.cs">
+      <DependentUpon>AllEventsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Event\InsertEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\InsertEventForm.Designer.cs">
+      <DependentUpon>InsertEventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Login\LoginForm.cs">
       <SubType>Form</SubType>
@@ -70,8 +76,11 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Event\EventForm.resx">
-      <DependentUpon>EventForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Event\AllEventsForm.resx">
+      <DependentUpon>AllEventsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\InsertEventForm.resx">
+      <DependentUpon>InsertEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -104,6 +113,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EventsSystem\EventsSystem.Common\EventsSystem.Common.csproj">
+      <Project>{c1f0224c-dc57-443d-b13a-40578fc6878c}</Project>
+      <Name>EventsSystem.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventsSystem\EventsSystem.Data\EventsSystem.Data.Data\EventsSystem.Data.Data.csproj">
+      <Project>{221f05d5-46fa-4204-8d22-9ac06acc320b}</Project>
+      <Name>EventsSystem.Data.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\EventsSystem\EventsSystem.Data\EventsSystem.Data.Models\EventsSystem.Data.Models.csproj">
       <Project>{8d3b01d3-83dc-4de5-bc0a-7afcbb441ce9}</Project>
       <Name>EventsSystem.Data.Models</Name>
