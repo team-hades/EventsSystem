@@ -71,14 +71,14 @@
     <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\EventsSystem.Common\EventsSystem.Common.csproj">
       <Project>{c1f0224c-dc57-443d-b13a-40578fc6878c}</Project>
       <Name>EventsSystem.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

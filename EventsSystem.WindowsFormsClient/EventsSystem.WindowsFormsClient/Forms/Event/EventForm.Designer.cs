@@ -35,12 +35,12 @@
             this.insertEvent = new System.Windows.Forms.Button();
             this.getAllEvents = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.status_strip = new System.Windows.Forms.StatusStrip();
             this.status_strip_label = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.status_strip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +99,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dataGridView);
             this.groupBox2.Location = new System.Drawing.Point(12, 76);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(608, 352);
@@ -107,13 +107,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Events data";
             // 
-            // dataGridView1
+            // dataGridView
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 20);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(595, 326);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(7, 20);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.Size = new System.Drawing.Size(595, 326);
+            this.dataGridView.TabIndex = 0;
             // 
             // status_strip
             // 
@@ -146,7 +146,7 @@
             this.Load += new System.EventHandler(this.EventForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.status_strip.ResumeLayout(false);
             this.status_strip.PerformLayout();
             this.ResumeLayout(false);
@@ -164,6 +164,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.StatusStrip status_strip;
         private System.Windows.Forms.ToolStripStatusLabel status_strip_label;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView;
     }
 }
