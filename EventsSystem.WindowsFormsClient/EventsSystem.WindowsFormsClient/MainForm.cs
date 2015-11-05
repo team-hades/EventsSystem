@@ -1,5 +1,6 @@
 ﻿namespace EventsSystem.WindowsFormsClient
 {
+    using Forms.Accounts;
     using Forms;
     using Forms.Event;
     using System;
@@ -10,9 +11,12 @@
         private readonly string DEFAULT_STATUS_LABEL = "Ready";
         private readonly string DEFAULT_STATUS_PATTERN = "Client: {0}.";
 
+        private bool isLogged = false;
+
         private eventForm eventForm = null;
         private InsertEventForm insertForm = null;
         private loginForm loginView = null;
+        private CreateForm createForm = null;
 
         public MainForm()
         {
@@ -22,6 +26,14 @@
         public void Initialize()
         {
             this.StatusLabel = string.Format(this.DEFAULT_STATUS_PATTERN, this.DEFAULT_STATUS_LABEL);
+            this.ToggleControls();
+        }
+
+        private void ToggleControls()
+        {
+            this.eventsToolStripMenuItem.Enabled = this.isLogged;
+            this.modifyToolStripMenuItem.Enabled = this.isLogged;
+            this.deleteToolStripMenuItem.Enabled = this.isLogged;
         }
 
         public string StatusLabel
@@ -30,8 +42,13 @@
             set { this.status_strip_label.Text = string.Format(this.DEFAULT_STATUS_PATTERN, value); }
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        public bool SetAvailability
         {
+            get { return this.isLogged; }
+            set {
+                this.isLogged = value;
+                this.ToggleControls();
+            }
         }
 
         private void eventsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,6 +119,26 @@
         private void insertForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.insertForm = null;
+        }
+
+        private void createToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.createForm == null)
+            {
+                this.createForm = new CreateForm();
+                this.createForm.MdiParent = this;
+                this.createForm.FormClosed += new FormClosedEventHandler(this.createForm_FormClosed);
+                this.createForm.Show();
+            }
+            else
+            {
+                this.insertForm.Activate();
+            }
+        }
+
+        private void createForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.createForm = null;
         }
     }
 }

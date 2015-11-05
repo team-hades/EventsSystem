@@ -35,11 +35,13 @@
             this.usernameLabel = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.loginButton);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.usernameLabel);
@@ -65,7 +67,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 48);
+            this.label1.Location = new System.Drawing.Point(8, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 3;
@@ -87,6 +89,7 @@
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(150, 20);
             this.textBox2.TabIndex = 1;
+            this.textBox2.Text = "Guest";
             // 
             // textBox1
             // 
@@ -94,6 +97,17 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.Text = "Guest";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(6, 71);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(60, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "fakelog";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // loginForm
             // 
@@ -120,5 +134,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -23,5 +23,10 @@
         {
             throw new NotImplementedException();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.parent.SetAvailability = true;
+        }
     }
 }

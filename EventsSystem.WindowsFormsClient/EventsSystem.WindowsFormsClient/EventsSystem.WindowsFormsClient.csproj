@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Accounts\CreateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Accounts\CreateForm.Designer.cs">
+      <DependentUpon>CreateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Event\AllEventsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,10 +68,10 @@
     <Compile Include="Forms\Event\InsertEventForm.Designer.cs">
       <DependentUpon>InsertEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Login\LoginForm.cs">
+    <Compile Include="Forms\Accounts\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Login\LoginForm.Designer.cs">
+    <Compile Include="Forms\Accounts\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -76,13 +82,16 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Accounts\CreateForm.resx">
+      <DependentUpon>CreateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\AllEventsForm.resx">
       <DependentUpon>AllEventsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\InsertEventForm.resx">
       <DependentUpon>InsertEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Login\LoginForm.resx">
+    <EmbeddedResource Include="Forms\Accounts\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">

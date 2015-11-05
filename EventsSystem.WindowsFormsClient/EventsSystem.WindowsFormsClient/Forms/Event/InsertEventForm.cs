@@ -29,7 +29,6 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
 
             foreach (var item in values)
             {
-                //MessageBox.Show(String.Format("{0}: {1}", Enum.GetName(typeof(EventState), item), item));
                 ComboboxItem comboboxItem = new ComboboxItem();
                 comboboxItem.Text = Enum.GetName(typeof(EventState), item);
                 comboboxItem.Value = item;
@@ -67,13 +66,27 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
 
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    //PictureBox PictureBox1 = new PictureBox();
-
-                    // Create a new Bitmap object from the picture file on disk,
-                    // and assign that to the PictureBox.Image property
                     this.eventPictureBox.Image = new Bitmap(dlg.FileName);
                 }
             }
+        }
+
+        private List<ComboboxItem> GetAvailableCategories()
+        {
+            List<ComboboxItem> availableCategories = new List<ComboboxItem>();
+
+            //TODO: Query DB for available categories
+
+            return availableCategories;
+        }
+
+        private List<ComboboxItem> GetAvailableTowns()
+        {
+            List<ComboboxItem> availableTowns = new List<ComboboxItem>();
+
+            //TODO: Query DB for available towns
+
+            return availableTowns;
         }
     }
 }
