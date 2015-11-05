@@ -86,6 +86,14 @@ namespace EventsSystem.Data.Data.Repositories
 			}
 		}
 
+		public IRepository<UserInfo> UserInfo
+		{
+			get
+			{
+				return this.GetRepository<UserInfo>();
+			}
+		}
+
 		public int Savechanges()
 		{
 			return this.context.SaveChanges();

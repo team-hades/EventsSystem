@@ -19,7 +19,7 @@
 
         public virtual Event Event { get; set; }
 
-		// TODO: is this really a Guid?! Kenov beshe pokazval che mai ne e Guid ami e string. Idvashto ot User Microsofts Identity
+		[Required]
 		public string AuthorId { get; set; }
 
 		public virtual User Author { get; set; }

@@ -20,6 +20,8 @@ namespace EventsSystem.Data.Data.Repositories
 
 		IRepository<Town> Towns { get; }
 
+		IRepository<UserInfo> UserInfo { get; }
+
 		int Savechanges();
 	}
 }

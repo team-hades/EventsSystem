@@ -23,12 +23,10 @@
 			return userIdentity;
 		}
 		
-		private ICollection<Event> events;
 		private ICollection<Comment> comments;
 
 		public User()
 		{
-            this.events = new HashSet<Event>();
 			this.comments = new HashSet<Comment>();
 			this.Picture = new Picture { Url = InitialPictureUrl };
 		}
@@ -47,12 +45,6 @@
 		public int PictureId { get; set; }
 
 		public virtual Picture Picture { get; set; }
-
-		public virtual ICollection<Event> Events
-		{
-			get { return this.events; }
-			set { this.events = value; }
-		}
 
 		public virtual ICollection<Comment> Comments
 		{

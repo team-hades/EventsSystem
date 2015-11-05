@@ -30,6 +30,8 @@ namespace EventsSystem.Data.Data
 
 		public virtual IDbSet<Town> Towns { get; set; }
 
+		public virtual IDbSet<UserInfo> UserInfos { get; set; }
+
 		public static EventsSystemDbContext Create()
 		{
 			return new EventsSystemDbContext();

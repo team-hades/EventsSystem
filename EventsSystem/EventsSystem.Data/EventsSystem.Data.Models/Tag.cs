@@ -15,7 +15,8 @@
 
         public int Id { get; set; }
 
-        [MinLength(ValidationConstants.MinTagNameLenght)]
+		[Required]
+		[MinLength(ValidationConstants.MinTagNameLenght)]
         [MaxLength(ValidationConstants.MaxTagNameLenght)]
         public string Name { get; set; }
 

@@ -15,10 +15,12 @@
 
 		public int Id { get; set; }
 
+		[Required]
 		[MinLength(ValidationConstants.MinCategoryNameLenght)]
 		[MaxLength(ValidationConstants.MaxCategoryNameLenght)]
 		public string Name { get; set; }
 
+		[Required]
 		public string AuthorId { get; set; }
 
 		public virtual User Author { get; set; }

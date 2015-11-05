@@ -10,14 +10,14 @@
 		// TODO: In global constants
 		private const string InitialPictureUrl = @"http://www.wallpapersdb.org/wallpapers/abstract/party_1920x1200.jpg";
 
-		private ICollection<User> users;
+		private ICollection<UserInfo> users;
 		private ICollection<Picture> gallery;
 		private ICollection<Comment> comments;
 		private ICollection<Tag> tags;
 
 		public Event()
         {
-            this.users = new HashSet<User>();
+            this.users = new HashSet<UserInfo>();
 			this.gallery = new HashSet<Picture>();
 			this.comments = new HashSet<Comment>();
 			this.tags = new HashSet<Tag>();
@@ -42,10 +42,11 @@
 
 		public EventState State { get; set; }
 
-		public DateTime? StartDate { get; set; }
+		public DateTime StartDate { get; set; }
 
-        public DateTime? EndDate { get; set; }
+        public DateTime EndDate { get; set; }
 
+		[Required]
 		public string AuthorId { get; set; }
 
 		public virtual User Author { get; set; }
@@ -58,11 +59,11 @@
 
 		public virtual Category Category { get; set; }
 
-		public int? TownId { get; set; }
+		public int TownId { get; set; }
 
 		public virtual Town Town { get; set; }
 
-		public virtual ICollection<User> Users 
+		public virtual ICollection<UserInfo> Users 
         { 
             get { return this.users; } 
             set { this.users = value; } 

@@ -25,6 +25,8 @@ namespace EventsSystem.Data.Data
 
 		IDbSet<Town> Towns { get; set; }
 
+		IDbSet<UserInfo> UserInfos { get; set; }
+
 		DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
 		DbEntityEntry<TEntity> Entry<TEntity>(TEntity entity)
