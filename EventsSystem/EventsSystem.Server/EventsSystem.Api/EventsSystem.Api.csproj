@@ -209,14 +209,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\EventModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -272,6 +276,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EventsSystem.Common\EventsSystem.Common.csproj">
+      <Project>{c1f0224c-dc57-443d-b13a-40578fc6878c}</Project>
+      <Name>EventsSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\EventsSystem.Data\EventsSystem.Data.Data\EventsSystem.Data.Data.csproj">
       <Project>{221f05d5-46fa-4204-8d22-9ac06acc320b}</Project>
       <Name>EventsSystem.Data.Data</Name>

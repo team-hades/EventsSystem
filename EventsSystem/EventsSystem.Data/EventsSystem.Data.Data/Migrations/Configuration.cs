@@ -50,7 +50,12 @@ namespace EventsSystem.Data.Data.Migrations
 				return;
 			}
 
-			// seed here
+			var admin = new User
+			{
+				UserName = "Pesho",
+			};
+
+			context.Users.Add(admin);
 		}
 	}
 }
