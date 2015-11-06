@@ -41,10 +41,6 @@
 		[MaxLength(ValidationConstants.MaxUserShortBio)]
 		public string ShortBio { get; set; }
 
-		public int? PictureId { get; set; }
-
-		public virtual Picture Picture { get; set; }
-
 		public virtual ICollection<Comment> Comments
 		{
 			get { return this.comments; }

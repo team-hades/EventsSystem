@@ -8,14 +8,14 @@
     public class Event
 	{
 		private ICollection<User> users;
-		private ICollection<Picture> gallery;
+		private ICollection<Picture> pictures;
 		private ICollection<Comment> comments;
 		private ICollection<Tag> tags;
 
 		public Event()
         {
             this.users = new HashSet<User>();
-			this.gallery = new HashSet<Picture>();
+			this.pictures = new HashSet<Picture>();
 			this.comments = new HashSet<Comment>();
 			this.tags = new HashSet<Tag>();
 		}
@@ -46,10 +46,6 @@
 
 		public virtual User Author { get; set; }
 
-		public int? PictureId { get; set; }
-
-		public virtual Picture Picture { get; set; }
-
 		public int? CategoryId { get; set; }
 
 		public virtual Category Category { get; set; }
@@ -64,10 +60,10 @@
 			set { this.users = value; }
 		}
 
-		public virtual ICollection<Picture> Gallery
+		public virtual ICollection<Picture> Pictures
 		{
-			get { return this.gallery; }
-			set { this.gallery = value; }
+			get { return this.pictures; }
+			set { this.pictures = value; }
 		}
 
 		public virtual ICollection<Comment> Comments
