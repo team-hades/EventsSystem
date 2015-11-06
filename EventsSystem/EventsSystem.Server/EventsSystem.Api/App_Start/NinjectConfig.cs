@@ -35,7 +35,7 @@
 		private static void RegisterServices(KernelBase kernel)
 		{
 			kernel.Bind(typeof(IRepository<>)).To(typeof(EfRepository<>));
-			kernel.Bind<DbContext>().To<EventsSystemDbContext>().InRequestScope();
+			kernel.Bind<IEventsSystemData>().To<EventsSystemData>().InRequestScope();
 		}
 	}
 }

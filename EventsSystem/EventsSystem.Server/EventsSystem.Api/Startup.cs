@@ -18,14 +18,14 @@ namespace EventsSystem.Api
 			ConfigureAuth(app);
 
 			// throw
-			//var httpConfig = new HttpConfiguration();
-			//WebApiConfig.Register(httpConfig);
-			
-			//httpConfig.EnsureInitialized();
+			var httpConfig = new HttpConfiguration();
+			WebApiConfig.Register(httpConfig);
 
-			//app
-			//	.UseNinjectMiddleware(NinjectConfig.CreateKernel)
-			//	.UseNinjectWebApi(httpConfig);
+			httpConfig.EnsureInitialized();
+
+			app
+				.UseNinjectMiddleware(NinjectConfig.CreateKernel)
+				.UseNinjectWebApi(httpConfig);
 		}
 	}
 }
