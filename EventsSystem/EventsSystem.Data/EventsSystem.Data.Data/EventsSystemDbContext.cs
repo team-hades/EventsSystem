@@ -30,11 +30,23 @@ namespace EventsSystem.Data.Data
 
 		public virtual IDbSet<Town> Towns { get; set; }
 
-		public virtual IDbSet<UserInfo> UserInfos { get; set; }
-
 		public static EventsSystemDbContext Create()
 		{
 			return new EventsSystemDbContext();
+		}
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<User>()
+						.HasMany(u => u.Events)
+						.WithMany()
+						.Map(m =>
+						{
+							m.MapLeftKey("EventId");
+							m.MapRightKey("UserId");
+							m.ToTable("EventsUsers");
+						});
+			base.OnModelCreating(modelBuilder);
 		}
 	}
 }

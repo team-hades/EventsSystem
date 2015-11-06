@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EventsSystem.Data.Models;
-using System.Data.Entity;
-
-namespace EventsSystem.Data.Data.Repositories
+﻿namespace EventsSystem.Data.Data.Repositories
 {
+	using System;
+	using System.Collections.Generic;
+	using EventsSystem.Data.Models;
+	using System.Data.Entity;
+
 	public class EventsSystemData : IEventsSystemData
 	{
 		private readonly DbContext context;
 		private readonly IDictionary<Type, object> repositories;
-
-
+		
 		public EventsSystemData()
 		{
 			this.context = new EventsSystemDbContext();
@@ -83,14 +79,6 @@ namespace EventsSystem.Data.Data.Repositories
 			get
 			{
 				return this.GetRepository<Tag>();
-			}
-		}
-
-		public IRepository<UserInfo> UserInfo
-		{
-			get
-			{
-				return this.GetRepository<UserInfo>();
 			}
 		}
 

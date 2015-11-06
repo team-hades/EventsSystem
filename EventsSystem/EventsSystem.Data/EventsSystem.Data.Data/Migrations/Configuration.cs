@@ -30,25 +30,7 @@ namespace EventsSystem.Data.Data.Migrations
 				return;
 			}
 
-			var user = context.Users.FirstOrDefault();
-
-			var party = new Event
-			{
-				Name = "Party",
-				ShortDescrtiption = "Some Party",
-				Author = user
-			};
-
-			var exam = new Event
-			{
-				Name = "Exam",
-				ShortDescrtiption = "Some Exam",
-				Author = user
-			};
-
-			context.Events.Add(party);
-			context.Events.Add(exam);
-			context.SaveChanges();
+			// seed here
 		}
 
 		private void SeedTowns(EventsSystemDbContext context)
@@ -58,26 +40,7 @@ namespace EventsSystem.Data.Data.Migrations
 				return;
 			}
 
-			var sofiaTown = new Town
-			{
-				Name = "Sofia"
-			};
-
-			var burgasTown = new Town
-			{
-				Name = "Burgas"
-			};
-
-			var varnaTown = new Town
-			{
-				Name = "Varna"
-			};
-
-			context.Towns.Add(sofiaTown);
-			context.Towns.Add(burgasTown);
-			context.Towns.Add(varnaTown);
-
-			context.SaveChanges();
+			// seed here
 		}
 
 		private void SeedAdmins(EventsSystemDbContext context)
@@ -87,28 +50,7 @@ namespace EventsSystem.Data.Data.Migrations
 				return;
 			}
 
-			var pesho = new User
-			{
-				FirstName = "Pesho",
-				UserName = "Peshkata"
-			};
-
-			var gosho = new User
-			{
-				FirstName = "Gosho",
-				UserName = "Gogata"
-			};
-
-			var tosho = new User
-			{
-				FirstName = "Tosho",
-				UserName = "Tosheto"
-			};
-
-			context.Users.Add(pesho);
-			context.Users.Add(gosho);
-			context.Users.Add(tosho);
-			context.SaveChanges();	
+			// seed here
 		}
 	}
 }

@@ -67,7 +67,6 @@
     <Compile Include="Tag.cs" />
     <Compile Include="Town.cs" />
     <Compile Include="User.cs" />
-    <Compile Include="UserInfo.cs" />
     <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
