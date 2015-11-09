@@ -1,17 +1,21 @@
 ﻿namespace EventsSystem.Api
 {
-	using System.Web;
-	using System.Web.Http;
-	using System.Web.Mvc;
-	using System.Web.Optimization;
-	using System.Web.Routing;
+    using System.Reflection;
+    using System.Web;
+    using System.Web.Http;
+    using System.Web.Mvc;
+    using System.Web.Optimization;
+    using System.Web.Routing;
+    using App_Start;
+    using Common.Constants;
 
-	public class WebApiApplication : HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
 			DatabaseConfig.Initialize();
 
+            AutoMapperConfig.RegisterMappings(Assembly.Load(Assemblies.WebApi));
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

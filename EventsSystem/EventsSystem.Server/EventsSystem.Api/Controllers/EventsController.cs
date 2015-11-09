@@ -5,7 +5,8 @@
 
 	using Data.Data.Repositories;
 	using Models;
-	using Data.Models;
+
+    using AutoMapper.QueryableExtensions;
 
 	[RoutePrefix("api/events")]
 	public class EventsController :  BaseController
@@ -18,33 +19,44 @@
 		[HttpGet]
 		public IHttpActionResult All()
 		{
-			// TODO: If current user is admin: get all events
-			// TODO: Where it has to be returned the events which the user is tagged?!???
-			var allVisibleEvents = this.data.Events.All().Where(ev => ev.IsPrivate == true);
-			return this.Ok(allVisibleEvents);
+            // TODO: If current user is admin: get all events
+            // TODO: Where it has to be returned the events which the user is tagged?!???
+            var allVisibleEvents = this.data
+                .Events
+                .All()
+                .Where(ev => ev.IsPrivate == true)
+                .ProjectTo<EventResponceModel>()
+                .ToList();
+
+            return this.Ok(allVisibleEvents);
 		}
 
 		[HttpGet]
 		public IHttpActionResult All(int id)
 		{
-			var eventToReturn = this.data.Events.All().Where(ev => ev.Id == id);
+			var eventToReturn = this.data
+                .Events
+                .All()
+                .Where(ev => ev.Id == id)
+                .ToList();
+
 			return this.Ok(eventToReturn);
 		}
 
 		[HttpPost]
-		public IHttpActionResult Post(EventModel model)
+		public IHttpActionResult Post(EventResponceModel model)
 		{
 			return this.Ok("Some posted event");
 		}
 
 		[HttpPut]
-		public IHttpActionResult Put(int id, EventModel model)
+		public IHttpActionResult Put(int id, EventResponceModel model)
 		{
 			return this.Ok("Some updated event");
 		}
 
 		[HttpDelete]
-		public IHttpActionResult Delete(int id, EventModel model)
+		public IHttpActionResult Delete(int id, EventResponceModel model)
 		{
 			return this.Ok("Some deleted event");
 		}
