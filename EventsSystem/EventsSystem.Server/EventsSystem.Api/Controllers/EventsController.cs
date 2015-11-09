@@ -7,6 +7,7 @@
     using Models;
 
     using AutoMapper.QueryableExtensions;
+    using Data.Models;
 
     [RoutePrefix("api/events")]
     public class EventsController : BaseController
@@ -141,17 +142,24 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            var townId = this.data.Towns.All().Where(id => id.Name == model.Town).FirstOrDefault();
-            // TODO Create data model
-            /*
-            var eventToAdd = EventDataModel.FromModelToData(model, townId.Id);
+            var town = this.data.Towns.All().Where(id => id.Name == model.Town).FirstOrDefault();
+            var category = this.data.Categories.All().Where(id => id.Name == model.Category).FirstOrDefault();
+
+            var eventToAdd = new Event
+            {
+                Name = model.Name,
+                ShortDescrtiption = model.ShortDescrtiption,
+                IsPrivate = model.IsPrivate,
+                StartDate = model.StartDate,
+                EndDate = model.EndDate,
+                TownId = town.Id,
+                CategoryId = category.Id
+            };
+
             this.data.Events.Add(eventToAdd);
             this.data.Savechanges();
 
             return this.Created(this.Url.ToString(), eventToAdd);
-            */
-
-            return this.Created(this.Url.ToString(), townId);
         }
 
         [HttpPut]
@@ -169,13 +177,15 @@
                 return this.BadRequest();
             }
 
-            var townId = this.data.Towns.All().Where(t => t.Name == model.Town).FirstOrDefault();
+            var town = this.data.Towns.All().Where(t => t.Name == model.Town).FirstOrDefault();
+            var category = this.data.Categories.All().Where(id => id.Name == model.Category).FirstOrDefault();
 
             eventToUpdate.Name = model.Name ?? eventToUpdate.Name;
             eventToUpdate.IsPrivate = model.IsPrivate;
             eventToUpdate.StartDate = model.StartDate;
             eventToUpdate.EndDate = model.EndDate;
-            eventToUpdate.TownId = townId.Id;
+            eventToUpdate.TownId = town.Id;
+            eventToUpdate.CategoryId = category.Id;
 
             this.data.Events.Update(eventToUpdate);
             this.data.Savechanges();
