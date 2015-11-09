@@ -19,7 +19,15 @@
 
 		public IHttpActionResult Get(int id)
 		{
-			var events = this.data.Towns.All().Where(c => c.Id == id).FirstOrDefault().Events.Select(e => e.Name);
+			var town = this.data.Towns.All().Where(c => c.Id == id).FirstOrDefault();
+
+			if (town == null)
+			{
+				return this.NotFound();
+			}
+
+			var events = town.Events.Select(e => e.Name);
+
 			return this.Ok(events);
 		}
 	}
