@@ -30,8 +30,14 @@ namespace EventsSystem.Api.Controllers
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
-			var events = this.data.Tags.All().Where(t => t.Id == id).FirstOrDefault().Events.Select(e => e.Name);
+			var tag = this.data.Tags.All().Where(t => t.Id == id).FirstOrDefault();
 
+			if (tag == null)
+			{
+				return this.NotFound();
+			}
+
+			var events = tag.Events.Select(e => e.Name);
 			// TODO: return null or empty array if tag not found.
 
 			// //selected the rang of the every event but not use yes. this logic might be go in the mapper class blah blah blah...

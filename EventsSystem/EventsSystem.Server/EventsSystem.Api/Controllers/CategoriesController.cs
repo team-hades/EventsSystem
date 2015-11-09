@@ -22,9 +22,15 @@
 
 		public IHttpActionResult Get(int id)
 		{
-			var events = this.data.Categories.All().Where(c => c.Id == id).FirstOrDefault().Events.Select(e => e.Name);
+			var category = this.data.Categories.All().Where(c => c.Id == id).FirstOrDefault();
 
-			return this.Ok(events);
+			if (category == null)
+			{
+				return this.NotFound();
+			}
+
+			var events = category.Events.Select(e => e.Name);
+            return this.Ok(events);
 		}
 
 		public IHttpActionResult Post(CategoryModel model)
