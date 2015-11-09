@@ -159,7 +159,7 @@
             this.data.Events.Add(eventToAdd);
             this.data.Savechanges();
 
-            return this.Created(this.Url.ToString(), eventToAdd);
+            return this.Ok();
         }
 
         [HttpPut]
@@ -231,7 +231,7 @@
         }
 
         [HttpPut]
-        [Route("join/{eventId}")]
+        [Route("leave/{eventId}")]
         public IHttpActionResult Leave(int eventId)
         {
             var eventToLeave = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();

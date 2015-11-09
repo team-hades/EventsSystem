@@ -36,8 +36,6 @@
 
 		public bool IsPrivate { get; set; }
 
-		public EventState State { get; set; }
-
 		public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

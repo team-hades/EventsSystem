@@ -24,17 +24,7 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
             this.eventNameInput.MaxLength = ValidationConstants.MaxEventName;
             this.shortDescriptionInput.MaxLength = ValidationConstants.MaxEventShortDescription;
             this.longDescriptionInput.MaxLength = ValidationConstants.MaxEventLongDescription;
-
-            Array values = Enum.GetValues(typeof(EventState));
-
-            foreach (var item in values)
-            {
-                ComboboxItem comboboxItem = new ComboboxItem();
-                comboboxItem.Text = Enum.GetName(typeof(EventState), item);
-                comboboxItem.Value = item;
-                this.eventStateComboBox.Items.Add(comboboxItem);
-            }
-
+            
             //TODO: Populate Categories
 
             //TODO: Populate Towns
