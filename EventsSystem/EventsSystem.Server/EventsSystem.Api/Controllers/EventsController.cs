@@ -7,6 +7,7 @@
 	using Models;
 	using Data.Models;
 
+	[RoutePrefix("api/events")]
 	public class EventsController :  BaseController
 	{
 		public EventsController(IEventsSystemData data)
@@ -47,5 +48,22 @@
 		{
 			return this.Ok("Some deleted event");
 		}
+
+		[HttpPost]
+		[Route("join/{eventId}")]
+		public IHttpActionResult Join(int eventId)
+		{
+			// check user?
+			return this.Ok("Join");
+		}
+
+		[HttpPut]
+		[Route("join/{id}")]
+		public IHttpActionResult Leave(int id)
+		{
+			// check user?
+			return this.Ok("Leave");
+		}
+
 	}
 }
