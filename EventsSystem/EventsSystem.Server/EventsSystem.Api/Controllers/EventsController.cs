@@ -38,13 +38,13 @@
 		}
 
 		[HttpPut]
-		public IHttpActionResult Put(EventModel model)
+		public IHttpActionResult Put(int id, EventModel model)
 		{
 			return this.Ok("Some updated event");
 		}
 
 		[HttpDelete]
-		public IHttpActionResult Delete(EventModel model)
+		public IHttpActionResult Delete(int id, EventModel model)
 		{
 			return this.Ok("Some deleted event");
 		}
