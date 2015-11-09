@@ -49,7 +49,7 @@
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Could\'t pull and populate data!", "Error");
             }
