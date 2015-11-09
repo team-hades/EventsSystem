@@ -18,12 +18,18 @@
 
 		public DateTime EndDate { get; set; }
 
+        public string Town { get; set; }
+
+        public string Category { get; set;}
+
         public object CommentsCount { get; set; }
 
         public void CreateMappings(IConfiguration config)
         {
             config.CreateMap<Event, EventResponceModel>()
-                .ForMember(e => e.CommentsCount, opts => opts.MapFrom(s => s.Comments.Count));
+                .ForMember(e => e.CommentsCount, opts => opts.MapFrom(c => c.Comments.Count))
+                .ForMember(e => e.Town, opts => opts.MapFrom(t => t.Town.Name))
+                .ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name));
         }
     }
 }
