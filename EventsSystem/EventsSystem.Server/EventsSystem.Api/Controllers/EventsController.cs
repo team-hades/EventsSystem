@@ -178,7 +178,7 @@
             }
 
             var town = this.data.Towns.All().Where(t => t.Name == model.Town).FirstOrDefault();
-            var category = this.data.Categories.All().Where(id => id.Name == model.Category).FirstOrDefault();
+            var category = this.data.Categories.All().Where(x => x.Name == model.Category).FirstOrDefault();
 
             eventToUpdate.Name = model.Name ?? eventToUpdate.Name;
             eventToUpdate.IsPrivate = model.IsPrivate;
