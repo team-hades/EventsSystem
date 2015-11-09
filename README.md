@@ -1,8 +1,9 @@
 # Events System
 ---
+[![Build status](https://ci.appveyor.com/api/projects/status/lece5hskefnj5al9?svg=true)](https://ci.appveyor.com/project/georgimanov/eventssystem)
+---
 
 ![Draft image for Events System](/EventsSystemDrawing.jpeg)
-
 
 ## Events System Description
 
