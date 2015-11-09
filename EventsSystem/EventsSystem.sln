@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.Data.Data", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.WindowsFormsClient", "..\EventsSystem.WindowsFormsClient\EventsSystem.WindowsFormsClient\EventsSystem.WindowsFormsClient.csproj", "{24644F2C-001B-4441-ABA2-FE7362E3698E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.WebClient", "..\EventsSystem.WebClient\EventsSystem.WebClient\EventsSystem.WebClient.csproj", "{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{24644F2C-001B-4441-ABA2-FE7362E3698E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24644F2C-001B-4441-ABA2-FE7362E3698E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24644F2C-001B-4441-ABA2-FE7362E3698E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
