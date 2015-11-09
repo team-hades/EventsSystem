@@ -21,14 +21,13 @@
 		{
             // TODO: If current user is admin: get all events
             // TODO: Where it has to be returned the events which the user is tagged?!???
-            var allVisibleEvents = this.data
+            var events = this.data
                 .Events
                 .All()
-                .Where(ev => ev.IsPrivate == true)
                 .ProjectTo<EventResponceModel>()
                 .ToList();
 
-            return this.Ok(allVisibleEvents);
+            return this.Ok(events);
 		}
 
 		[HttpGet]

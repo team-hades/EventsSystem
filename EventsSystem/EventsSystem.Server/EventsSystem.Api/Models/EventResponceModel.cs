@@ -18,8 +18,6 @@
 
 		public DateTime EndDate { get; set; }
 
-		public virtual Town Town { get; set; }
-
         public object CommentsCount { get; set; }
 
         public void CreateMappings(IConfiguration config)

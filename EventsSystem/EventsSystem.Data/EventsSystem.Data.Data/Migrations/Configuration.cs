@@ -78,6 +78,37 @@ namespace EventsSystem.Data.Data.Migrations
 
             context.Users.Add(stamat);
 
+            var town = new Town
+            {
+                Name = "Sofia"
+            };
+
+            context.Towns.Add(town);
+
+            context.SaveChanges();
+
+            var cat = new Category
+            {
+                Name = "Category Name",
+                AuthorId = stamat.Id
+            };
+
+            context.Categories.Add(cat);
+
+            context.SaveChanges();
+            var eventToAdd = new Event
+            {
+                Name = "Pesho's event",
+                CategoryId = cat.Id,
+                TownId = town.Id,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                ShortDescrtiption = "Short description",
+                LongDescrtiption = "Long description",
+                IsPrivate = false,
+                AuthorId = pesho.Id
+            };
+            context.Events.Add(eventToAdd);
 
             context.SaveChanges();
         }
