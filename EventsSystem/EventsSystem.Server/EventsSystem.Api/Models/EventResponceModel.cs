@@ -18,7 +18,7 @@
 
 		public DateTime EndDate { get; set; }
 
-		public virtual Town Town { get; set; }
+		public string Town { get; set; }
 
         public object CommentsCount { get; set; }
 
