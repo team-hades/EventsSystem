@@ -68,16 +68,19 @@
 |PUT|api/events/{eventID}|Update an existing event, returns the event created so it can be loaded in the UI|
 |DELETE|api/events/{eventID}|Delete an existing event, returns WHAT?? ID? (the event created so it can be loaded in the UI)|
 |GET|api/events/{eventID}|Get event with ID = eventID, with 10 comments sorted by date|
-|POST|api/events/join/{eventID}|Current user can join to the event with ID = eventID.|
-|PUT|api/events/join/{eventID}|Current user can leave an event with ID = eventID.|
 |GET (public)|api/events?page=P|Gets the events at positions from P*10 to (P+1)*10. The events sorted by date of creation and are at most 10.|
 |GET|api/events?category=[categoryName]&town=[townName]|Gets top 10 events in category “categoryName” and town “townName”, sorted by their date of creation|
 |GET|api/events?category=[categoryName]|Gets top 10 events in category “categoryName”,sorted by their date of creation|
 |GET|api/events?category=[categoryName]&page=P|Gets the events in category “categoryName” at positions from P*10 to (P+1)*10. The events sorted by date of creation and are at most 10.|
 |POST|api/events/{eventID}/comments|Creates a new comment for a given event|
-|GET|api/categories|Gets all categories|
-|GET|api/categories/{categorID}|Gets all events, sorted by date, from Category with ID = categorID|
-|GET|api/tags|Gets all tags|
-|GET|api/tags/{tagID}|Gets all events, sorted by date, that have Tag with ID = categorID|
 |POST|api/events/rate/{eventId} header body: { “rate”: 1-5 (int)}|Creates rating by the current user for the event with ID = eventId|
 |PUT|api/events/rate/{eventId} header body: { “rate”: 1-5 (int)}|Update rating by the current user for the event with ID = eventId|
+|POST|api/events/join/{eventID}|Current user can join to the event with ID = eventID.|
+|PUT|api/events/join/{eventID}|Current user can leave an event with ID = eventID.|
+|GET|api/categories|Gets all categories|
+|GET|api/categories/{categoryID}|Gets all events, sorted by date, from Category with ID = categoryID|
+|GET|api/towns|Gets all towns|
+|GET|api/towns/{townID}|Gets all events, sorted by date, from Town with ID = townID|
+|GET|api/tags|Gets all tags|
+|GET|api/tags/{tagID}|Gets all events, sorted by date, that have Tag with ID = tagID|
+
