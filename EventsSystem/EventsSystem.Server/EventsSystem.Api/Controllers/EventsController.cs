@@ -54,16 +54,31 @@
 		public IHttpActionResult Join(int eventId)
 		{
 			// check user?
-			return this.Ok("Join");
+			return this.Ok("Join event");
 		}
 
 		[HttpPut]
-		[Route("join/{id}")]
-		public IHttpActionResult Leave(int id)
+		[Route("join/{eventId}")]
+		public IHttpActionResult Leave(int eventId)
 		{
 			// check user?
-			return this.Ok("Leave");
+			return this.Ok("Leave event");
 		}
 
+		[HttpPost]
+		[Route("rate/{eventId}/{rating}")]
+		public IHttpActionResult Rate(int eventId, int rating)
+		{
+			// check user?
+			return this.Ok("Rate: "  + rating);
+		}
+
+		[HttpPut]
+		[Route("rate/{eventId}/{rating}")]
+		public IHttpActionResult UpdateRate(int eventId, int rating)
+		{
+			// check user?
+			return this.Ok("Update Rate: " + rating);
+		}
 	}
 }
