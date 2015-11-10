@@ -1,4 +1,4 @@
-﻿namespace EventsSystem.Api.Infrastructure
+﻿namespace EventsSystem.Api.Infrastructure.Mapping
 {
 	using AutoMapper;
 

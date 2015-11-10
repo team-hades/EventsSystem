@@ -11,7 +11,7 @@
         public const int MaxEventLongDescription = 2000;
 
         public const int MinContentLenght = 1;
-        public const int MaxContentLenght = 250;
+        public const int MaxContentLenght = 2500;
 
         public const int MinCategoryNameLenght = 2;
         public const int MaxCategoryNameLenght = 25;

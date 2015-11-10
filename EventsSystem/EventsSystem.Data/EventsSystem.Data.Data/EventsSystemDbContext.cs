@@ -42,8 +42,8 @@ namespace EventsSystem.Data.Data
 						.WithMany()
 						.Map(m =>
 						{
-							m.MapLeftKey("EventId");
 							m.MapRightKey("UserId");
+							m.MapLeftKey("EventId");
 							m.ToTable("EventsUsers");
 						});
 			base.OnModelCreating(modelBuilder);

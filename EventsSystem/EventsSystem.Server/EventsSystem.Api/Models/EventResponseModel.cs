@@ -1,12 +1,13 @@
 ﻿namespace EventsSystem.Api.Models
 {
     using System;
-    using Infrastructure.Mapping;
-    using Data.Models;
-    using Infrastructure;
-    using AutoMapper;
 
-    public class EventResponceModel : IMapFrom<Event>, IHaveCustomMappings
+	using AutoMapper;
+
+	using Infrastructure.Mapping;
+    using Data.Models;
+
+    public class EventResponseModel : IMapFrom<Event>, IHaveCustomMappings
     {
 		public string Name { get; set; }
 
@@ -26,7 +27,7 @@
 
         public void CreateMappings(IConfiguration config)
         {
-            config.CreateMap<Event, EventResponceModel>()
+            config.CreateMap<Event, EventResponseModel>()
                 .ForMember(e => e.CommentsCount, opts => opts.MapFrom(c => c.Comments.Count))
                 .ForMember(e => e.Town, opts => opts.MapFrom(t => t.Town.Name))
                 .ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name));

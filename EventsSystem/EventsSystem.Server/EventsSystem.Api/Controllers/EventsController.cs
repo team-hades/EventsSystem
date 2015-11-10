@@ -28,7 +28,7 @@
                 var allAdminEvents = this.data.Events
                                 .All()
                                 .OrderByDescending(d => d.StartDate)
-                                .ProjectTo<EventResponceModel>();
+                                .ProjectTo<EventResponseModel>();
 
                 return this.Ok(allAdminEvents);
             }
@@ -42,7 +42,7 @@
                 .All()
                 .Where(ev => ev.Users.Contains(currentUserID))
                 .OrderByDescending(d => d.StartDate)
-                .ProjectTo<EventResponceModel>();
+                .ProjectTo<EventResponseModel>();
 
                 if (allEventsWithTagedUser.Count() > 0)
                 {
@@ -58,7 +58,7 @@
                 .Where(ev => ev.IsPrivate != true)
                 .OrderBy(d => d.StartDate)
                 .Take(10)
-                .ProjectTo<EventResponceModel>();
+                .ProjectTo<EventResponseModel>();
 
             return this.Ok(allVisibleEvents);
         }
@@ -66,7 +66,7 @@
         [HttpGet]
         public IHttpActionResult All(int id)
         {
-            var eventToReturn = this.data.Events.All().Where(ev => ev.Id == id).ProjectTo<EventResponceModel>();
+            var eventToReturn = this.data.Events.All().Where(ev => ev.Id == id).ProjectTo<EventResponseModel>();
 
             if (eventToReturn == null)
             {
@@ -90,7 +90,7 @@
                 .OrderByDescending(e => e.StartDate)
                 .Skip(defaultPageSize * pageSize)
                 .Take(defaultPageSize)
-                .ProjectTo<EventResponceModel>();
+                .ProjectTo<EventResponseModel>();
 
             if (eventToReturn == null)
             {
@@ -108,7 +108,7 @@
                 .Where(e => e.Category.Name == category)
                 .OrderByDescending(x => x.StartDate)
                 .Take(10)
-                .ProjectTo<EventResponceModel>();
+                .ProjectTo<EventResponseModel>();
 
             if (eventsFromCategory == null)
             {
@@ -124,7 +124,7 @@
             var eventsFromCategory = this.data.Events.All()
                 .Where(e => e.Category.Name == category && e.Town.Name == town)
                 .OrderByDescending(x => x.StartDate)
-                .ProjectTo<EventResponceModel>();
+                .ProjectTo<EventResponseModel>();
 
             if (eventsFromCategory == null)
             {
@@ -135,7 +135,7 @@
         }
 
         [HttpPost]
-        public IHttpActionResult Post(EventResponceModel model)
+        public IHttpActionResult Post(EventResponseModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -163,7 +163,7 @@
         }
 
         [HttpPut]
-        public IHttpActionResult Put(int id, EventResponceModel model)
+        public IHttpActionResult Put(int id, EventResponseModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -194,7 +194,7 @@
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(int id, EventResponceModel model)
+        public IHttpActionResult Delete(int id, EventResponseModel model)
         {
             var eventToDelete = this.data.Events.All().Where(ev => ev.Id == id).FirstOrDefault();
 

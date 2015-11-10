@@ -19,7 +19,7 @@
 
         public virtual Event Event { get; set; }
 
-		[Required]
+		//[Required]
 		public string AuthorId { get; set; }
 
 		public virtual User Author { get; set; }

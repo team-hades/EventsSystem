@@ -20,7 +20,7 @@
 		[MaxLength(ValidationConstants.MaxCategoryNameLenght)]
 		public string Name { get; set; }
 
-		[Required]
+		//[Required]
 		public string AuthorId { get; set; }
 
 		public virtual User Author { get; set; }
