@@ -8,13 +8,17 @@
 
     using AutoMapper.QueryableExtensions;
     using Data.Models;
+    using Infrastructure.Mapping;
 
     [RoutePrefix("api/events")]
     public class EventsController : BaseController
     {
-        public EventsController(IEventsSystemData data)
+        IMappingService mapservices;
+
+        public EventsController(IEventsSystemData data, IMappingService mapservices)
             : base(data)
         {
+            this.mapservices = mapservices;
         }
 
         [HttpGet]
@@ -142,19 +146,11 @@
                 return this.BadRequest(this.ModelState);
             }
 
+            var eventToAdd = this.mapservices.Map<Event>(model);
             var town = this.data.Towns.All().Where(id => id.Name == model.Town).FirstOrDefault();
             var category = this.data.Categories.All().Where(id => id.Name == model.Category).FirstOrDefault();
-
-            var eventToAdd = new Event
-            {
-                Name = model.Name,
-                ShortDescrtiption = model.ShortDescrtiption,
-                IsPrivate = model.IsPrivate,
-                StartDate = model.StartDate,
-                EndDate = model.EndDate,
-                TownId = town.Id,
-                CategoryId = category.Id
-            };
+            eventToAdd.CategoryId = category.Id;
+            eventToAdd.TownId = town.Id;
 
             this.data.Events.Add(eventToAdd);
             this.data.Savechanges();
