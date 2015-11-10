@@ -56,6 +56,7 @@
     <Compile Include="Forms\Accounts\CreateForm.Designer.cs">
       <DependentUpon>CreateForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Accounts\TokenResponseModel.cs" />
     <Compile Include="Forms\Event\AllEventsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +134,10 @@
     <ProjectReference Include="..\..\EventsSystem\EventsSystem.Data\EventsSystem.Data.Models\EventsSystem.Data.Models.csproj">
       <Project>{8d3b01d3-83dc-4de5-bc0a-7afcbb441ce9}</Project>
       <Name>EventsSystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EventsSystem\EventsSystem.Server\EventsSystem.Api\EventsSystem.Api.csproj">
+      <Project>{153044ba-5937-49a2-b675-fcdf9f6aee35}</Project>
+      <Name>EventsSystem.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

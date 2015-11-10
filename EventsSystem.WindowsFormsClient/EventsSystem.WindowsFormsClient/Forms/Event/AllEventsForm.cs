@@ -6,16 +6,18 @@
     using System.Windows.Forms;
     using Data.Models;
     using Newtonsoft.Json;
+    using System.Data;
 
     public partial class eventForm : Form
     {
-        private readonly Uri WEB_API_ACCESS_POINT = new Uri("http://localhost:80/api/{0}");
+        private readonly Uri URI_EVENTS;
         private readonly string LABEL = "in Events";
         private MainForm parent;
 
         public eventForm()
         {
             this.InitializeComponent();
+            this.URI_EVENTS = new Uri("http://localhost:58368/api/Events");
         }
 
         private void EventForm_Load(object sender, EventArgs e)
@@ -33,23 +35,23 @@
 
         private async void GetAllEvents()
         {
+            this.dataGridView.AutoGenerateColumns = true;
+
             try
             {
                 using (var client = new HttpClient())
                 {
-                    using (var response = await client.GetAsync(this.WEB_API_ACCESS_POINT))
+                    using (var response = await client.GetAsync(this.URI_EVENTS))
                     {
                         if (response.IsSuccessStatusCode)
                         {
                             var pulledEvents = await response.Content.ReadAsStringAsync();
-
-                            dataGridView.DataSource = JsonConvert.DeserializeObject<Event[]>(pulledEvents).ToList();
-
+                            dataGridView.DataSource = JsonConvert.DeserializeObject(pulledEvents); ;
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Could\'t pull and populate data!", "Error");
             }

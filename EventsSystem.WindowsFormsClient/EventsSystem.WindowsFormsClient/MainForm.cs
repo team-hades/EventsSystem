@@ -18,6 +18,8 @@
         private loginForm loginView = null;
         private CreateForm createForm = null;
 
+        private string bearer = null;
+
         public MainForm()
         {
             this.InitializeComponent();
@@ -27,6 +29,12 @@
         {
             this.StatusLabel = string.Format(this.DEFAULT_STATUS_PATTERN, this.DEFAULT_STATUS_LABEL);
             this.ToggleControls();
+        }
+
+        public string Bearer
+        {
+            get { return this.bearer; }
+            set { this.bearer = value; }
         }
 
         private void ToggleControls()

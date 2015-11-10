@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(eventForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.deleteEvent = new System.Windows.Forms.Button();
-            this.updateEvent = new System.Windows.Forms.Button();
-            this.insertEvent = new System.Windows.Forms.Button();
             this.getAllEvents = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -46,9 +43,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.deleteEvent);
-            this.groupBox1.Controls.Add(this.updateEvent);
-            this.groupBox1.Controls.Add(this.insertEvent);
             this.groupBox1.Controls.Add(this.getAllEvents);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -56,36 +50,6 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "View events";
-            // 
-            // deleteEvent
-            // 
-            this.deleteEvent.Location = new System.Drawing.Point(467, 19);
-            this.deleteEvent.Name = "deleteEvent";
-            this.deleteEvent.Size = new System.Drawing.Size(135, 25);
-            this.deleteEvent.TabIndex = 3;
-            this.deleteEvent.Text = "Delete An Event";
-            this.deleteEvent.UseVisualStyleBackColor = true;
-            this.deleteEvent.Click += new System.EventHandler(this.deleteEvent_Click);
-            // 
-            // updateEvent
-            // 
-            this.updateEvent.Location = new System.Drawing.Point(312, 19);
-            this.updateEvent.Name = "updateEvent";
-            this.updateEvent.Size = new System.Drawing.Size(135, 25);
-            this.updateEvent.TabIndex = 2;
-            this.updateEvent.Text = "Update An Event";
-            this.updateEvent.UseVisualStyleBackColor = true;
-            this.updateEvent.Click += new System.EventHandler(this.updateEvent_Click);
-            // 
-            // insertEvent
-            // 
-            this.insertEvent.Location = new System.Drawing.Point(161, 19);
-            this.insertEvent.Name = "insertEvent";
-            this.insertEvent.Size = new System.Drawing.Size(135, 25);
-            this.insertEvent.TabIndex = 1;
-            this.insertEvent.Text = "Insert An Event";
-            this.insertEvent.UseVisualStyleBackColor = true;
-            this.insertEvent.Click += new System.EventHandler(this.insertEvent_Click);
             // 
             // getAllEvents
             // 
@@ -157,9 +121,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button deleteEvent;
-        private System.Windows.Forms.Button updateEvent;
-        private System.Windows.Forms.Button insertEvent;
         private System.Windows.Forms.Button getAllEvents;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.StatusStrip status_strip;
