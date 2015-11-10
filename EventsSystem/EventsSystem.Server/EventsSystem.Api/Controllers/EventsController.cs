@@ -24,9 +24,7 @@
         [HttpGet]
         public IHttpActionResult All()
         {
-            // .ProjectTo<EventResponceModel>()
             // TODO: If current user is admin: get all events
-            // TODO: Where it has to be returned the events which the user is tagged?!???
             if (this.User.IsInRole("Admin"))
             {
                 var allAdminEvents = this.data.Events
@@ -81,8 +79,7 @@
             // TODO we neeed to include a collection ofcomments in the model to work
             return this.Ok(eventToReturn);
         }
-
-        // TODO see if custom routing is needed
+        
         [HttpGet]
         public IHttpActionResult AllByPage(string page)
         {
@@ -222,7 +219,7 @@
             eventToJoin.Users.Add(currentUser);
             this.data.Events.Update(eventToJoin);
             this.data.Savechanges();
-            // check user?
+
             return this.Ok("Join");
         }
 
@@ -243,7 +240,7 @@
             eventToLeave.Users.Remove(currentUser);
             this.data.Events.Update(eventToLeave);
             this.data.Savechanges();
-            // check user?
+           
             return this.Ok("Leave");
         }
 
@@ -251,7 +248,31 @@
         [Route("rate/{eventId}/{rating}")]
         public IHttpActionResult Rate(int eventId, int rating)
         {
-            // check user?
+            if (rating < 0 || rating  > 5)
+            {
+                return this.BadRequest();
+            }
+
+            var eventWithRating = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();
+
+            if (eventWithRating == null)
+            {
+                return this.BadRequest();
+            }
+
+            var currentUserName = this.User.Identity.Name;
+            var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
+
+            var ratingToAdd = new Rating
+            {
+                EventId = eventWithRating.Id,
+                UserId = currentUser.Id,
+                Value = rating
+            };
+
+            this.data.Ratings.Add(ratingToAdd);
+            this.data.Savechanges();
+
             return this.Ok("Rate: " + rating);
         }
 
@@ -259,7 +280,18 @@
         [Route("rate/{eventId}/{rating}")]
         public IHttpActionResult UpdateRate(int eventId, int rating)
         {
-            // check user?
+            if (rating < 0 || rating  > 5)
+            {
+                return this.BadRequest();
+            }
+
+            var eventWithRating = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();
+
+            if (eventWithRating == null)
+            {
+                return this.BadRequest();
+            }
+                        
             return this.Ok("Update Rate: " + rating);
         }
     }
