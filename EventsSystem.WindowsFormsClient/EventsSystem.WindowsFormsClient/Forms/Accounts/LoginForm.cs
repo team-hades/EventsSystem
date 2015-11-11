@@ -30,7 +30,6 @@
 
         private async void loginButton_Click(object sender, EventArgs e)
         {
-
             using (var client = new HttpClient())
             {
                 client.BaseAddress = this.URI_TOKEN;
@@ -56,6 +55,7 @@
                     if (tokenResponse != null)
                     {
                         this.parent.Bearer = tokenResponse.AccessToken;
+                        this.parent.StatusLabel = String.Format("Logged user: {0}", this.textBoxUserName.Text);
                         this.parent.SetAvailability = true;
                     }
                 }

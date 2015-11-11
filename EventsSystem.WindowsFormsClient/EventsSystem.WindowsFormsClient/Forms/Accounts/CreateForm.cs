@@ -44,20 +44,6 @@
             //}
         }
 
-        private void loadPictureButton_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog dlg = new OpenFileDialog())
-            {
-                dlg.Title = "Open Image";
-                dlg.Filter = "bmp files (*.bmp)|*.bmp";
-
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    this.userPictureBox.Image = new Bitmap(dlg.FileName);
-                }
-            }
-        }
-
         private void CreateForm_Load(object sender, EventArgs e)
         {
             this.Initialise();

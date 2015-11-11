@@ -32,8 +32,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
             this.createAccount = new System.Windows.Forms.Button();
-            this.loadPictureButton = new System.Windows.Forms.Button();
-            this.userPictureBox = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,15 +39,12 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBoxConfirmPassword);
             this.groupBox1.Controls.Add(this.createAccount);
-            this.groupBox1.Controls.Add(this.loadPictureButton);
-            this.groupBox1.Controls.Add(this.userPictureBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -57,7 +52,7 @@
             this.groupBox1.Controls.Add(this.textBoxEmail);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(324, 149);
+            this.groupBox1.Size = new System.Drawing.Size(233, 127);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create user account";
@@ -72,33 +67,13 @@
             // 
             // createAccount
             // 
-            this.createAccount.Location = new System.Drawing.Point(9, 98);
+            this.createAccount.Location = new System.Drawing.Point(86, 98);
             this.createAccount.Name = "createAccount";
-            this.createAccount.Size = new System.Drawing.Size(113, 42);
+            this.createAccount.Size = new System.Drawing.Size(113, 20);
             this.createAccount.TabIndex = 3;
             this.createAccount.Text = "Create";
             this.createAccount.UseVisualStyleBackColor = true;
             this.createAccount.Click += new System.EventHandler(this.createAccount_Click);
-            // 
-            // loadPictureButton
-            // 
-            this.loadPictureButton.Location = new System.Drawing.Point(129, 98);
-            this.loadPictureButton.Name = "loadPictureButton";
-            this.loadPictureButton.Size = new System.Drawing.Size(90, 42);
-            this.loadPictureButton.TabIndex = 4;
-            this.loadPictureButton.Text = "Load Image";
-            this.loadPictureButton.UseVisualStyleBackColor = true;
-            this.loadPictureButton.Click += new System.EventHandler(this.loadPictureButton_Click);
-            // 
-            // userPictureBox
-            // 
-            this.userPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.userPictureBox.Location = new System.Drawing.Point(225, 19);
-            this.userPictureBox.Name = "userPictureBox";
-            this.userPictureBox.Size = new System.Drawing.Size(90, 121);
-            this.userPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.userPictureBox.TabIndex = 6;
-            this.userPictureBox.TabStop = false;
             // 
             // label3
             // 
@@ -150,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(349, 169);
+            this.ClientSize = new System.Drawing.Size(256, 145);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CreateForm";
@@ -158,7 +133,6 @@
             this.Load += new System.EventHandler(this.CreateForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.userPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -171,9 +145,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox userPictureBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Button loadPictureButton;
         private System.Windows.Forms.Button createAccount;
         private System.Windows.Forms.TextBox textBoxConfirmPassword;
     }

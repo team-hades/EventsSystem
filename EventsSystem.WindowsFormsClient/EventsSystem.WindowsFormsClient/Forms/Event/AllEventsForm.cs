@@ -56,20 +56,5 @@
                 MessageBox.Show("Could\'t pull and populate data!", "Error");
             }
         }
-
-        private void insertEvent_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void updateEvent_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void deleteEvent_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

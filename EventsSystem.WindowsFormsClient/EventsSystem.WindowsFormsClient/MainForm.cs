@@ -8,8 +8,8 @@
 
     public partial class MainForm : Form
     {
-        private readonly string DEFAULT_STATUS_LABEL = "Ready";
-        private readonly string DEFAULT_STATUS_PATTERN = "Client: {0}.";
+        private readonly string DEFAULT_USER = "N/A";
+        private readonly string DEFAULT_STATUS_PATTERN = "{0}";
 
         private bool isLogged = false;
 
@@ -17,6 +17,7 @@
         private InsertEventForm insertForm = null;
         private loginForm loginView = null;
         private CreateForm createForm = null;
+        private AccountInfo accountInfoForm = null;
 
         private string bearer = null;
 
@@ -27,7 +28,7 @@
 
         public void Initialize()
         {
-            this.StatusLabel = string.Format(this.DEFAULT_STATUS_PATTERN, this.DEFAULT_STATUS_LABEL);
+            this.StatusLabel = string.Format(this.DEFAULT_STATUS_PATTERN, this.DEFAULT_USER);
             this.ToggleControls();
         }
 
@@ -40,8 +41,7 @@
         private void ToggleControls()
         {
             this.eventsToolStripMenuItem.Enabled = this.isLogged;
-            this.modifyToolStripMenuItem.Enabled = this.isLogged;
-            this.deleteToolStripMenuItem.Enabled = this.isLogged;
+            this.userInfoToolStripMenuItem.Enabled = this.isLogged;
         }
 
         public string StatusLabel
@@ -140,13 +140,38 @@
             }
             else
             {
-                this.insertForm.Activate();
+                this.createForm.Activate();
             }
         }
 
         private void createForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.createForm = null;
+        }
+
+        private void userInfoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.accountInfoForm == null)
+            {
+                this.accountInfoForm = new AccountInfo();
+                this.accountInfoForm.MdiParent = this;
+                this.accountInfoForm.FormClosed += new FormClosedEventHandler(this.accountInfo_FormClosed);
+                this.accountInfoForm.Show();
+            }
+            else
+            {
+                this.accountInfoForm.Activate();
+            }
+        }
+
+        private void accountInfo_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.accountInfoForm = null;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Bearer = null;
         }
     }
 }

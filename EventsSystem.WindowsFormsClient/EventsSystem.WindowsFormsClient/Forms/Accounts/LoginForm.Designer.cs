@@ -47,16 +47,16 @@
             this.groupBox1.Controls.Add(this.textBoxUserName);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(233, 99);
+            this.groupBox1.Size = new System.Drawing.Size(233, 107);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credentials";
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(11, 71);
+            this.loginButton.Location = new System.Drawing.Point(108, 71);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(211, 23);
+            this.loginButton.Size = new System.Drawing.Size(86, 23);
             this.loginButton.TabIndex = 2;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -87,7 +87,6 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(150, 20);
             this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.Text = "Guest";
             // 
             // textBoxUserName
             // 
@@ -95,13 +94,12 @@
             this.textBoxUserName.Name = "textBoxUserName";
             this.textBoxUserName.Size = new System.Drawing.Size(150, 20);
             this.textBoxUserName.TabIndex = 0;
-            this.textBoxUserName.Text = "Guest";
             // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 114);
+            this.ClientSize = new System.Drawing.Size(257, 126);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
