@@ -72,7 +72,7 @@ namespace EventsSystem.Api.Tests.Controllers
             // Arrange
             ValuesController controller = new ValuesController();
 
-            // Act
+            // ActБ
             controller.Delete(5);
 
             // Assert
