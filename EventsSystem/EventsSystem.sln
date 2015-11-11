@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.WindowsFormsCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.WebClient", "..\EventsSystem.WebClient\EventsSystem.WebClient\EventsSystem.WebClient.csproj", "{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.Data.Dropbox", "Data\EventsSystem.Data.Dropbox\EventsSystem.Data.Dropbox.csproj", "{466EEDB5-A75B-4578-8154-71F1EC4DE379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventssSystem.Dropbox.ConsoleClient", "EventssSystem.Dropbox.ConsoleClient\EventssSystem.Dropbox.ConsoleClient.csproj", "{B4099F1F-D220-4C05-8667-C93FB2ED0404}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,14 @@ Global
 		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DAF99E75-DE42-4BDA-B2B4-FE107CA6D733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{466EEDB5-A75B-4578-8154-71F1EC4DE379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{466EEDB5-A75B-4578-8154-71F1EC4DE379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{466EEDB5-A75B-4578-8154-71F1EC4DE379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{466EEDB5-A75B-4578-8154-71F1EC4DE379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +76,6 @@ Global
 		{153044BA-5937-49A2-B675-FCDF9F6AEE35} = {B054EFA7-6FD0-4818-A5B1-5B2A1F51CD56}
 		{EDAB194C-E434-4AAD-931F-77C8D405378C} = {B054EFA7-6FD0-4818-A5B1-5B2A1F51CD56}
 		{221F05D5-46FA-4204-8D22-9AC06ACC320B} = {6FBAC033-912F-49A8-B169-292494F5C38B}
+		{466EEDB5-A75B-4578-8154-71F1EC4DE379} = {6FBAC033-912F-49A8-B169-292494F5C38B}
 	EndGlobalSection
 EndGlobal
