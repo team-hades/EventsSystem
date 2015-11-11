@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EventsSystem.Api.Tests.Controllers
+﻿namespace EventsSystem.Api.Tests.Controllers
 {
+    // TODO: Remove me!
+    using System;
+    using System.Collections.Generic;
+
     internal class ValuesController
     {
         internal void Post(string v)
