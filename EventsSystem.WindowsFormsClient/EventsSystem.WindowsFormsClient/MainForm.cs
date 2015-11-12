@@ -18,6 +18,9 @@
         private loginForm loginView = null;
         private CreateForm createForm = null;
         private AccountInfo accountInfoForm = null;
+        private SelectedEventForm selectedEventForm = null;
+        private EventsByPageForm eventbyPageForm = null;
+        private SelectEventByCategoryForm selectEventsByCategory = null;
 
         private string bearer = null;
 
@@ -172,6 +175,68 @@
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Bearer = null;
+            this.isLogged = false;
+            this.ToggleControls();
+        }
+
+        private void selectedEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.selectedEventForm == null)
+            {
+                this.selectedEventForm = new SelectedEventForm();
+                this.selectedEventForm.MdiParent = this;
+                this.selectedEventForm.FormClosed += new FormClosedEventHandler(this.selectedEventForm_FormClosed);
+                this.selectedEventForm.Show();
+            }
+            else
+            {
+                this.selectedEventForm.Activate();
+            }
+        }
+
+        private void selectedEventForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.selectedEventForm = null;
+        }
+
+        private void eventsByPageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.eventbyPageForm == null)
+            {
+                this.eventbyPageForm = new EventsByPageForm();
+                this.eventbyPageForm.MdiParent = this;
+                this.eventbyPageForm.FormClosed += new FormClosedEventHandler(this.eventbyPageFormm_FormClosed);
+                this.eventbyPageForm.Show();
+            }
+            else
+            {
+                this.eventbyPageForm.Activate();
+            }
+        }
+
+        private void eventbyPageFormm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.eventbyPageForm = null;
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (this.selectEventsByCategory == null)
+            {
+                this.selectEventsByCategory = new SelectEventByCategoryForm();
+                this.selectEventsByCategory.MdiParent = this;
+                this.selectEventsByCategory.FormClosed += new FormClosedEventHandler(this.selectEventsByCategory_FormClosed);
+                this.selectEventsByCategory.Show();
+            }
+            else
+            {
+                this.selectEventsByCategory.Activate();
+            }
+        }
+
+        private void selectEventsByCategory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.selectEventsByCategory = null;
         }
     }
 }

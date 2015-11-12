@@ -57,6 +57,7 @@
                         this.parent.Bearer = tokenResponse.AccessToken;
                         this.parent.StatusLabel = String.Format("Logged user: {0}", this.textBoxUserName.Text);
                         this.parent.SetAvailability = true;
+                        MessageBox.Show(String.Format("Welcome, {0}!", this.textBoxUserName.Text));
                     }
                 }
             }

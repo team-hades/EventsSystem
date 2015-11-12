@@ -95,6 +95,12 @@
     <Compile Include="Forms\Event\AllEventsForm.Designer.cs">
       <DependentUpon>AllEventsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Event\EventsByPageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\EventsByPageForm.Designer.cs">
+      <DependentUpon>EventsByPageForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Event\InsertEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,18 @@
     </Compile>
     <Compile Include="Forms\Accounts\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Event\SelectedEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\SelectedEventForm.Designer.cs">
+      <DependentUpon>SelectedEventForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Event\SelectEventByCategoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\SelectEventByCategoryForm.Designer.cs">
+      <DependentUpon>SelectEventByCategoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -124,11 +142,20 @@
     <EmbeddedResource Include="Forms\Event\AllEventsForm.resx">
       <DependentUpon>AllEventsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\EventsByPageForm.resx">
+      <DependentUpon>EventsByPageForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\InsertEventForm.resx">
       <DependentUpon>InsertEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Accounts\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\SelectedEventForm.resx">
+      <DependentUpon>SelectedEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\SelectEventByCategoryForm.resx">
+      <DependentUpon>SelectEventByCategoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
