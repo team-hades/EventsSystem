@@ -1,10 +1,12 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-	using System.Linq;
-	using System.Web.Http;
-	using EventsSystem.Data.Data.Repositories;
+    using System.Linq;
+    using System.Web.Http;
+    using Models;
+    using EventsSystem.Data.Data.Repositories;
+    using AutoMapper.QueryableExtensions;
 
-	public class TownsController : BaseController
+    public class TownsController : BaseController
 	{
 		public TownsController(IEventsSystemData data)
 			: base(data)
@@ -13,7 +15,12 @@
 
 		public IHttpActionResult Get()
 		{
-			var towns = this.data.Towns.All();
+			var towns = this.data
+                .Towns
+                .All()
+                .OrderByDescending(d => d.Name)
+                .ProjectTo<TownResponseModel>();
+
 			return this.Ok(towns);
 		}
 
