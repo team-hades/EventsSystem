@@ -26,16 +26,19 @@
 
 		public IHttpActionResult Get(int id)
 		{
-			var town = this.data.Towns.All().Where(c => c.Id == id).FirstOrDefault();
-
+            var town = this.data
+                .Towns
+                .All()
+                .Where(c => c.Id == id)
+                .ProjectTo<TownResponseModel>()
+                .FirstOrDefault();
+                
 			if (town == null)
 			{
 				return this.NotFound();
 			}
 
-			var events = town.Events.Select(e => e.Name);
-
-			return this.Ok(events);
+			return this.Ok(town);
 		}
 	}
 }
