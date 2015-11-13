@@ -21,7 +21,7 @@
         public void CreateMappings(IConfiguration config)
         {
             config.CreateMap<Town, TownResponseModel>()
-                .ForMember(e => e.Events, opts => opts.MapFrom(c => c.Events.ToList()));
+                .ForMember(e => e.Events, opts => opts.MapFrom(c => c.Events.OrderByDescending(x => x.StartDate).ToList()));
         }
     }
 }

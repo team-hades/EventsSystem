@@ -38,7 +38,7 @@
 				return this.NotFound();
 			}
 
-			return this.Ok(town);
+			return this.Ok(town.Events);
 		}
 	}
 }

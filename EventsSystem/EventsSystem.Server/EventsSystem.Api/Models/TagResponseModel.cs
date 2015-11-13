@@ -18,7 +18,7 @@
         {
             config.CreateMap<Tag, TagResponseModel>()
                 .ForMember(t => t.EventsCount, opts => opts.MapFrom(e => e.Events.Count))
-                .ForMember(t => t.Events, opts => opts.MapFrom(e => e.Events.ToList()));
+                .ForMember(t => t.Events, opts => opts.MapFrom(e => e.Events.OrderByDescending(x => x.StartDate).ToList()));
         }
     }
 }

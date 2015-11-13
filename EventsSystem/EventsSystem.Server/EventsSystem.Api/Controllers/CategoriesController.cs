@@ -45,7 +45,7 @@
 			var events = data.Events
 				.All()
 				.Where(e => e.Category == category)
-				.OrderBy(e => e.StartDate)
+				.OrderByDescending(e => e.StartDate)
 				.ProjectTo<EventResponseModel>();
 
 			if (events.Count() > 0)
