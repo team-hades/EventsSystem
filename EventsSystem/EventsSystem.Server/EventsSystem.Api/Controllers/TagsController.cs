@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using EventsSystem.Data.Data.Repositories;
-
-namespace EventsSystem.Api.Controllers
+﻿namespace EventsSystem.Api.Controllers
 {
-	public class TagsController : BaseController
+    using System.Linq;
+    using System.Web.Http;
+    using AutoMapper.QueryableExtensions;
+    using EventsSystem.Api.Models;
+    using EventsSystem.Data.Data.Repositories;
+
+    public class TagsController : BaseController
 	{
 		public TagsController(IEventsSystemData data)
 			: base(data)
@@ -17,27 +16,22 @@ namespace EventsSystem.Api.Controllers
 		[HttpGet]
 		public IHttpActionResult Get()
 		{
-			var tags = this.data.Tags.All().Select(t => new
-			{
-				Name = t.Name,
-				Events = t.Events.Select(e => e.Name),
-				EventsCount = t.Events.Count(),
-			});
-
+            var tags = this.data.Tags.All().ProjectTo<TagResponseModel>()
+;
 			return this.Ok(tags);
 		}
 
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
-			var tag = this.data.Tags.All().Where(t => t.Id == id).FirstOrDefault();
+			var tag = this.data.Tags.All().Where(t => t.Id == id).ProjectTo<TagResponseModel>().FirstOrDefault();
 
 			if (tag == null)
 			{
 				return this.NotFound();
 			}
 
-			var events = tag.Events.Select(e => e.Name);
+            // var events = tag.Events.AsQueryable().ProjectTo<EventResponseModel>();
 			// TODO: return null or empty array if tag not found.
 
 			// //selected the rang of the every event but not use yes. this logic might be go in the mapper class blah blah blah...
@@ -57,7 +51,7 @@ namespace EventsSystem.Api.Controllers
 			//		allGivenRating += rating.Value;
 			//	}
 			//}
-			return this.Ok(events);
+			return this.Ok(tag.Events);
 		}
 	}
 }
