@@ -1,12 +1,14 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
-    using Models;
-    using EventsSystem.Data.Data.Repositories;
-    using AutoMapper.QueryableExtensions;
+	using System.Linq;
+	using System.Web.Http;
 
-    public class TownsController : BaseController
+	using AutoMapper.QueryableExtensions;
+
+	using EventsSystem.Data.Data.Repositories;
+	using EventsSystem.Api.Models.Towns;
+
+	public class TownsController : BaseController
 	{
 		public TownsController(IEventsSystemData data)
 			: base(data)
@@ -33,6 +35,23 @@
                 .ProjectTo<TownResponseModel>()
                 .FirstOrDefault();
                 
+			if (town == null)
+			{
+				return this.NotFound();
+			}
+
+			return this.Ok(town);
+		}
+
+		public IHttpActionResult Post(int id)
+		{
+			var town = this.data
+				.Towns
+				.All()
+				.Where(c => c.Id == id)
+				.ProjectTo<TownResponseModel>()
+				.FirstOrDefault();
+
 			if (town == null)
 			{
 				return this.NotFound();

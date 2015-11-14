@@ -1,12 +1,14 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
-    using AutoMapper.QueryableExtensions;
-    using EventsSystem.Api.Models;
-    using EventsSystem.Data.Data.Repositories;
+	using System.Linq;
+	using System.Web.Http;
 
-    public class TagsController : BaseController
+	using AutoMapper.QueryableExtensions;
+
+	using EventsSystem.Api.Models.Tags;
+	using EventsSystem.Data.Data.Repositories;
+
+	public class TagsController : BaseController
 	{
 		public TagsController(IEventsSystemData data)
 			: base(data)

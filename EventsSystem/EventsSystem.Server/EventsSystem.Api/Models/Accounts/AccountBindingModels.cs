@@ -1,12 +1,12 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-
-namespace EventsSystem.Api.Models
+﻿namespace EventsSystem.Api.Models.Accounts
 {
-    // Models used as parameters to AccountController actions.
+	using System.ComponentModel.DataAnnotations;
 
-    public class AddExternalLoginBindingModel
+	using Newtonsoft.Json;
+
+	// Models used as parameters to AccountController actions.
+
+	public class AddExternalLoginBindingModel
     {
         [Required]
         [Display(Name = "External access token")]

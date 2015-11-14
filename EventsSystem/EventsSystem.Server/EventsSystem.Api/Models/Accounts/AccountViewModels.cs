@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace EventsSystem.Api.Models
+﻿namespace EventsSystem.Api.Models.Accounts
 {
-    // Models returned by AccountController actions.
+	using System.Collections.Generic;
 
-    public class ExternalLoginViewModel
+	// Models returned by AccountController actions.
+
+	public class ExternalLoginViewModel
     {
         public string Name { get; set; }
 

@@ -1,16 +1,13 @@
-﻿using EventsSystem.Api.Infrastructure;
-using EventsSystem.Api.Infrastructure.Mapping;
-using EventsSystem.Common.Constants;
-using EventsSystem.Data.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-using AutoMapper;
-
-namespace EventsSystem.Api.Models
+﻿namespace EventsSystem.Api.Models.Categories
 {
+	using System.ComponentModel.DataAnnotations;
+
+	using AutoMapper;
+
+	using EventsSystem.Api.Infrastructure.Mapping;
+	using EventsSystem.Common.Constants;
+	using EventsSystem.Data.Models;
+
 	public class CategoryModel : IMapFrom<Category>, IHaveCustomMappings
 	{
 		private object e;

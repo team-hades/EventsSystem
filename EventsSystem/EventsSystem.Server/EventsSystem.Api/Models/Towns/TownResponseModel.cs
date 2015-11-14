@@ -1,13 +1,14 @@
-﻿namespace EventsSystem.Api.Models
+﻿namespace EventsSystem.Api.Models.Towns
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using AutoMapper;
+	using System.Collections.Generic;
+	using System.Linq;
+	using AutoMapper;
 
-    using Data.Models;
-    using Infrastructure.Mapping;
+	using EventsSystem.Api.Infrastructure.Mapping;
+	using EventsSystem.Api.Models.Events;
+	using EventsSystem.Data.Models;
 
-    public class TownResponseModel : IMapFrom<Town>, IHaveCustomMappings
+	public class TownResponseModel : IMapFrom<Town>, IHaveCustomMappings
     {
         public int Id { get; set; }
 

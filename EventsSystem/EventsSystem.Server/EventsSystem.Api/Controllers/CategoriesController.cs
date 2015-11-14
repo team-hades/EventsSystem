@@ -1,12 +1,14 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-	using System.Web.Http;
-	using EventsSystem.Data.Data.Repositories;
 	using System.Linq;
-	using Models;
-	using Data.Models;
+	using System.Web.Http;
+
 	using AutoMapper.QueryableExtensions;
-	using System.Net.Http;
+
+	using EventsSystem.Data.Models;
+	using EventsSystem.Data.Data.Repositories;
+	using EventsSystem.Api.Models.Categories;
+	using EventsSystem.Api.Models.Events;
 
 	public class CategoriesController : BaseController
 	{

@@ -1,12 +1,15 @@
-﻿namespace EventsSystem.Api.Models
+﻿namespace EventsSystem.Api.Models.Tags
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using AutoMapper;
-    using EventsSystem.Api.Infrastructure.Mapping;
-    using EventsSystem.Data.Models;
+	using System.Collections.Generic;
+	using System.Linq;
 
-    public class TagResponseModel : IMapFrom<Tag>, IHaveCustomMappings
+	using AutoMapper;
+
+	using EventsSystem.Api.Infrastructure.Mapping;
+	using EventsSystem.Data.Models;
+	using EventsSystem.Api.Models.Events;
+
+	public class TagResponseModel : IMapFrom<Tag>, IHaveCustomMappings
     {
         public string Name { get; set; }
 

@@ -1,11 +1,11 @@
-﻿namespace EventsSystem.Api.Models
+﻿namespace EventsSystem.Api.Models.Events
 {
     using System;
 
 	using AutoMapper;
 
-	using Infrastructure.Mapping;
-    using Data.Models;
+	using EventsSystem.Api.Infrastructure.Mapping;
+    using EventsSystem.Data.Models;
 
     public class EventResponseModel : IMapFrom<Event>, IHaveCustomMappings
     {
