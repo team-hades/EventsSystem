@@ -1,0 +1,4 @@
+[config]
+project = EventsSystem
+[config]
+project = EventsSystem/EventsSystem.Server/EventsSystem.Api.csproj
