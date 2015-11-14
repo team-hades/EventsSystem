@@ -22,7 +22,7 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
         public UpdateEventForm()
         {
             this.InitializeComponent();
-            this.URI_PUT_EVENT = new Uri("http://localhost:58368/api/events");
+            this.URI_PUT_EVENT = new Uri("http://localhost:58368/api/events/{0}");
             this.URI_GET_CATEGORIES = new Uri("http://localhost:58368/api/categories");
             this.URI_GET_TOWNS = new Uri("http://localhost:58368/api/towns");
             this.GetTowns();
@@ -42,17 +42,19 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
                 {
                     var raw = new List<KeyValuePair<string, string>>
                     {
-                        new KeyValuePair<string, string>("id", this.numericUpDownId.Value.ToString()),
                         new KeyValuePair<string, string>("Name", this.nameTextBox.Text.ToString()),
                         new KeyValuePair<string, string>("ShortDescrtiption", this.shortDescriptionTextBox.Text.ToString()),
                         new KeyValuePair<string, string>("IsPrivate", this.isPrivateCheckBox.Checked.ToString()),
+                        new KeyValuePair<string, string>("StartDate", this.startDateTimePicker.ToString()),
+                        new KeyValuePair<string, string>("EndDate", this.endDateTimePicker.ToString()),
                         new KeyValuePair<string, string>("Town", (string)this.comboBoxCategory.SelectedItem),
-                        new KeyValuePair<string, string>("Category", (string)this.comboBoxTowns.SelectedItem)
+                        new KeyValuePair<string, string>("Category", (string)this.comboBoxTowns.SelectedItem),
+                        new KeyValuePair<string, string>("CommentsCount", this.commentsNumeric.Value.ToString())
                     };
 
                     var content = new FormUrlEncodedContent(raw);
                     //
-                    using (var response = await client.PutAsync(this.URI_PUT_EVENT, content))
+                    using (var response = await client.PutAsync(string.Format(this.URI_PUT_EVENT.ToString(), this.numericUpDownId.Value.ToString()), content))
                     {
                         if (response.IsSuccessStatusCode)
                         {
