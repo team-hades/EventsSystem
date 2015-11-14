@@ -119,6 +119,12 @@
     <Compile Include="Forms\Event\SelectedEventForm.Designer.cs">
       <DependentUpon>SelectedEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Event\SelectEventByCategoryAndTown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\SelectEventByCategoryAndTown.Designer.cs">
+      <DependentUpon>SelectEventByCategoryAndTown.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Event\SelectEventByCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\SelectedEventForm.resx">
       <DependentUpon>SelectedEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\SelectEventByCategoryAndTown.resx">
+      <DependentUpon>SelectEventByCategoryAndTown.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\SelectEventByCategoryForm.resx">
       <DependentUpon>SelectEventByCategoryForm.cs</DependentUpon>
