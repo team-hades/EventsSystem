@@ -42,11 +42,12 @@
             this.selectedEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsByPageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsByCategoryAndTownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status_strip = new System.Windows.Forms.StatusStrip();
             this.status_strip_label = new System.Windows.Forms.ToolStripStatusLabel();
-            this.eventsByCategoryAndTownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_menu_strip.SuspendLayout();
             this.status_strip.SuspendLayout();
             this.SuspendLayout();
@@ -92,28 +93,28 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // userInfoToolStripMenuItem
             // 
             this.userInfoToolStripMenuItem.Name = "userInfoToolStripMenuItem";
-            this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.userInfoToolStripMenuItem.Text = "User Info";
             this.userInfoToolStripMenuItem.Click += new System.EventHandler(this.userInfoToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -124,7 +125,8 @@
             this.selectedEventToolStripMenuItem,
             this.eventsByPageToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.eventsByCategoryAndTownToolStripMenuItem});
+            this.eventsByCategoryAndTownToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
             this.eventsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.eventsToolStripMenuItem.Text = "Events";
@@ -157,6 +159,20 @@
             this.toolStripMenuItem1.Text = "Events: by category";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
+            // eventsByCategoryAndTownToolStripMenuItem
+            // 
+            this.eventsByCategoryAndTownToolStripMenuItem.Name = "eventsByCategoryAndTownToolStripMenuItem";
+            this.eventsByCategoryAndTownToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsByCategoryAndTownToolStripMenuItem.Text = "Events: by category and town";
+            this.eventsByCategoryAndTownToolStripMenuItem.Click += new System.EventHandler(this.eventsByCategoryAndTownToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(220, 22);
+            this.toolStripMenuItem2.Text = "Events: Update an event";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -186,13 +202,6 @@
             this.status_strip_label.Name = "status_strip_label";
             this.status_strip_label.Size = new System.Drawing.Size(66, 17);
             this.status_strip_label.Text = "Initializing...";
-            // 
-            // eventsByCategoryAndTownToolStripMenuItem
-            // 
-            this.eventsByCategoryAndTownToolStripMenuItem.Name = "eventsByCategoryAndTownToolStripMenuItem";
-            this.eventsByCategoryAndTownToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.eventsByCategoryAndTownToolStripMenuItem.Text = "Events: by category and town";
-            this.eventsByCategoryAndTownToolStripMenuItem.Click += new System.EventHandler(this.eventsByCategoryAndTownToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -238,6 +247,7 @@
         private System.Windows.Forms.ToolStripMenuItem eventsByPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem eventsByCategoryAndTownToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     }
 }
 

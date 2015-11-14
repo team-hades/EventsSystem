@@ -1,16 +1,15 @@
 ﻿namespace EventsSystem.WindowsFormsClient.Forms.Accounts
 {
-	using Data.Models;
-	using Api.Models;
-	using Newtonsoft.Json;
-	using System;
-	using System.Drawing;
-	using System.Net.Http;
-	using System.Text;
-	using System.Windows.Forms;
-	using Api.Models.Accounts;
+    using Data.Models;
+    using Api.Models;
+    using Newtonsoft.Json;
+    using System;
+    using System.Drawing;
+    using System.Net.Http;
+    using System.Text;
+    using System.Windows.Forms;
 
-	public partial class CreateForm : Form
+    public partial class CreateForm : Form
     {
         private readonly Uri URI_CREATE_ACCOUNT;
 

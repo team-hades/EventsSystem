@@ -22,6 +22,7 @@
         private EventsByPageForm eventbyPageForm = null;
         private SelectEventByCategoryForm selectEventsByCategory = null;
         private SelectEventByCategoryAndTown selectEventsByCategoryAndTown = null;
+        private UpdateEventForm updateEvent = null;
 
         private string bearer = null;
 
@@ -258,6 +259,26 @@
         private void selectEventsByCategoryAndTown_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.selectEventsByCategoryAndTown = null;
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            if (this.selectEventsByCategoryAndTown == null)
+            {
+                this.updateEvent = new UpdateEventForm();
+                this.updateEvent.MdiParent = this;
+                this.updateEvent.FormClosed += new FormClosedEventHandler(this.updateEvent_FormClosed);
+                this.updateEvent.Show();
+            }
+            else
+            {
+                this.updateEvent.Activate();
+            }
+        }
+
+        private void updateEvent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.updateEvent = null;
         }
     }
 }
