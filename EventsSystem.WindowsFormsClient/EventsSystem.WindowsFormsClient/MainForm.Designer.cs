@@ -46,6 +46,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status_strip = new System.Windows.Forms.StatusStrip();
             this.status_strip_label = new System.Windows.Forms.ToolStripStatusLabel();
+            this.eventsByCategoryAndTownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_menu_strip.SuspendLayout();
             this.status_strip.SuspendLayout();
             this.SuspendLayout();
@@ -91,28 +92,28 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // userInfoToolStripMenuItem
             // 
             this.userInfoToolStripMenuItem.Name = "userInfoToolStripMenuItem";
-            this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.userInfoToolStripMenuItem.Text = "User Info";
             this.userInfoToolStripMenuItem.Click += new System.EventHandler(this.userInfoToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -122,7 +123,8 @@
             this.viewToolStripMenuItem,
             this.selectedEventToolStripMenuItem,
             this.eventsByPageToolStripMenuItem,
-            this.toolStripMenuItem1});
+            this.toolStripMenuItem1,
+            this.eventsByCategoryAndTownToolStripMenuItem});
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
             this.eventsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.eventsToolStripMenuItem.Text = "Events";
@@ -130,28 +132,28 @@
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.viewToolStripMenuItem.Text = "Events: All";
             this.viewToolStripMenuItem.Click += new System.EventHandler(this.eventsToolStripMenuItem_Click);
             // 
             // selectedEventToolStripMenuItem
             // 
             this.selectedEventToolStripMenuItem.Name = "selectedEventToolStripMenuItem";
-            this.selectedEventToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.selectedEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.selectedEventToolStripMenuItem.Text = "Events: by id";
             this.selectedEventToolStripMenuItem.Click += new System.EventHandler(this.selectedEventToolStripMenuItem_Click);
             // 
             // eventsByPageToolStripMenuItem
             // 
             this.eventsByPageToolStripMenuItem.Name = "eventsByPageToolStripMenuItem";
-            this.eventsByPageToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.eventsByPageToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.eventsByPageToolStripMenuItem.Text = "Events: by page";
             this.eventsByPageToolStripMenuItem.Click += new System.EventHandler(this.eventsByPageToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(220, 22);
             this.toolStripMenuItem1.Text = "Events: by category";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
@@ -184,6 +186,13 @@
             this.status_strip_label.Name = "status_strip_label";
             this.status_strip_label.Size = new System.Drawing.Size(66, 17);
             this.status_strip_label.Text = "Initializing...";
+            // 
+            // eventsByCategoryAndTownToolStripMenuItem
+            // 
+            this.eventsByCategoryAndTownToolStripMenuItem.Name = "eventsByCategoryAndTownToolStripMenuItem";
+            this.eventsByCategoryAndTownToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsByCategoryAndTownToolStripMenuItem.Text = "Events: by category and town";
+            this.eventsByCategoryAndTownToolStripMenuItem.Click += new System.EventHandler(this.eventsByCategoryAndTownToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -228,6 +237,7 @@
         private System.Windows.Forms.ToolStripMenuItem selectedEventToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventsByPageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem eventsByCategoryAndTownToolStripMenuItem;
     }
 }
 
