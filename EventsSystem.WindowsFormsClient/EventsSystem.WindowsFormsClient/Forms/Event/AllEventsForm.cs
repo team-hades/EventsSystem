@@ -8,13 +8,13 @@
     using Newtonsoft.Json;
     using System.Data;
 
-    public partial class eventForm : Form
+    public partial class AllEventsForm : Form
     {
         private readonly Uri URI_EVENTS;
         private readonly string LABEL = "in Events";
         private MainForm parent;
 
-        public eventForm()
+        public AllEventsForm()
         {
             this.InitializeComponent();
             this.URI_EVENTS = new Uri("http://localhost:58368/api/Events");

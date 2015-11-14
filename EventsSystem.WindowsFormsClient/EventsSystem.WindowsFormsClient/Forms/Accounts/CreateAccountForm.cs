@@ -10,11 +10,11 @@
     using System.Windows.Forms;
     using Api.Models.Accounts;
 
-    public partial class CreateForm : Form
+    public partial class CreateAccountForm : Form
     {
         private readonly Uri URI_CREATE_ACCOUNT;
 
-        public CreateForm()
+        public CreateAccountForm()
         {
             this.InitializeComponent();
             this.URI_CREATE_ACCOUNT = new Uri("http://localhost:58368/api/Account/Register");

@@ -1,6 +1,6 @@
 ﻿namespace EventsSystem.WindowsFormsClient.Forms.Accounts
 {
-    partial class AccountInfo
+    partial class AccountInfoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountInfo));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AccountInfoForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.getUserInfoButton = new System.Windows.Forms.Button();
             this.listBox = new System.Windows.Forms.ListBox();

@@ -76,17 +76,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Accounts\AccountInfo.cs">
+    <Compile Include="Forms\Accounts\AccountInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Accounts\AccountInfo.Designer.cs">
-      <DependentUpon>AccountInfo.cs</DependentUpon>
+    <Compile Include="Forms\Accounts\AccountInfoForm.Designer.cs">
+      <DependentUpon>AccountInfoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Accounts\CreateForm.cs">
+    <Compile Include="Forms\Accounts\CreateAccountForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Accounts\CreateForm.Designer.cs">
-      <DependentUpon>CreateForm.cs</DependentUpon>
+    <Compile Include="Forms\Accounts\CreateAccountForm.Designer.cs">
+      <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Accounts\TokenResponseModel.cs" />
     <Compile Include="Forms\Event\AllEventsForm.cs">
@@ -101,12 +101,6 @@
     <Compile Include="Forms\Event\EventsByPageForm.Designer.cs">
       <DependentUpon>EventsByPageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Event\InsertEventForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Event\InsertEventForm.Designer.cs">
-      <DependentUpon>InsertEventForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Accounts\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,17 +113,23 @@
     <Compile Include="Forms\Event\SelectedEventForm.Designer.cs">
       <DependentUpon>SelectedEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Event\SelectEventByCategoryAndTown.cs">
+    <Compile Include="Forms\Event\SelectEventByCategoryAndTownForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Event\SelectEventByCategoryAndTown.Designer.cs">
-      <DependentUpon>SelectEventByCategoryAndTown.cs</DependentUpon>
+    <Compile Include="Forms\Event\SelectEventByCategoryAndTownForm.Designer.cs">
+      <DependentUpon>SelectEventByCategoryAndTownForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Event\SelectEventByCategoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Event\SelectEventByCategoryForm.Designer.cs">
       <DependentUpon>SelectEventByCategoryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Event\CreateEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\CreateEventForm.Designer.cs">
+      <DependentUpon>CreateEventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Event\UpdateEventForm.cs">
       <SubType>Form</SubType>
@@ -145,11 +145,11 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Accounts\AccountInfo.resx">
-      <DependentUpon>AccountInfo.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Accounts\AccountInfoForm.resx">
+      <DependentUpon>AccountInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Accounts\CreateForm.resx">
-      <DependentUpon>CreateForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Accounts\CreateAccountForm.resx">
+      <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\AllEventsForm.resx">
       <DependentUpon>AllEventsForm.cs</DependentUpon>
@@ -157,20 +157,20 @@
     <EmbeddedResource Include="Forms\Event\EventsByPageForm.resx">
       <DependentUpon>EventsByPageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Event\InsertEventForm.resx">
-      <DependentUpon>InsertEventForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Accounts\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\SelectedEventForm.resx">
       <DependentUpon>SelectedEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Event\SelectEventByCategoryAndTown.resx">
-      <DependentUpon>SelectEventByCategoryAndTown.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Event\SelectEventByCategoryAndTownForm.resx">
+      <DependentUpon>SelectEventByCategoryAndTownForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\SelectEventByCategoryForm.resx">
       <DependentUpon>SelectEventByCategoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\CreateEventForm.resx">
+      <DependentUpon>CreateEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\UpdateEventForm.resx">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>

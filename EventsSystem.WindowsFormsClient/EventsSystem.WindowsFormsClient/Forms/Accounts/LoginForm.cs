@@ -9,14 +9,14 @@
     using System.Text;
     using System.Windows.Forms;
 
-    public partial class loginForm : Form
+    public partial class LoginForm : Form
     {
         private readonly Uri URI_TOKEN;
 
         private readonly string LABEL = "in Login";
         private MainForm parent;
 
-        public loginForm()
+        public LoginForm()
         {
             this.InitializeComponent();
             this.URI_TOKEN = new Uri("http://localhost:58368/Token");

@@ -1,6 +1,6 @@
 ﻿namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
-    partial class eventForm
+    partial class AllEventsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(eventForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllEventsForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.getAllEvents = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();

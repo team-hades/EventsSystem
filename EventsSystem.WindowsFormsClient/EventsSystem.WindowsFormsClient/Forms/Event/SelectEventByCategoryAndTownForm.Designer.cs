@@ -1,6 +1,6 @@
 ﻿namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
-    partial class SelectEventByCategoryAndTown
+    partial class SelectEventByCategoryAndTownForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectEventByCategoryAndTown));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectEventByCategoryAndTownForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();

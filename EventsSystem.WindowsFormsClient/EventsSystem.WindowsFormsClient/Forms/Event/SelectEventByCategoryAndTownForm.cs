@@ -12,14 +12,14 @@ using System.Windows.Forms;
 
 namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
-    public partial class SelectEventByCategoryAndTown : Form
+    public partial class SelectEventByCategoryAndTownForm : Form
     {
         private Uri URI_GET_EVENT_BY_CATEGORY;
         private Uri URI_GET_CATEGORIES;
         private Uri URI_GET_TOWNS;
         private MainForm parent;
 
-        public SelectEventByCategoryAndTown()
+        public SelectEventByCategoryAndTownForm()
         {
             this.InitializeComponent();
             this.URI_GET_EVENT_BY_CATEGORY = new Uri("http://localhost:58368/api/events");

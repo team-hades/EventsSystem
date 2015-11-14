@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace EventsSystem.WindowsFormsClient.Forms.Accounts
 {
-    public partial class AccountInfo : Form
+    public partial class AccountInfoForm : Form
     {
         private readonly Uri USER_INFO;
         private readonly string LABEL = "in user info";
         private MainForm parent;
 
-        public AccountInfo()
+        public AccountInfoForm()
         {
             InitializeComponent();
             USER_INFO = new Uri("http://localhost:58368/api/Account/UserInfo");
