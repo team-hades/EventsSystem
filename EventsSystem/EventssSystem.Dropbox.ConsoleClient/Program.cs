@@ -60,14 +60,17 @@
             {
                 await GetCurrentAccount();
 
-                var path = "/profiles";
-                var list = await ListFolder(path);
+                var folder = "/profiles";
+                var list = await ListFolder(folder);
 
                 var firstFile = list.Entries.FirstOrDefault(i => i.IsFile);
                 if (firstFile != null)
                 {
-                    await Download(path, firstFile.AsFile);
+                    await Download(folder, firstFile.AsFile);
                 }
+
+                await Upload(folder, "upload.bmp");
+
             }
             catch (HttpException e)
             {
@@ -164,7 +167,7 @@
             }
             return list;
         }
-     
+
         /// <summary>
         /// Downloads a file.
         /// </summary>
@@ -195,6 +198,30 @@
                 Console.WriteLine("------------------------------");
             }
         }
+
+        private async Task Upload(string folder, string fileName)
+        {
+            Console.WriteLine("Uploading file...");
+            Console.WriteLine("------------------------------");
+
+            try
+            {
+                CommitInfo commmitInfo = new CommitInfo(folder + "/" + fileName, null, true);
+
+                var fileStream = new FileStream(fileName, FileMode.Open);
+
+                await this.client.Files.UploadAsync(commmitInfo, fileStream);
+
+                Console.WriteLine("File {0} uploaded", fileName);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("File {0} not uploaded", fileName);
+                Console.WriteLine(ex.Message);
+            }
+            Console.WriteLine("------------------------------");
+        }
+
 
         private byte[] imageToByteArray(Bitmap imageIn)
         {
