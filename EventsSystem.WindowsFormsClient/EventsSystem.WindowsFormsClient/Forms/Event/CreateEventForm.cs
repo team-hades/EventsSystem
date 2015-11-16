@@ -1,20 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EventsSystem.WindowsFormsClient.Forms.Event
+﻿namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Windows.Forms;
+
     public partial class CreateEventForm : Form
     {
-        private Uri URI_PUT_EVENT;
+        private Uri POST_EVENT;
         private Uri URI_GET_CATEGORIES;
         private Uri URI_GET_TOWNS;
         private MainForm parent;
@@ -22,7 +16,7 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
         public CreateEventForm()
         {
             this.InitializeComponent();
-            this.URI_PUT_EVENT = new Uri("http://localhost:58368/api/events");
+            this.POST_EVENT = new Uri("http://localhost:58368/api/events");
             this.URI_GET_CATEGORIES = new Uri("http://localhost:58368/api/categories");
             this.URI_GET_TOWNS = new Uri("http://localhost:58368/api/towns");
             this.GetTowns();
@@ -47,16 +41,16 @@ namespace EventsSystem.WindowsFormsClient.Forms.Event
                         new KeyValuePair<string, string>("Name", this.nameTextBox.Text.ToString()),
                         new KeyValuePair<string, string>("ShortDescrtiption", this.shortDescriptionTextBox.Text.ToString()),
                         new KeyValuePair<string, string>("IsPrivate", this.isPrivateCheckBox.Checked.ToString()),
-                        new KeyValuePair<string, string>("StartDate", this.startDateTimePicker.ToString()),
-                        new KeyValuePair<string, string>("EndDate", this.endDateTimePicker.ToString()),
-                        new KeyValuePair<string, string>("Town", (string)this.comboBoxCategory.SelectedItem),
-                        new KeyValuePair<string, string>("Category", (string)this.comboBoxTowns.SelectedItem),
+                        new KeyValuePair<string, string>("StartDate", this.startDateTimePicker.Value.ToString()),
+                        new KeyValuePair<string, string>("EndDate", this.endDateTimePicker.Value.ToString()),
+                        new KeyValuePair<string, string>("Town", (string)this.comboBoxTowns.SelectedItem),
+                        new KeyValuePair<string, string>("Category", (string)this.comboBoxCategory.SelectedItem),
                         new KeyValuePair<string, string>("CommentsCount", this.commentsNumeric.Value.ToString())
                     };
 
                     var content = new FormUrlEncodedContent(raw);
                     //
-                    using (var response = await client.PostAsync(this.URI_PUT_EVENT.ToString(), content))
+                    using (var response = await client.PostAsync(this.POST_EVENT.ToString(), content))
                     {
                         if (response.IsSuccessStatusCode)
                         {

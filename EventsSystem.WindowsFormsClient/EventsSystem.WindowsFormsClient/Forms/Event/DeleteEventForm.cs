@@ -2,21 +2,20 @@
 {
     using Newtonsoft.Json;
     using System;
-    using System.Collections.Generic;
     using System.Net.Http;
     using System.Windows.Forms;
 
-    public partial class UpdateEventForm : Form
+    public partial class DeleteEventForm : Form
     {
-        private Uri URI_PUT_EVENT;
+        private Uri DELETE_EVENT;
         private Uri URI_GET_CATEGORIES;
         private Uri URI_GET_TOWNS;
         private MainForm parent;
 
-        public UpdateEventForm()
+        public DeleteEventForm()
         {
             this.InitializeComponent();
-            this.URI_PUT_EVENT = new Uri("http://localhost:58368/api/events/{0}");
+            this.DELETE_EVENT = new Uri("http://localhost:58368/api/events");
             this.URI_GET_CATEGORIES = new Uri("http://localhost:58368/api/categories");
             this.URI_GET_TOWNS = new Uri("http://localhost:58368/api/towns");
             this.GetTowns();
@@ -25,34 +24,22 @@
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.UpdateAnEvent();
+            this.DeleteAnEvent();
         }
 
-        private async void UpdateAnEvent()
+        private async void DeleteAnEvent()
         {
             try
             {
                 using (var client = new HttpClient())
                 {
-                    var raw = new List<KeyValuePair<string, string>>
-                    {
-                        new KeyValuePair<string, string>("Name", this.nameTextBox.Text.ToString()),
-                        new KeyValuePair<string, string>("ShortDescrtiption", this.shortDescriptionTextBox.Text.ToString()),
-                        new KeyValuePair<string, string>("IsPrivate", this.isPrivateCheckBox.Checked.ToString()),
-                        new KeyValuePair<string, string>("StartDate", this.startDateTimePicker.ToString()),
-                        new KeyValuePair<string, string>("EndDate", this.endDateTimePicker.ToString()),
-                        new KeyValuePair<string, string>("Town", (string)this.comboBoxCategory.SelectedItem),
-                        new KeyValuePair<string, string>("Category", (string)this.comboBoxTowns.SelectedItem),
-                        new KeyValuePair<string, string>("CommentsCount", this.commentsNumeric.Value.ToString())
-                    };
+                    client.DefaultRequestHeaders.Add("Authorization", String.Format("Bearer {0}", this.parent.Bearer));
 
-                    var content = new FormUrlEncodedContent(raw);
-                    //
-                    using (var response = await client.PutAsync(string.Format(this.URI_PUT_EVENT.ToString(), this.numericUpDownId.Value.ToString()), content))
+                    using (var response = await client.DeleteAsync(this.DELETE_EVENT.ToString() + "/" + this.numericId.Value))
                     {
                         if (response.IsSuccessStatusCode)
                         {
-                            MessageBox.Show("The event was updated.");
+                            MessageBox.Show("The event was deleted.");
                         }
                         else
                         {
@@ -120,6 +107,11 @@
             {
                 MessageBox.Show("Could\'t pull and populate data!", "Error");
             }
+        }
+
+        private void CreateEventForm_Load(object sender, EventArgs e)
+        {
+            this.parent = (MainForm)this.MdiParent;
         }
     }
 }

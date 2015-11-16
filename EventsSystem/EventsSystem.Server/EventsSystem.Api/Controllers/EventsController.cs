@@ -202,14 +202,15 @@
 			return this.Ok("Some deleted event");
 		}
 
+        [Authorize]
 		[HttpPost]
 		[Route("join/{eventId}")]
 		public IHttpActionResult Join(int eventId)
 		{
-			if (!this.User.Identity.IsAuthenticated)
-			{
-				return this.BadRequest("You have to be logged in to do this operation");
-			}
+			//if (!this.User.Identity.IsAuthenticated)
+			//{
+			//	return this.BadRequest("You have to be logged in to do this operation");
+			//}
 
 			var eventToJoin = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();
 
@@ -228,14 +229,15 @@
 			return this.Ok("Join");
 		}
 
+        [Authorize]
 		[HttpPut]
 		[Route("leave/{eventId}")]
 		public IHttpActionResult Leave(int eventId)
 		{
-			if (!this.User.Identity.IsAuthenticated)
-			{
-				return this.BadRequest("You have to be logged in to do this operation");
-			}
+			//if (!this.User.Identity.IsAuthenticated)
+			//{
+			//	return this.BadRequest("You have to be logged in to do this operation");
+			//}
 
 			var eventToLeave = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();
 
@@ -254,14 +256,15 @@
 			return this.Ok("Leave");
 		}
 
+        [Authorize]
 		[HttpPost]
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult Rate(int eventId, int rating)
 		{
-			if (!this.User.Identity.IsAuthenticated)
-			{
-				return this.BadRequest("You have to be logged in to do this operation");
-			}
+			//if (!this.User.Identity.IsAuthenticated)
+			//{
+			//	return this.BadRequest("You have to be logged in to do this operation");
+			//}
 
 			if (rating < 0 || rating > 5)
 			{
@@ -291,14 +294,15 @@
 			return this.Ok("Rate: " + rating);
 		}
 
+        [Authorize]
 		[HttpPut]
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult UpdateRate(int eventId, int rating)
 		{
-			if (!this.User.Identity.IsAuthenticated)
-			{
-				return this.BadRequest("You have to be logged in to do this operation");
-			}
+			//if (!this.User.Identity.IsAuthenticated)
+			//{
+			//	return this.BadRequest("You have to be logged in to do this operation");
+			//}
 
 			if (rating < 0 || rating > 5)
 			{

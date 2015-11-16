@@ -1,17 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EventsSystem.WindowsFormsClient.Forms.Event
+﻿namespace EventsSystem.WindowsFormsClient.Forms.Event
 {
+    using Newtonsoft.Json;
+    using System;
+    using System.Net.Http;
+    using System.Windows.Forms;
+
     public partial class SelectEventByCategoryAndTownForm : Form
     {
         private Uri URI_GET_EVENT_BY_CATEGORY;

@@ -95,6 +95,12 @@
     <Compile Include="Forms\Event\AllEventsForm.Designer.cs">
       <DependentUpon>AllEventsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Event\DeleteEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\DeleteEventForm.Designer.cs">
+      <DependentUpon>DeleteEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Event\EventsByPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,18 @@
     </Compile>
     <Compile Include="Forms\Accounts\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Event\JoinLeaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\JoinLeaveForm.Designer.cs">
+      <DependentUpon>JoinLeaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Event\RateEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Event\RateEventForm.Designer.cs">
+      <DependentUpon>RateEventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Event\SelectedEventForm.cs">
       <SubType>Form</SubType>
@@ -154,11 +172,20 @@
     <EmbeddedResource Include="Forms\Event\AllEventsForm.resx">
       <DependentUpon>AllEventsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\DeleteEventForm.resx">
+      <DependentUpon>DeleteEventForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\EventsByPageForm.resx">
       <DependentUpon>EventsByPageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Accounts\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\JoinLeaveForm.resx">
+      <DependentUpon>JoinLeaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Event\RateEventForm.resx">
+      <DependentUpon>RateEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Event\SelectedEventForm.resx">
       <DependentUpon>SelectedEventForm.cs</DependentUpon>

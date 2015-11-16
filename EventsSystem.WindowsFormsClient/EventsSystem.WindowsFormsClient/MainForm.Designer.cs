@@ -44,11 +44,14 @@
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsByCategoryAndTownToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsCreateAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsDeleteAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsJoinLeaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status_strip = new System.Windows.Forms.StatusStrip();
             this.status_strip_label = new System.Windows.Forms.ToolStripStatusLabel();
-            this.eventsCreateAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsRateAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_menu_strip.SuspendLayout();
             this.status_strip.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +131,10 @@
             this.toolStripMenuItem1,
             this.eventsByCategoryAndTownToolStripMenuItem,
             this.toolStripMenuItem2,
-            this.eventsCreateAnEventToolStripMenuItem});
+            this.eventsCreateAnEventToolStripMenuItem,
+            this.eventsDeleteAnEventToolStripMenuItem,
+            this.eventsJoinLeaveToolStripMenuItem,
+            this.eventsRateAnEventToolStripMenuItem});
             this.eventsToolStripMenuItem.Name = "eventsToolStripMenuItem";
             this.eventsToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.eventsToolStripMenuItem.Text = "Events";
@@ -175,6 +181,27 @@
             this.toolStripMenuItem2.Text = "Events: Update an event";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
+            // eventsCreateAnEventToolStripMenuItem
+            // 
+            this.eventsCreateAnEventToolStripMenuItem.Name = "eventsCreateAnEventToolStripMenuItem";
+            this.eventsCreateAnEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsCreateAnEventToolStripMenuItem.Text = "Events: Create an event";
+            this.eventsCreateAnEventToolStripMenuItem.Click += new System.EventHandler(this.eventsCreateAnEventToolStripMenuItem_Click);
+            // 
+            // eventsDeleteAnEventToolStripMenuItem
+            // 
+            this.eventsDeleteAnEventToolStripMenuItem.Name = "eventsDeleteAnEventToolStripMenuItem";
+            this.eventsDeleteAnEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsDeleteAnEventToolStripMenuItem.Text = "Events: Delete an event";
+            this.eventsDeleteAnEventToolStripMenuItem.Click += new System.EventHandler(this.eventsDeleteAnEventToolStripMenuItem_Click);
+            // 
+            // eventsJoinLeaveToolStripMenuItem
+            // 
+            this.eventsJoinLeaveToolStripMenuItem.Name = "eventsJoinLeaveToolStripMenuItem";
+            this.eventsJoinLeaveToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsJoinLeaveToolStripMenuItem.Text = "Events: Join/Leave";
+            this.eventsJoinLeaveToolStripMenuItem.Click += new System.EventHandler(this.eventsJoinLeaveToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -205,12 +232,12 @@
             this.status_strip_label.Size = new System.Drawing.Size(66, 17);
             this.status_strip_label.Text = "Initializing...";
             // 
-            // eventsCreateAnEventToolStripMenuItem
+            // eventsRateAnEventToolStripMenuItem
             // 
-            this.eventsCreateAnEventToolStripMenuItem.Name = "eventsCreateAnEventToolStripMenuItem";
-            this.eventsCreateAnEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.eventsCreateAnEventToolStripMenuItem.Text = "Events: Create an event";
-            this.eventsCreateAnEventToolStripMenuItem.Click += new System.EventHandler(this.eventsCreateAnEventToolStripMenuItem_Click);
+            this.eventsRateAnEventToolStripMenuItem.Name = "eventsRateAnEventToolStripMenuItem";
+            this.eventsRateAnEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsRateAnEventToolStripMenuItem.Text = "Events: Rate an event";
+            this.eventsRateAnEventToolStripMenuItem.Click += new System.EventHandler(this.eventsRateAnEventToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -258,6 +285,9 @@
         private System.Windows.Forms.ToolStripMenuItem eventsByCategoryAndTownToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem eventsCreateAnEventToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventsDeleteAnEventToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventsJoinLeaveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eventsRateAnEventToolStripMenuItem;
     }
 }
 

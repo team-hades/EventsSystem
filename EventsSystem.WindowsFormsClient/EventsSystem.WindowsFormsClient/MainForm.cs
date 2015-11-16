@@ -22,7 +22,10 @@
         private SelectEventByCategoryForm selectEventByCategoryForm = null;
         private SelectEventByCategoryAndTownForm selectEventsByCategoryAndTownForm = null;
         private UpdateEventForm updateEventForm = null;
-        public CreateEventForm createEventForm = null;
+        private CreateEventForm createEventForm = null;
+        private DeleteEventForm deleteEventForm = null;
+        private JoinLeaveForm joinLeaveForm = null;
+        private RateEventForm rateAnEvent = null;
 
         private string bearer = null;
 
@@ -243,7 +246,7 @@
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if (this.selectEventsByCategoryAndTownForm == null)
+            if (this.updateEventForm == null)
             {
                 this.updateEventForm = new UpdateEventForm();
                 this.updateEventForm.MdiParent = this;
@@ -263,7 +266,7 @@
 
         private void eventsCreateAnEventToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.selectEventsByCategoryAndTownForm == null)
+            if (this.createEventForm == null)
             {
                 this.createEventForm = new CreateEventForm();
                 this.createEventForm.MdiParent = this;
@@ -279,6 +282,66 @@
         private void createEventForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.createEventForm = null;
+        }
+
+        private void eventsDeleteAnEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.deleteEventForm == null)
+            {
+                this.deleteEventForm = new DeleteEventForm();
+                this.deleteEventForm.MdiParent = this;
+                this.deleteEventForm.FormClosed += new FormClosedEventHandler(this.deleteEventForm_FormClosed);
+                this.deleteEventForm.Show();
+            }
+            else
+            {
+                this.deleteEventForm.Activate();
+            }
+        }
+
+        private void deleteEventForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.deleteEventForm = null;
+        }
+
+        private void eventsJoinLeaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.joinLeaveForm == null)
+            {
+                this.joinLeaveForm = new JoinLeaveForm();
+                this.joinLeaveForm.MdiParent = this;
+                this.joinLeaveForm.FormClosed += new FormClosedEventHandler(this.joinLeaveForm_FormClosed);
+                this.joinLeaveForm.Show();
+            }
+            else
+            {
+                this.joinLeaveForm.Activate();
+            }
+        }
+
+        private void joinLeaveForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.joinLeaveForm = null;
+        }
+
+        private void eventsRateAnEventToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.rateAnEvent == null)
+            {
+                this.rateAnEvent = new RateEventForm();
+                this.rateAnEvent.MdiParent = this;
+                this.rateAnEvent.FormClosed += new FormClosedEventHandler(this.rateAnEvent_FormClosed);
+                this.rateAnEvent.Show();
+            }
+            else
+            {
+                this.rateAnEvent.Activate();
+            }
+        }
+
+        private void rateAnEvent_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.rateAnEvent = null;
         }
     }
 }
