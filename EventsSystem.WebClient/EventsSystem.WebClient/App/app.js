@@ -10,7 +10,11 @@
     //    $('#requests').text('INITIAL  Content');
     //});
 
+    this.get('#/menu', menuController.load);
+
     this.get('#/categories', categoriesController.all);
+
+
 });
 
 app.run('#/');

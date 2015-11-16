@@ -2,7 +2,7 @@
 
     function all() {
         $.get('Views/categoriesRequestView.html', function (data) {
-            $('#requests').html(data);
+            $('#callout').html(data);
         });
     }
 

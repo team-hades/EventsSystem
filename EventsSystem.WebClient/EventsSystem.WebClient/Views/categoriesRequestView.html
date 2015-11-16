@@ -1,12 +1,11 @@
-﻿<div class="col-md-12 panel-body">
+﻿<div class="col-md-12 panel-body" id="callout">
     <a id="btn-get" class="btn btn-info col-md-12">SEE all categories!</a>
 </div>
-
 <script>
     $('#btn-get').click(function () {
         jsonRequester.get('http://localhost:58368/api/categories')
         .then(function (resp) {
-            $('#result').text(JSON.stringify(resp));
+            $('#callout').text(JSON.stringify(resp));
         });
     });
 </script>

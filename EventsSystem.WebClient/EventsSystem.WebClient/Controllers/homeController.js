@@ -2,7 +2,7 @@
 
     function load() {
         $.get('Views/homeRequestView.html', function (data) {
-            $('#requests').html(data);
+            $('#top').html(data);
         });
     }
 
