@@ -11,14 +11,16 @@
 		private ICollection<Picture> pictures;
 		private ICollection<Comment> comments;
 		private ICollection<Tag> tags;
+        private ICollection<Rating> ratings;
 
-		public Event()
+        public Event()
         {
             this.users = new HashSet<User>();
 			this.pictures = new HashSet<Picture>();
 			this.comments = new HashSet<Comment>();
 			this.tags = new HashSet<Tag>();
-		}
+            this.ratings = new HashSet<Rating>();
+        }
 
 		[Key]
 		public int Id { get; set; }
@@ -75,5 +77,11 @@
 			get { return this.tags; }
 			set { this.tags = value; }
 		}
-	}
+
+        public virtual ICollection<Rating> Ratings
+        {
+            get { return this.ratings; }
+            set { this.ratings = value; }
+        }
+    }
 }

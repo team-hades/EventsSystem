@@ -14,7 +14,7 @@
 
         private PubNubNotificationProvider()
         {
-            this.pubnub = new Pubnub(publishKey, subscribekey);
+            pubnub = new Pubnub(publishKey, subscribekey);
         }
 
         public static PubNubNotificationProvider Instance

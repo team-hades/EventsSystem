@@ -299,11 +299,6 @@
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult UpdateRate(int eventId, int rating)
 		{
-			//if (!this.User.Identity.IsAuthenticated)
-			//{
-			//	return this.BadRequest("You have to be logged in to do this operation");
-			//}
-
 			if (rating < 0 || rating > 5)
 			{
 				return this.BadRequest();
@@ -316,7 +311,17 @@
 				return this.BadRequest();
 			}
 
-			return this.Ok("Update Rate: " + rating);
+            var currentUserName = this.User.Identity.Name;
+            var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
+
+            var ratingToUpdate = eventWithRating.Ratings.Where(e => e.UserId == currentUser.Id).FirstOrDefault();
+
+            ratingToUpdate.Value = rating;
+
+            this.data.Ratings.Update(ratingToUpdate);
+            this.data.Savechanges();
+
+            return this.Ok("Update Rating to: " + rating);
 		}
 	}
 }
