@@ -242,7 +242,6 @@
     <Compile Include="Models\Towns\TownResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
-    <Compile Include="Providers\INotificationProvider.cs" />
     <Compile Include="Providers\PubNubNotificationProvider.cs" />
     <Compile Include="PubnubCore\ClientNetworkStatus.cs" />
     <Compile Include="PubnubCore\LoggingMethod.cs" />

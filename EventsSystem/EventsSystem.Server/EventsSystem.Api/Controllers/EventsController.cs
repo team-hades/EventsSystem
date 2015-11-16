@@ -152,9 +152,8 @@
 
 			this.data.Events.Add(eventToAdd);
 			this.data.Savechanges();
-
-            var pubNub = PubNubNotificationProvider.Instance;
-            pubNub.Notify(eventToAdd.Name);
+            
+            PubNubNotificationProvider.Notify(eventToAdd.Name);
 
             return this.Ok();
 		}
