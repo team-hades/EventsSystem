@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.Data.Dropbox",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventssSystem.Dropbox.ConsoleClient", "EventssSystem.Dropbox.ConsoleClient\EventssSystem.Dropbox.ConsoleClient.csproj", "{B4099F1F-D220-4C05-8667-C93FB2ED0404}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventsSystem.Tests", "EventsSystem.Tests", "{F29CBCEF-7392-4D97-8A06-ADB924BBAE53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsSystem.Services.Data.Tests", "EventsSystem.Tests\EventsSystem.Services.Data.Tests\EventsSystem.Services.Data.Tests.csproj", "{3C8B851D-53B2-4F98-A04F-986F8644185E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +71,10 @@ Global
 		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B4099F1F-D220-4C05-8667-C93FB2ED0404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C8B851D-53B2-4F98-A04F-986F8644185E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C8B851D-53B2-4F98-A04F-986F8644185E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C8B851D-53B2-4F98-A04F-986F8644185E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C8B851D-53B2-4F98-A04F-986F8644185E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +85,6 @@ Global
 		{EDAB194C-E434-4AAD-931F-77C8D405378C} = {B054EFA7-6FD0-4818-A5B1-5B2A1F51CD56}
 		{221F05D5-46FA-4204-8D22-9AC06ACC320B} = {6FBAC033-912F-49A8-B169-292494F5C38B}
 		{466EEDB5-A75B-4578-8154-71F1EC4DE379} = {6FBAC033-912F-49A8-B169-292494F5C38B}
+		{3C8B851D-53B2-4F98-A04F-986F8644185E} = {F29CBCEF-7392-4D97-8A06-ADB924BBAE53}
 	EndGlobalSection
 EndGlobal
