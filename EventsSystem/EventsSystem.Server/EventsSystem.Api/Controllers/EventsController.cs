@@ -1,16 +1,17 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-	using System.Linq;
-	using System.Web.Http;
+    using System.Linq;
+    using System.Web.Http;
 
-	using AutoMapper.QueryableExtensions;
+    using AutoMapper.QueryableExtensions;
 
-	using EventsSystem.Api.Infrastructure.Mapping;
-	using EventsSystem.Api.Models.Events;
-	using EventsSystem.Data.Data.Repositories;
-	using EventsSystem.Data.Models;
+    using EventsSystem.Api.Infrastructure.Mapping;
+    using EventsSystem.Api.Models.Events;
+    using Providers;
+    using EventsSystem.Data.Data.Repositories;
+    using EventsSystem.Data.Models;
 
-	[RoutePrefix("api/events")]
+    [RoutePrefix("api/events")]
 	public class EventsController : BaseController
 	{
 		IMappingService mapservices;
@@ -152,7 +153,10 @@
 			this.data.Events.Add(eventToAdd);
 			this.data.Savechanges();
 
-			return this.Ok();
+            var pubNub = PubNubNotificationProvider.Instance;
+            pubNub.Notify(eventToAdd.Name);
+
+            return this.Ok();
 		}
 
 		[HttpPut]

@@ -4,9 +4,9 @@
 
     public class PubNubNotificationProvider : INotificationProvider
     {
-        private const string Channel = "";
-        private const string publishKey = "";
-        private const string subscribekey = "";
+        private const string Channel = "TeamHadesEventsSystem";
+        private const string publishKey = "pub-c-5bbf4fcf-dac7-4751-b2e1-6aa9c37c1a99";
+        private const string subscribekey = "sub-c-00253d8c-894b-11e5-8b47-02ee2ddab7fe";
 
         private static PubNubNotificationProvider instance;
 
