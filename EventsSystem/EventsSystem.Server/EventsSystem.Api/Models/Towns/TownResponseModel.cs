@@ -9,20 +9,18 @@
 	using EventsSystem.Data.Models;
 
 	public class TownResponseModel : IMapFrom<Town>, IHaveCustomMappings
-    {
-        public int Id { get; set; }
+	{
+		public string Name { get; set; }
 
-        public string Name { get; set; }
+		public int EventsCount { get; set; }
 
-        public List<EventResponseModel> Events
-        {
-            get; set;
+		public List<string> Events { get; set; }
+
+		public void CreateMappings(IConfiguration config)
+		{
+			config.CreateMap<Town, TownResponseModel>()
+					.ForMember(t => t.EventsCount, opts => opts.MapFrom(t => t.Events.Count))
+					.ForMember(t => t.Events, opts => opts.MapFrom(t => t.Events.OrderByDescending(x => x.StartDate).ToList().Select(e => e.Name)));
         }
-
-        public void CreateMappings(IConfiguration config)
-        {
-            config.CreateMap<Town, TownResponseModel>()
-                .ForMember(e => e.Events, opts => opts.MapFrom(c => c.Events.OrderByDescending(x => x.StartDate).ToList()));
-        }
-    }
+	}
 }
