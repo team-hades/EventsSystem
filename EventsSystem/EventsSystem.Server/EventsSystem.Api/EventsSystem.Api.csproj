@@ -243,6 +243,7 @@
     <Compile Include="Models\Events\EventTagModel.cs" />
     <Compile Include="Models\Tags\TagResponseModel.cs" />
     <Compile Include="Models\Towns\TownResponseModel.cs" />
+    <Compile Include="Models\Towns\TownSaveModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\PubNubNotificationProvider.cs" />
