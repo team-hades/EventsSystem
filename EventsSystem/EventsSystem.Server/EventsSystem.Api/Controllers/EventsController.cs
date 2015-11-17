@@ -155,7 +155,7 @@
             
             PubNubNotificationProvider.Notify(eventToAdd.Name);
 
-            return this.Ok();
+            return this.Ok(eventToAdd.Id);
 		}
 
 		[HttpPut]
@@ -186,11 +186,11 @@
 			this.data.Events.Update(eventToUpdate);
 			this.data.Savechanges();
 
-			return this.Ok("Some updated event");
+			return this.Ok(eventToUpdate.Id);
 		}
 
 		[HttpDelete]
-		public IHttpActionResult Delete(int id, EventResponseModel model)
+		public IHttpActionResult Delete(int id)
 		{
 			var eventToDelete = this.data.Events.All().Where(ev => ev.Id == id).FirstOrDefault();
 
@@ -202,7 +202,7 @@
 			this.data.Events.Delete(eventToDelete);
 			this.data.Savechanges();
 
-			return this.Ok("Some deleted event");
+			return this.Ok("Event was deleted");
 		}
 
         [Authorize]
@@ -229,7 +229,7 @@
 			this.data.Events.Update(eventToJoin);
 			this.data.Savechanges();
 
-			return this.Ok("Join");
+			return this.Ok(eventToJoin);
 		}
 
         [Authorize]
@@ -294,7 +294,7 @@
 			this.data.Ratings.Add(ratingToAdd);
 			this.data.Savechanges();
 
-			return this.Ok("Rate: " + rating);
+			return this.Ok(eventWithRating.Id);
 		}
 
         [Authorize]
@@ -324,7 +324,7 @@
             this.data.Ratings.Update(ratingToUpdate);
             this.data.Savechanges();
 
-            return this.Ok("Update Rating to: " + rating);
+            return this.Ok(ratingToUpdate.Value);
 		}
 	}
 }

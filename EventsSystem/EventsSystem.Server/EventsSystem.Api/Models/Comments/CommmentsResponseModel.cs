@@ -11,6 +11,8 @@
 
         public string UserName { get; set; }
 
+        public DateTime DateCreated { get; set; }
+
         public void CreateMappings(IConfiguration config)
         {
             config.CreateMap<Comment, CommmentsResponseModel>()
