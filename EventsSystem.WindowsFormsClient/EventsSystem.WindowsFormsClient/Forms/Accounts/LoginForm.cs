@@ -11,7 +11,7 @@
 
     public partial class LoginForm : Form
     {
-        private readonly Uri URI_TOKEN;
+        private Uri URI_TOKEN;
 
         private readonly string LABEL = "in Login";
         private MainForm parent;
@@ -19,13 +19,13 @@
         public LoginForm()
         {
             this.InitializeComponent();
-            this.URI_TOKEN = new Uri("http://localhost:58368/Token");
         }
 
         private void loginForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
             this.parent.StatusLabel = this.LABEL;
+            this.URI_TOKEN = new Uri(this.parent.BaseLink + "Token");
         }
 
         private async void loginButton_Click(object sender, EventArgs e)
@@ -57,15 +57,14 @@
                         this.parent.Bearer = tokenResponse.AccessToken;
                         this.parent.StatusLabel = String.Format("Logged user: {0}", this.textBoxUserName.Text);
                         this.parent.SetAvailability = true;
-                        MessageBox.Show(String.Format("Welcome, {0}!", this.textBoxUserName.Text));
+                        MessageBox.Show(String.Format("Welcome, {0}!", this.textBoxUserName.Text), "Login");
                     }
                 }
+                else
+                {
+                    MessageBox.Show(result.ReasonPhrase, "Error");
+                }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

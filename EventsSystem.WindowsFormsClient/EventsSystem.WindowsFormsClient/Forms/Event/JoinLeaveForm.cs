@@ -7,13 +7,12 @@
 
     public partial class JoinLeaveForm : Form
     {
-        private readonly Uri URI_JOIN_LEAVE;
+        private Uri URI_JOIN_LEAVE;
         private MainForm parent;
 
         public JoinLeaveForm()
         {
             this.InitializeComponent();
-            this.URI_JOIN_LEAVE = new Uri("http://localhost:58368/api/events/");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,14 +42,14 @@
                         }
                         else
                         {
-                            MessageBox.Show("Something happened!");
+                            MessageBox.Show(response.ReasonPhrase, "Error");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -76,20 +75,21 @@
                         }
                         else
                         {
-                            MessageBox.Show("Something happened!");
+                            MessageBox.Show(response.ReasonPhrase, "Error");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
         private void JoinLeaveForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
+            this.URI_JOIN_LEAVE = new Uri(this.parent.BaseLink + "api/events/");
         }
 
         private void button2_Click(object sender, EventArgs e)

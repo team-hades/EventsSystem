@@ -66,7 +66,7 @@
 |GET (public)|api/events|Gets top 10 public events, sorted by their date of creation|
 |POST|api/events|Creates a new event, returns the event created so it can be loaded in the UI|
 |PUT|api/events/{eventID}|Update an existing event, returns the event created so it can be loaded in the UI|
-|DELETE|api/events/{eventID}|Delete an existing event, returns WHAT?? ID? (the event created so it can be loaded in the UI)|
+|DELETE|api/events/{eventID}|Delete an existing event, returns the event created so it can be loaded in the UI|
 |GET|api/events/{eventID}|Get event with ID = eventID, with 10 comments sorted by date|
 |GET (public)|api/events?page=P|Gets the events at positions from P*10 to (P+1)*10. The events sorted by date of creation and are at most 10.|
 |GET|api/events?category=[categoryName]&town=[townName]|Gets top 10 events in category “categoryName” and town “townName”, sorted by their date of creation|

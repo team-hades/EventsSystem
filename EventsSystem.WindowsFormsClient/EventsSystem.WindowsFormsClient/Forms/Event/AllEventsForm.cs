@@ -10,20 +10,20 @@
 
     public partial class AllEventsForm : Form
     {
-        private readonly Uri URI_EVENTS;
+        private Uri URI_EVENTS;
         private readonly string LABEL = "in Events";
         private MainForm parent;
 
         public AllEventsForm()
         {
             this.InitializeComponent();
-            this.URI_EVENTS = new Uri("http://localhost:58368/api/Events");
         }
 
         private void EventForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
-            this.parent.StatusLabel = this.LABEL;
+            //this.parent.StatusLabel = this.LABEL;
+            this.URI_EVENTS = new Uri(this.parent.BaseLink + "api/Events");
         }
 
         private void getAllEvents_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
     }

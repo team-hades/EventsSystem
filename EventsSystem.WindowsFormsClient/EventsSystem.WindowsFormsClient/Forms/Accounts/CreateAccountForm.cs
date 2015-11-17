@@ -12,12 +12,12 @@
 
     public partial class CreateAccountForm : Form
     {
-        private readonly Uri URI_CREATE_ACCOUNT;
+        private Uri URI_CREATE_ACCOUNT;
+        private MainForm parent;
 
         public CreateAccountForm()
         {
             this.InitializeComponent();
-            this.URI_CREATE_ACCOUNT = new Uri("http://localhost:58368/api/Account/Register");
         }
 
         private class ComboboxItem
@@ -32,8 +32,8 @@
             }
         }
 
-        private void Initialise()
-        {
+        //private void Initialise()
+        //{
             //Array values = Enum.GetValues(typeof(UserRole));
 
             //foreach (var item in values)
@@ -43,11 +43,12 @@
             //    comboboxItem.Value = item;
             //    this.userTypeComboBox.Items.Add(comboboxItem);
             //}
-        }
+        //}
 
         private void CreateForm_Load(object sender, EventArgs e)
         {
-            this.Initialise();
+            this.parent = (MainForm)this.MdiParent;
+            this.URI_CREATE_ACCOUNT = new Uri(this.parent.BaseLink + "api/Account/Register");
         }
 
         private async void createAccount_Click(object sender, EventArgs e)
@@ -64,7 +65,7 @@
                 var result = await client.PostAsync(this.URI_CREATE_ACCOUNT, content);
                 if ((int)result.StatusCode == 200)
                 {
-                    MessageBox.Show(string.Format("{0} was created.", newUser.Email));
+                    MessageBox.Show(string.Format("{0} was created.", newUser.Email), "Registration");
                     this.textBoxEmail.Clear();
                     this.textBoxPassword.Clear();
                     this.textBoxConfirmPassword.Clear();

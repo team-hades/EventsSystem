@@ -14,9 +14,6 @@
         public SelectEventByCategoryForm()
         {
             this.InitializeComponent();
-            this.URI_GET_EVENT_BY_CATEGORY = new Uri("http://localhost:58368/api/events?category=");
-            this.URI_GET_CATEGORIES = new Uri("http://localhost:58368/api/categories");
-            this.GetCategories();
         }
 
         private async void GetCategories()
@@ -38,12 +35,16 @@
                                 this.comboBoxCategory.Items.Add(catName);
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show(response.ReasonPhrase, "Error");
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -69,13 +70,25 @@
                             var pulledEvents = await response.Content.ReadAsStringAsync();
                             dataGridView.DataSource = JsonConvert.DeserializeObject(pulledEvents); ;
                         }
+                        else
+                        {
+                            MessageBox.Show(response.ReasonPhrase, "Error");
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
+        }
+
+        private void SelectEventByCategoryForm_Load(object sender, EventArgs e)
+        {
+            this.parent = (MainForm)this.MdiParent;
+            this.URI_GET_EVENT_BY_CATEGORY = new Uri(this.parent.BaseLink + "api/events?category=");
+            this.URI_GET_CATEGORIES = new Uri(this.parent.BaseLink + "api/categories");
+            this.GetCategories();
         }
     }
 }

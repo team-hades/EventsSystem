@@ -7,13 +7,12 @@
 
     public partial class RateEventForm : Form
     {
-        private readonly Uri URI_RATE;
+        private Uri URI_RATE;
         private MainForm parent;
 
         public RateEventForm()
         {
             this.InitializeComponent();
-            this.URI_RATE = new Uri("http://localhost:58368/api/events/rate/{0}/{1}");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -44,20 +43,21 @@
                         }
                         else
                         {
-                            MessageBox.Show("Something happened!");
+                            MessageBox.Show(response.ReasonPhrase, "Error");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
         private void RateEventForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
+            this.URI_RATE = new Uri(this.parent.BaseLink + "api/events/rate/{0}/{1}");
         }
     }
 }
