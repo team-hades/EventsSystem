@@ -15,7 +15,7 @@
 
         public int EventsCount { get; set; }
 
-        public List<EventResponseModel> Events { get; set; }
+        public List<EventTagModel> Events { get; set; }
 
         public void CreateMappings(IConfiguration config)
         {

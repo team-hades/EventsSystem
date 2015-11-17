@@ -27,15 +27,18 @@
 
         public object CommentsCount { get; set; }
 
-        public IEnumerable<CommmentsResponseModel> Comments { get; set; }
+		public IEnumerable<string> Tags { get; set; }
 
-        public void CreateMappings(IConfiguration config)
+		public IEnumerable<CommmentsResponseModel> Comments { get; set; }
+
+		public void CreateMappings(IConfiguration config)
         {
-            config.CreateMap<Event, EventResponseModel>()
-                .ForMember(e => e.CommentsCount, opts => opts.MapFrom(c => c.Comments.Count))
-                .ForMember(e => e.Town, opts => opts.MapFrom(t => t.Town.Name))
-                .ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name))
-                .ForMember(e => e.Comments, opts => opts.MapFrom(t => t.Comments));
+			config.CreateMap<Event, EventResponseModel>()
+				.ForMember(e => e.CommentsCount, opts => opts.MapFrom(c => c.Comments.Count))
+				.ForMember(e => e.Town, opts => opts.MapFrom(t => t.Town.Name))
+				.ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name))
+				.ForMember(e => e.Tags, opts => opts.MapFrom(e => e.Tags.Select(t => t.Name)))
+				.ForMember(e => e.Comments, opts => opts.MapFrom(t => t.Comments));
         }
     }
 }

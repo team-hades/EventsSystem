@@ -240,6 +240,7 @@
     <Compile Include="Models\Comments\CommmentsResponseModel.cs" />
     <Compile Include="Models\Events\EventResponseModel.cs" />
     <Compile Include="Models\Events\EventSaveModel.cs" />
+    <Compile Include="Models\Events\EventTagModel.cs" />
     <Compile Include="Models\Tags\TagResponseModel.cs" />
     <Compile Include="Models\Towns\TownResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
