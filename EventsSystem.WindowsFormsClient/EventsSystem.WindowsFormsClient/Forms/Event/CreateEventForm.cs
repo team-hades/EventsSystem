@@ -49,7 +49,9 @@
                     {
                         if (response.IsSuccessStatusCode)
                         {
-                            MessageBox.Show("The event was created.");
+                            var pulledResponse = await response.Content.ReadAsStringAsync();
+                            var id = JsonConvert.DeserializeObject(pulledResponse);
+                            MessageBox.Show("The event was created. Id: " + id.ToString());
                         }
                         else
                         {

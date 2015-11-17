@@ -46,7 +46,7 @@
                         if (response.IsSuccessStatusCode)
                         {
                             var pulledEvents = await response.Content.ReadAsStringAsync();
-                            dataGridView.DataSource = JsonConvert.DeserializeObject(pulledEvents); ;
+                            dataGridView.DataSource = JsonConvert.DeserializeObject(pulledEvents);
                         }
                     }
                 }
