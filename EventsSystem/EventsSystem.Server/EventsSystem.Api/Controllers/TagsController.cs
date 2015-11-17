@@ -23,6 +23,21 @@
 			return this.Ok(tags);
 		}
 
+		// this way you can insert in this method :)
+		// http://localhost:58368/api/tags?name=red
+		[HttpGet]
+		public IHttpActionResult Get([FromUri]string name)
+		{
+			var tag = this.data.Tags.All().Where(t => t.Name == name).ProjectTo<TagResponseModel>().FirstOrDefault();
+
+			if (tag == null)
+			{
+				return this.NotFound();
+			}
+
+			return this.Ok(tag.Events);
+		}
+
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
@@ -33,27 +48,9 @@
 				return this.NotFound();
 			}
 
-            // var events = tag.Events.AsQueryable().ProjectTo<EventResponseModel>();
-			// TODO: return null or empty array if tag not found.
-
-			// //selected the rang of the every event but not use yes. this logic might be go in the mapper class blah blah blah...
-			//var events = data
-			//	.Events
-			//	.All()
-			//	.Where(e => e.Tags.Contains(tag));
-
-			//foreach (var ev in events.ToList())
-			//{
-			//	var ratings = this.data.Ratings.All().Where(r => r.Event == ev).AsQueryable();
-			//	float allGivenRating = 0.0f;
-
-			//	foreach (var rating in ratings)
-			//	{
-			//		
-			//		allGivenRating += rating.Value;
-			//	}
-			//}
 			return this.Ok(tag.Events);
 		}
+
+		
 	}
 }
