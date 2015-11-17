@@ -7,7 +7,7 @@
     using Data.Models;
     using System.Linq;
 
-    [RoutePrefix("api/events/{eventId}")]
+    [RoutePrefix("api/comments")]
     public class CommentsController : BaseController
     {
 
@@ -17,6 +17,8 @@
         }
 
         [HttpPost]
+        [Route("{eventId}")]
+        // http://localhost:58368/api/comments/35
         public IHttpActionResult PostComment(int eventId, [FromBody] CommmentsResponseModel model)
         {
             if (!this.ModelState.IsValid)
@@ -49,6 +51,8 @@
         }
 
         [HttpPut]
+        [Route("{commentId}")]
+        // http://localhost:58368/api/comments/35
         public IHttpActionResult UpdateComment(int commentId, [FromBody] CommmentsResponseModel model)
         {
             if (!this.ModelState.IsValid)
@@ -72,7 +76,9 @@
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteCommment(int eventId, int commentId)
+        [Route("{eventId}")]
+        // http://localhost:58368/api/comments/7?commentId=35
+        public IHttpActionResult DeleteCommment(int eventId, [FromUri] int commentId)
         {
             var commentToDelete = this.data.Comments.All().Where(ev => ev.Id == commentId).FirstOrDefault();
 

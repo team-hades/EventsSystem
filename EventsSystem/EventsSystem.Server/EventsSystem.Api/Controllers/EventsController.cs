@@ -155,7 +155,7 @@
             
             PubNubNotificationProvider.Notify(eventToAdd.Name);
 
-            return this.Ok();
+            return this.Ok(eventToAdd.Id);
 		}
 
 		[HttpPut]
