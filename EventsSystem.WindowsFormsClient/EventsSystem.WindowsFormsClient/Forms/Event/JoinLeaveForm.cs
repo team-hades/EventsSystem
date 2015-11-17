@@ -33,8 +33,8 @@
                     };
 
                     var content = new FormUrlEncodedContent(raw);
-
-                    using (var response = await client.PostAsync(this.URI_JOIN_LEAVE.ToString() + "/" + this.numericId.Value, content))
+                    string link = this.URI_JOIN_LEAVE.ToString() + "join/" + this.numericId.Value;
+                    using (var response = await client.PostAsync(link, content))
                     {
                         if (response.IsSuccessStatusCode)
                         {
@@ -66,8 +66,8 @@
                     };
 
                     var content = new FormUrlEncodedContent(raw);
-
-                    using (var response = await client.PutAsync(this.URI_JOIN_LEAVE.ToString() + "/" + this.numericId.Value, content))
+                    string link = this.URI_JOIN_LEAVE.ToString() + "leave/" + this.numericId.Value;
+                    using (var response = await client.PutAsync(link, content))
                     {
                         if (response.IsSuccessStatusCode)
                         {
