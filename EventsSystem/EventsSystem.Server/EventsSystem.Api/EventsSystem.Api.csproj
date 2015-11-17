@@ -220,6 +220,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Models\Accounts\AccountBindingModels.cs" />
     <Compile Include="Models\Accounts\AccountViewModels.cs" />
     <Compile Include="Models\Categories\CategoryModel.cs" />
+    <Compile Include="Models\Comments\CommmentsResponseModel.cs" />
     <Compile Include="Models\Events\EventResponseModel.cs" />
     <Compile Include="Models\Events\EventSaveModel.cs" />
     <Compile Include="Models\Tags\TagResponseModel.cs" />

@@ -11,8 +11,6 @@
 
         public DateTime DateCreated { get; set; }
 
-        public int EventId { get; set; }
-
         public string UserName { get; set; }
 
         public void CreateMappings(IConfiguration config)
