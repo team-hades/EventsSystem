@@ -47,7 +47,7 @@
             this.data.Comments.Add(commentToAdd);
             this.data.Savechanges();
 
-            return this.Ok(model);
+            return this.Ok(commentToAdd.Id);
         }
 
         [HttpPut]
@@ -72,7 +72,7 @@
             this.data.Comments.Update(commentToUpdate);
             this.data.Savechanges();
 
-            return this.Ok("Comment was updated");
+            return this.Ok(commentToUpdate.Id);
         }
 
         [HttpDelete]
