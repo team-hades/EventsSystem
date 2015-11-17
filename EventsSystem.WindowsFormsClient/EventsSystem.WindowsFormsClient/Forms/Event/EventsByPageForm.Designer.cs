@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventsByPageForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.previousButton = new System.Windows.Forms.Button();
-            this.populateButton = new System.Windows.Forms.Button();
             this.nextButton = new System.Windows.Forms.Button();
+            this.populateButton = new System.Windows.Forms.Button();
+            this.previousButton = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -51,18 +51,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "by page";
             // 
-            // dataGridView
+            // nextButton
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(7, 20);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(519, 193);
-            this.dataGridView.TabIndex = 0;
+            this.nextButton.Enabled = false;
+            this.nextButton.Location = new System.Drawing.Point(451, 219);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(75, 23);
+            this.nextButton.TabIndex = 3;
+            this.nextButton.Text = "Next";
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            // 
+            // populateButton
+            // 
+            this.populateButton.Location = new System.Drawing.Point(232, 219);
+            this.populateButton.Name = "populateButton";
+            this.populateButton.Size = new System.Drawing.Size(75, 23);
+            this.populateButton.TabIndex = 2;
+            this.populateButton.Text = "Populate";
+            this.populateButton.UseVisualStyleBackColor = true;
+            this.populateButton.Click += new System.EventHandler(this.populateButton_Click);
             // 
             // previousButton
             // 
@@ -75,26 +83,19 @@
             this.previousButton.UseVisualStyleBackColor = true;
             this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
             // 
-            // populateButton
+            // dataGridView
             // 
-            this.populateButton.Location = new System.Drawing.Point(232, 219);
-            this.populateButton.Name = "populateButton";
-            this.populateButton.Size = new System.Drawing.Size(75, 23);
-            this.populateButton.TabIndex = 2;
-            this.populateButton.Text = "Populate";
-            this.populateButton.UseVisualStyleBackColor = true;
-            this.populateButton.Click += new System.EventHandler(this.populateButton_Click);
-            // 
-            // nextButton
-            // 
-            this.nextButton.Enabled = false;
-            this.nextButton.Location = new System.Drawing.Point(451, 219);
-            this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(75, 23);
-            this.nextButton.TabIndex = 3;
-            this.nextButton.Text = "Next";
-            this.nextButton.UseVisualStyleBackColor = true;
-            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToResizeColumns = false;
+            this.dataGridView.AllowUserToResizeRows = false;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Location = new System.Drawing.Point(7, 20);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.Size = new System.Drawing.Size(519, 193);
+            this.dataGridView.TabIndex = 0;
             // 
             // EventsByPageForm
             // 

@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EventsSystem.WindowsFormsClient.Forms.Accounts
+﻿namespace EventsSystem.WindowsFormsClient.Forms.Accounts
 {
+    using Newtonsoft.Json;
+
     class TokenResponseModel
     {
         [JsonProperty("access_token")]

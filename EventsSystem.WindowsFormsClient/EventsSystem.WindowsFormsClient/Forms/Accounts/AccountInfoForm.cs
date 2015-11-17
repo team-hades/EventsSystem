@@ -1,27 +1,19 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace EventsSystem.WindowsFormsClient.Forms.Accounts
+﻿namespace EventsSystem.WindowsFormsClient.Forms.Accounts
 {
+    using Newtonsoft.Json;
+    using System;
+    using System.Net.Http;
+    using System.Windows.Forms;
+
     public partial class AccountInfoForm : Form
     {
-        private readonly Uri USER_INFO;
+        private Uri USER_INFO;
         private readonly string LABEL = "in user info";
         private MainForm parent;
 
         public AccountInfoForm()
         {
             InitializeComponent();
-            USER_INFO = new Uri("http://localhost:58368/api/Account/UserInfo");
         }
 
         private void getUserInfoButton_Click(object sender, EventArgs e)
@@ -35,6 +27,7 @@ namespace EventsSystem.WindowsFormsClient.Forms.Accounts
         {
             this.parent = (MainForm)this.MdiParent;
             this.parent.StatusLabel = this.LABEL;
+            USER_INFO = new Uri(this.parent.BaseLink + "api/Account/UserInfo");
         }
 
         private async void GetUserInfo()
@@ -54,12 +47,16 @@ namespace EventsSystem.WindowsFormsClient.Forms.Accounts
 
                             listBox.Items.Add(Convert.ToString(parsed));
                         }
+                        else
+                        {
+                            MessageBox.Show(response.ReasonPhrase, "Error");
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
     }

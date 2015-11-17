@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateEventForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.commentsNumeric = new System.Windows.Forms.NumericUpDown();
             this.numericUpDownId = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
@@ -47,11 +49,9 @@
             this.shortDescriptionTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.commentsNumeric = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownId)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.commentsNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownId)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -82,9 +82,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Events: Update an event";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(7, 236);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Comments";
+            // 
+            // commentsNumeric
+            // 
+            this.commentsNumeric.Location = new System.Drawing.Point(70, 230);
+            this.commentsNumeric.Name = "commentsNumeric";
+            this.commentsNumeric.Size = new System.Drawing.Size(178, 20);
+            this.commentsNumeric.TabIndex = 20;
+            // 
             // numericUpDownId
             // 
             this.numericUpDownId.Location = new System.Drawing.Point(70, 15);
+            this.numericUpDownId.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.numericUpDownId.Name = "numericUpDownId";
             this.numericUpDownId.Size = new System.Drawing.Size(178, 20);
             this.numericUpDownId.TabIndex = 19;
@@ -225,22 +246,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Name";
             // 
-            // commentsNumeric
-            // 
-            this.commentsNumeric.Location = new System.Drawing.Point(70, 230);
-            this.commentsNumeric.Name = "commentsNumeric";
-            this.commentsNumeric.Size = new System.Drawing.Size(178, 20);
-            this.commentsNumeric.TabIndex = 20;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(7, 236);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(56, 13);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Comments";
-            // 
             // UpdateEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,10 +255,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateEventForm";
             this.Text = "Events: update an event";
+            this.Load += new System.EventHandler(this.UpdateEventForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownId)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.commentsNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownId)).EndInit();
             this.ResumeLayout(false);
 
         }

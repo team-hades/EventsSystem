@@ -13,6 +13,8 @@
 
         private bool isLogged = false;
 
+        private string baseLink;
+
         private AllEventsForm allEventsForm = null;
         private LoginForm loginView = null;
         private CreateAccountForm createAccountForm = null;
@@ -26,18 +28,26 @@
         private DeleteEventForm deleteEventForm = null;
         private JoinLeaveForm joinLeaveForm = null;
         private RateEventForm rateAnEvent = null;
+        private setupIpForm setupIpForm = null;
 
         private string bearer = null;
 
         public MainForm()
         {
             this.InitializeComponent();
+            this.baseLink = string.Empty;
         }
 
         public void Initialize()
         {
             this.StatusLabel = string.Format(this.DEFAULT_STATUS_PATTERN, this.DEFAULT_USER);
             this.ToggleControls();
+        }
+
+        public string BaseLink
+        {
+            get { return this.baseLink; }
+            set { this.baseLink = value; }
         }
 
         public string Bearer
@@ -94,16 +104,23 @@
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.loginView == null)
+            if (this.BaseLink != String.Empty)
             {
-                this.loginView = new LoginForm();
-                this.loginView.MdiParent = this;
-                this.loginView.FormClosed += new FormClosedEventHandler(this.loginForm_FormClosed);
-                this.loginView.Show();
+                if (this.loginView == null)
+                {
+                    this.loginView = new LoginForm();
+                    this.loginView.MdiParent = this;
+                    this.loginView.FormClosed += new FormClosedEventHandler(this.loginForm_FormClosed);
+                    this.loginView.Show();
+                }
+                else
+                {
+                    this.allEventsForm.Activate();
+                }
             }
             else
             {
-                this.allEventsForm.Activate();
+                MessageBox.Show("Setup server IP first!", "Alert");
             }
         }
 
@@ -119,16 +136,23 @@
 
         private void createToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.createAccountForm == null)
+            if (this.BaseLink != String.Empty)
             {
-                this.createAccountForm = new CreateAccountForm();
-                this.createAccountForm.MdiParent = this;
-                this.createAccountForm.FormClosed += new FormClosedEventHandler(this.createForm_FormClosed);
-                this.createAccountForm.Show();
+                if (this.createAccountForm == null)
+                {
+                    this.createAccountForm = new CreateAccountForm();
+                    this.createAccountForm.MdiParent = this;
+                    this.createAccountForm.FormClosed += new FormClosedEventHandler(this.createForm_FormClosed);
+                    this.createAccountForm.Show();
+                }
+                else
+                {
+                    this.createAccountForm.Activate();
+                }
             }
             else
             {
-                this.createAccountForm.Activate();
+                MessageBox.Show("Setup server IP first!", "Alert");
             }
         }
 
@@ -342,6 +366,26 @@
         private void rateAnEvent_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.rateAnEvent = null;
+        }
+
+        private void serverSetupIPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.setupIpForm == null)
+            {
+                this.setupIpForm = new setupIpForm();
+                this.setupIpForm.MdiParent = this;
+                this.setupIpForm.FormClosed += new FormClosedEventHandler(this.setupIpForm_FormClosed);
+                this.setupIpForm.Show();
+            }
+            else
+            {
+                this.setupIpForm.Activate();
+            }
+        }
+
+        private void setupIpForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.setupIpForm = null;
         }
     }
 }

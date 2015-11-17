@@ -14,12 +14,12 @@
         public EventsByPageForm()
         {
             InitializeComponent();
-            this.URI_GET_EVENT_BY_PAGE = new Uri("http://localhost:58368/api/events?page=");
         }
 
         private void EventsByPageForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
+            this.URI_GET_EVENT_BY_PAGE = new Uri(this.parent.BaseLink + "api/events?page=");
         }
 
         private async void GetEventsByPage(int id)
@@ -37,12 +37,16 @@
                             var pulledEvents = await response.Content.ReadAsStringAsync();
                             dataGridView.DataSource = JsonConvert.DeserializeObject(pulledEvents); ;
                         }
+                        else
+                        {
+                            MessageBox.Show(response.ReasonPhrase, "Error");
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 

@@ -15,11 +15,6 @@
         public DeleteEventForm()
         {
             this.InitializeComponent();
-            this.DELETE_EVENT = new Uri("http://localhost:58368/api/events");
-            this.URI_GET_CATEGORIES = new Uri("http://localhost:58368/api/categories");
-            this.URI_GET_TOWNS = new Uri("http://localhost:58368/api/towns");
-            this.GetTowns();
-            this.GetCategories();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,14 +38,14 @@
                         }
                         else
                         {
-                            MessageBox.Show("Something happened!");
+                            MessageBox.Show(response.ReasonPhrase, "Error");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show(ex.Message, "Error");
             }
         }
 
@@ -112,6 +107,11 @@
         private void CreateEventForm_Load(object sender, EventArgs e)
         {
             this.parent = (MainForm)this.MdiParent;
+            this.DELETE_EVENT = new Uri(this.parent.BaseLink + "api/events");
+            this.URI_GET_CATEGORIES = new Uri(this.parent.BaseLink + "api/categories");
+            this.URI_GET_TOWNS = new Uri(this.parent.BaseLink + "api/towns");
+            this.GetTowns();
+            this.GetCategories();
         }
     }
 }

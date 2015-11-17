@@ -47,11 +47,13 @@
             this.eventsCreateAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsDeleteAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eventsJoinLeaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventsRateAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.status_strip = new System.Windows.Forms.StatusStrip();
             this.status_strip_label = new System.Windows.Forms.ToolStripStatusLabel();
-            this.eventsRateAnEventToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverSetupIPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_menu_strip.SuspendLayout();
             this.status_strip.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +64,7 @@
             this.fileToolStripMenuItem,
             this.accountsToolStripMenuItem,
             this.eventsToolStripMenuItem,
+            this.serverToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.main_menu_strip.Location = new System.Drawing.Point(0, 0);
             this.main_menu_strip.Name = "main_menu_strip";
@@ -80,7 +83,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // accountsToolStripMenuItem
@@ -97,28 +100,28 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // createToolStripMenuItem
             // 
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.createToolStripMenuItem.Text = "Create";
             this.createToolStripMenuItem.Click += new System.EventHandler(this.createToolStripMenuItem_Click);
             // 
             // userInfoToolStripMenuItem
             // 
             this.userInfoToolStripMenuItem.Name = "userInfoToolStripMenuItem";
-            this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.userInfoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.userInfoToolStripMenuItem.Text = "User Info";
             this.userInfoToolStripMenuItem.Click += new System.EventHandler(this.userInfoToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -202,6 +205,13 @@
             this.eventsJoinLeaveToolStripMenuItem.Text = "Events: Join/Leave";
             this.eventsJoinLeaveToolStripMenuItem.Click += new System.EventHandler(this.eventsJoinLeaveToolStripMenuItem_Click);
             // 
+            // eventsRateAnEventToolStripMenuItem
+            // 
+            this.eventsRateAnEventToolStripMenuItem.Name = "eventsRateAnEventToolStripMenuItem";
+            this.eventsRateAnEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.eventsRateAnEventToolStripMenuItem.Text = "Events: Rate an event";
+            this.eventsRateAnEventToolStripMenuItem.Click += new System.EventHandler(this.eventsRateAnEventToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -232,12 +242,20 @@
             this.status_strip_label.Size = new System.Drawing.Size(66, 17);
             this.status_strip_label.Text = "Initializing...";
             // 
-            // eventsRateAnEventToolStripMenuItem
+            // serverToolStripMenuItem
             // 
-            this.eventsRateAnEventToolStripMenuItem.Name = "eventsRateAnEventToolStripMenuItem";
-            this.eventsRateAnEventToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
-            this.eventsRateAnEventToolStripMenuItem.Text = "Events: Rate an event";
-            this.eventsRateAnEventToolStripMenuItem.Click += new System.EventHandler(this.eventsRateAnEventToolStripMenuItem_Click);
+            this.serverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.serverSetupIPToolStripMenuItem});
+            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.serverToolStripMenuItem.Text = "Server";
+            // 
+            // serverSetupIPToolStripMenuItem
+            // 
+            this.serverSetupIPToolStripMenuItem.Name = "serverSetupIPToolStripMenuItem";
+            this.serverSetupIPToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.serverSetupIPToolStripMenuItem.Text = "Server: setup IP";
+            this.serverSetupIPToolStripMenuItem.Click += new System.EventHandler(this.serverSetupIPToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -288,6 +306,8 @@
         private System.Windows.Forms.ToolStripMenuItem eventsDeleteAnEventToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventsJoinLeaveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eventsRateAnEventToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serverToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serverSetupIPToolStripMenuItem;
     }
 }
 
