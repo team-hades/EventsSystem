@@ -1,17 +1,18 @@
 ﻿namespace EventsSystem.Api.Models.Events
 {
-    using System;
+	using System;
 
 	using AutoMapper;
 
 	using EventsSystem.Api.Infrastructure.Mapping;
-    using EventsSystem.Data.Models;
+	using EventsSystem.Data.Models;
+	using System.Collections.Generic;
 
-    public class EventSaveModel : IMapFrom<EventResponseModel>, IHaveCustomMappings
+	public class EventSaveModel : IMapFrom<Event>, IHaveCustomMappings
     {
         public string Name { get; set; }
 
-        public string ShortDescrtiption { get; set; }
+        public string Descrtiption { get; set; }
 
         public bool IsPrivate { get; set; }
 
@@ -19,15 +20,22 @@
 
         public DateTime EndDate { get; set; }
 
-        public int TownId { get; set; }
+        public string Town { get; set; }
 
-        public int CategoryId { get; set; }
+        public string Category { get; set; }
 
-        public void CreateMappings(IConfiguration config)
+		public IList<string> Tags { get; set; }
+
+		public void CreateMappings(IConfiguration config)
         {
-            config.CreateMap<EventResponseModel, Event>()
-                .ForMember(e => e.Town, opts => opts.Ignore())
-                .ForMember(e => e.Category, opts => opts.Ignore());
-        }
+			config.CreateMap<Event, EventSaveModel>()
+				.ForMember(e => e.Town, opts => opts.Ignore())
+				.ForMember(e => e.Descrtiption, opts => opts.Ignore())
+				.ForMember(e => e.IsPrivate, opts => opts.Ignore())
+				.ForMember(e => e.StartDate, opts => opts.Ignore())
+				.ForMember(e => e.EndDate, opts => opts.Ignore())
+				.ForMember(e => e.Town, opts => opts.Ignore())
+				.ForMember(e => e.Category, opts => opts.Ignore());
+		}
     }
 }

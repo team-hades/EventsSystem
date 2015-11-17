@@ -9,6 +9,7 @@
 	using EventsSystem.Data.Data.Repositories;
 	using EventsSystem.Api.Models.Categories;
 	using EventsSystem.Api.Models.Events;
+	using System.Net;
 
 	public class CategoriesController : BaseController
 	{
@@ -17,6 +18,7 @@
 		{
 		}
 
+		[HttpGet]
 		public IHttpActionResult Get()
 		{
 			
@@ -34,6 +36,7 @@
 			return this.NotFound();
 		}
 
+		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
 			var category = this.data.Categories.All().Where(c => c.Id == id).FirstOrDefault();
@@ -58,11 +61,36 @@
 			return this.NotFound();
 		}
 
+		[HttpGet]
+		public IHttpActionResult Get(string name)
+		{
+			var category = this.data.Categories.All().Where(c => c.Name == name).FirstOrDefault();
+
+			if (category == null)
+			{
+				return this.NotFound();
+			}
+
+			var events = data.Events
+				.All()
+				.Where(e => e.Category == category)
+				.OrderByDescending(e => e.StartDate)
+				.ProjectTo<EventResponseModel>();
+
+			if (events.Count() > 0)
+			{
+				return this.Ok(events);
+			}
+
+			return this.NotFound();
+		}
+
+		[HttpPost]
 		public IHttpActionResult Post(int id, CategoryModel model)
 		{
 			if (!this.User.IsInRole("Admin"))
 			{
-				return this.StatusCode(System.Net.HttpStatusCode.Unauthorized);
+				return this.StatusCode(HttpStatusCode.Unauthorized);
 			}
 
 			//TODO: Check if model is null? 
@@ -85,6 +113,7 @@
 			return this.Ok(categoryToAdd);
 		}
 
+		[HttpPut]
 		public IHttpActionResult Put(int id, CategoryModel model)
 		{
 			// TODO: check the current user is admin or user?
@@ -93,7 +122,7 @@
 			// TODO: or just to update only the category's name
 			if (!this.User.IsInRole("Admin"))
 			{
-				return this.StatusCode(System.Net.HttpStatusCode.Unauthorized);
+				return this.StatusCode(HttpStatusCode.Unauthorized);
 			}
 
 			var categoryToUpdate = this.data.Categories
@@ -113,13 +142,14 @@
 			return this.Ok(categoryToUpdate);
 		}
 
+		[HttpDelete]
 		public IHttpActionResult Delete(int id)
 		{
 			// TODO: check the current user is admin or user?
 
 			if (!this.User.IsInRole("Admin"))
 			{
-				return this.StatusCode(System.Net.HttpStatusCode.Unauthorized);
+				return this.StatusCode(HttpStatusCode.Unauthorized);
 			}
 
 			var categoryToDelete = this.data.Categories

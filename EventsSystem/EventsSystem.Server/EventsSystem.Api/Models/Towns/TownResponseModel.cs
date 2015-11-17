@@ -20,7 +20,7 @@
 		{
 			config.CreateMap<Town, TownResponseModel>()
 					.ForMember(t => t.EventsCount, opts => opts.MapFrom(t => t.Events.Count))
-					.ForMember(t => t.Events, opts => opts.MapFrom(t => t.Events.OrderByDescending(x => x.StartDate).ToList().Select(e => e.Name)));
+					.ForMember(t => t.Events, opts => opts.MapFrom(t => t.Events.OrderByDescending(e => e.StartDate).ToList().Select(e => e.Name)));
         }
 	}
 }

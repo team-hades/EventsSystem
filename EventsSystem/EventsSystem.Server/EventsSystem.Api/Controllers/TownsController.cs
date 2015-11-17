@@ -74,12 +74,12 @@
 				// return this.Unauthorized();
 			}
 
-			var town = this.data.Towns.All().FirstOrDefault(x => x.Name == model.Name);
 			if (!this.ModelState.IsValid)
 			{
 				return this.BadRequest(this.ModelState);
 			}
 
+			var town = this.data.Towns.All().FirstOrDefault(x => x.Name == model.Name);
 			if (town != null)
 			{
 				var id = town.Id;

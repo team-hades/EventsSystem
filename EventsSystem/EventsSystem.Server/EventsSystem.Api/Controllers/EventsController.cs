@@ -1,17 +1,18 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
+	using System.Linq;
+	using System.Web.Http;
 
-    using AutoMapper.QueryableExtensions;
+	using AutoMapper.QueryableExtensions;
 
-    using EventsSystem.Api.Infrastructure.Mapping;
-    using EventsSystem.Api.Models.Events;
-    using Providers;
-    using EventsSystem.Data.Data.Repositories;
-    using EventsSystem.Data.Models;
+	using EventsSystem.Api.Infrastructure.Mapping;
+	using EventsSystem.Api.Models.Events;
+	using Providers;
+	using EventsSystem.Data.Data.Repositories;
+	using EventsSystem.Data.Models;
+	using System.Collections.Generic;
 
-    [RoutePrefix("api/events")]
+	[RoutePrefix("api/events")]
 	public class EventsController : BaseController
 	{
 		IMappingService mapservices;
@@ -104,10 +105,27 @@
 		}
 
 		[HttpGet]
-		public IHttpActionResult AllByCategory(string category)
+		public IHttpActionResult AllByCategoryByCategory(string category)
 		{
 			var eventsFromCategory = this.data.Events.All()
 				.Where(e => e.Category.Name == category)
+				.OrderByDescending(x => x.StartDate)
+				.Take(10)
+				.ProjectTo<EventResponseModel>();
+
+			if (eventsFromCategory == null)
+			{
+				return this.BadRequest();
+			}
+
+			return this.Ok(eventsFromCategory);
+		}
+
+		[HttpGet]
+		public IHttpActionResult AllByCategoryByTown(string town)
+		{
+			var eventsFromCategory = this.data.Events.All()
+				.Where(e => e.Town.Name == town)
 				.OrderByDescending(x => x.StartDate)
 				.Take(10)
 				.ProjectTo<EventResponseModel>();
@@ -137,18 +155,51 @@
 		}
 
 		[HttpPost]
-		public IHttpActionResult Post(EventResponseModel model)
+		public IHttpActionResult Post(EventSaveModel model)
 		{
 			if (!this.ModelState.IsValid)
 			{
 				return this.BadRequest(this.ModelState);
 			}
 
-			var eventToAdd = this.mapservices.Map<Event>(model);
-			var town = this.data.Towns.All().Where(id => id.Name == model.Town).FirstOrDefault();
-			var category = this.data.Categories.All().Where(id => id.Name == model.Category).FirstOrDefault();
-			eventToAdd.CategoryId = category.Id;
-			eventToAdd.TownId = town.Id;
+			var town = this.data.Towns.All().Where(t => t.Name == model.Town).FirstOrDefault();
+			var category = this.data.Categories.All().Where(c => c.Name == model.Category).FirstOrDefault();
+			var currentUserName = this.User.Identity.Name;
+			var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
+
+			var eventToAdd = new Event
+			{
+				Name = model.Name,
+				ShortDescrtiption = model.Descrtiption,
+				IsPrivate = model.IsPrivate,
+				Category = category,
+				Town = town,
+				Author = currentUser,
+				StartDate = model.StartDate,
+				EndDate = model.EndDate,
+			};
+			
+			if (model.Tags != null)
+			{
+				var tagsFromDb = this.data.Tags.All().ToList();
+				var tagsToAdd = new List<Tag>();
+
+				foreach (var tag in model.Tags)
+				{
+					var tagFromDb = tagsFromDb.FirstOrDefault(t => t.Name == tag);
+
+					if (tagFromDb == null)
+					{
+						tagsToAdd.Add(new Tag { Name = tag });
+					}
+					else
+					{
+						tagsToAdd.Add(tagFromDb);
+					}
+				}
+
+				eventToAdd.Tags = tagsToAdd;
+            }
 
 			this.data.Events.Add(eventToAdd);
 			this.data.Savechanges();
@@ -159,7 +210,7 @@
 		}
 
 		[HttpPut]
-		public IHttpActionResult Put(int id, EventResponseModel model)
+		public IHttpActionResult Put(int id, EventSaveModel model)
 		{
 			if (!this.ModelState.IsValid)
 			{
@@ -229,7 +280,7 @@
 			this.data.Events.Update(eventToJoin);
 			this.data.Savechanges();
 
-			return this.Ok(eventToJoin);
+			return this.Ok(eventToJoin.Id);
 		}
 
         [Authorize]
