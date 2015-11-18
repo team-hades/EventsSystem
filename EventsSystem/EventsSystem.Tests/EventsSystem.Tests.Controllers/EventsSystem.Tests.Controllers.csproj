@@ -90,6 +90,7 @@
     <Compile Include="TagsControllerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsInit.cs" />
+    <Compile Include="TownsControllerShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\EventsSystem.Common\EventsSystem.Common.csproj">
