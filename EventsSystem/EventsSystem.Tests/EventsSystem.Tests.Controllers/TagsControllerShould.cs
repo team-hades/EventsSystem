@@ -10,17 +10,41 @@
     [TestClass]
     public class TagsControllerShould
     {
-        // http://localhost:58368/api/comments/35
-        // public IHttpActionResult PostComment(int eventId, [FromBody]
+        [TestMethod]
+        public void CorrectlyMapTagsController()
+        {
+            MyWebApi
+                  .Routes()
+                  .ShouldMap("api/tags")
+                  .To<TagsController>(c => c.Get());
+        }
 
         [TestMethod]
-        public void ReturnMethodNotAllowed()
+        public void ReturnValidModelState()
         {
             MyWebApi
                 .Routes()
-                .ShouldMap("api/comments/35")
+                .ShouldMap("api/tags")
                 .WithHttpMethod(HttpMethod.Get)
-                .ToNotAllowedMethod();
+                .ToValidModelState();
+        }
+
+        [TestMethod]
+        public void ReturnOkWhenProvidedParamWithStringInUrl()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/tags?name=red")
+                .To<TagsController>(c => c.Get("red"));
+        }
+
+        [TestMethod]
+        public void ReturnOkWhenProvidedIdOfTag()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/tags/35")
+                .To<TagsController>(c => c.Get("35"));
         }
     }
 }
