@@ -1,22 +1,22 @@
 ﻿namespace EventsSystem.Tests.Controllers
 {
     using MyTested.WebApi;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Api.Controllers;
-    using NUnit.Framework;
     using System.Net.Http;
 
-    [TestFixture]
+    [TestClass]
     public class EventsControllerShould
     {
-        [Test]
-        public void ReturnOkWhenCallingGetAction()
+
+        [TestMethod]
+        public void AllShouldMapCorrectly()
         {
             MyWebApi
-               .Routes()
-               .ShouldMap("api/events")
-               .WithHttpMethod(HttpMethod.Get)
-               .ToValidModelState();
+                .Routes()
+                .ShouldMap("api/events")
+                .To<EventsController>(c => c.All());
         }
     }
 }
