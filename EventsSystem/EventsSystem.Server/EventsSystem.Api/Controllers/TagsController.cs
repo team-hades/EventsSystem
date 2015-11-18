@@ -39,7 +39,7 @@
         }
 
         [HttpGet]
-        [Route("api/tags/id")]
+        [Route("api/tags/{id}")]
 		public IHttpActionResult Get(int id)
 		{
 			var tag = this.data.Tags.All().Where(t => t.Id == id).ProjectTo<TagResponseModel>().FirstOrDefault();

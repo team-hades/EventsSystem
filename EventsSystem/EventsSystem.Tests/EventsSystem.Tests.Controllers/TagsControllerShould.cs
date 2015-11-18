@@ -39,12 +39,22 @@
         }
 
         [TestMethod]
+        public void ReturnNullWhenProvidedParamWithStringInUrl()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/tags?name=")
+                .To<TagsController>(c => c.Get(null))
+                .ToInvalidModelState();
+        }
+
+        [TestMethod]
         public void ReturnOkWhenProvidedIdOfTag()
         {
             MyWebApi
                 .Routes()
                 .ShouldMap("api/tags/35")
-                .To<TagsController>(c => c.Get("35"));
+                .To<TagsController>(c => c.Get(35));
         }
     }
 }
