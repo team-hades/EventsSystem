@@ -87,10 +87,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="EventsControllerShould.cs" />
+    <Compile Include="TagsControllerShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestsInit.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EventsSystem.Common\EventsSystem.Common.csproj">
+      <Project>{c1f0224c-dc57-443d-b13a-40578fc6878c}</Project>
+      <Name>EventsSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\EventsSystem.Server\EventsSystem.Api\EventsSystem.Api.csproj">
       <Project>{153044ba-5937-49a2-b675-fcdf9f6aee35}</Project>
       <Name>EventsSystem.Api</Name>
