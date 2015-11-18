@@ -57,7 +57,7 @@
 				return this.BadRequest();
 			}
 
-			// Non Registered users will see only top 10 non priavate events
+			// Non Registered users will see only top 10 non private events
 			var allVisibleEvents = this.data.Events
 				.All()
 				.Where(ev => ev.IsPrivate != true)
@@ -79,7 +79,7 @@
 				return this.BadRequest();
 			}
 
-			// TODO we neeed to include a collection ofcomments in the model to work
+			// TODO we need to include a collection of comments in the model to work
 			return this.Ok(eventToReturn);
 		}
 
