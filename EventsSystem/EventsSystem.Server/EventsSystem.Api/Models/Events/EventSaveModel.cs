@@ -12,7 +12,7 @@
     {
         public string Name { get; set; }
 
-        public string Descrtiption { get; set; }
+        public string ShortDescrtiption { get; set; }
 
         public bool IsPrivate { get; set; }
 
@@ -28,14 +28,10 @@
 
 		public void CreateMappings(IConfiguration config)
         {
-			config.CreateMap<Event, EventSaveModel>()
+			config.CreateMap<EventSaveModel, Event>()
 				.ForMember(e => e.Town, opts => opts.Ignore())
-				.ForMember(e => e.Descrtiption, opts => opts.Ignore())
-				.ForMember(e => e.IsPrivate, opts => opts.Ignore())
-				.ForMember(e => e.StartDate, opts => opts.Ignore())
-				.ForMember(e => e.EndDate, opts => opts.Ignore())
-				.ForMember(e => e.Town, opts => opts.Ignore())
-				.ForMember(e => e.Category, opts => opts.Ignore());
+                .ForMember(e => e.Tags, opts => opts.Ignore())
+                .ForMember(e => e.Category, opts => opts.Ignore());
 		}
     }
 }

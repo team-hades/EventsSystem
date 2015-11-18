@@ -1,18 +1,19 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-	using System.Linq;
-	using System.Web.Http;
+    using System.Linq;
+    using System.Web.Http;
 
-	using AutoMapper.QueryableExtensions;
+    using AutoMapper.QueryableExtensions;
 
-	using EventsSystem.Api.Infrastructure.Mapping;
-	using EventsSystem.Api.Models.Events;
-	using Providers;
-	using EventsSystem.Data.Data.Repositories;
-	using EventsSystem.Data.Models;
-	using System.Collections.Generic;
+    using EventsSystem.Api.Infrastructure.Mapping;
+    using EventsSystem.Api.Models.Events;
+    using Providers;
+    using EventsSystem.Data.Data.Repositories;
+    using EventsSystem.Data.Models;
+    using System.Collections.Generic;
+    using AutoMapper;
 
-	[RoutePrefix("api/events")]
+    [RoutePrefix("api/events")]
 	public class EventsController : BaseController
 	{
 		IMappingService mapservices;
@@ -167,19 +168,11 @@
 			var currentUserName = this.User.Identity.Name;
 			var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
 
-			var eventToAdd = new Event
-			{
-				Name = model.Name,
-				ShortDescrtiption = model.Descrtiption,
-				IsPrivate = model.IsPrivate,
-				Category = category,
-				Town = town,
-				Author = currentUser,
-				StartDate = model.StartDate,
-				EndDate = model.EndDate,
-			};
-			
-			if (model.Tags != null)
+            var eventToAdd = this.mapservices.Map<Event>(model);
+            eventToAdd.CategoryId = category.Id;
+            eventToAdd.TownId = town.Id;
+
+            if (model.Tags != null)
 			{
 				var tagsFromDb = this.data.Tags.All().ToList();
 				var tagsToAdd = new List<Tag>();
@@ -232,7 +225,7 @@
 			eventToUpdate.StartDate = model.StartDate;
 			eventToUpdate.EndDate = model.EndDate;
 			eventToUpdate.TownId = town.Id;
-			eventToUpdate.CategoryId = category.Id;
+			eventToUpdate.CategoryId = category.Id;            
 
 			this.data.Events.Update(eventToUpdate);
 			this.data.Savechanges();
