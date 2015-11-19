@@ -9,6 +9,9 @@
     using System.Text;
     using System.Windows.Forms;
     using Api.Models.Accounts;
+    using Data.Dropbox;
+    using System.ComponentModel;
+    using System.Threading;
 
     public partial class CreateAccountForm : Form
     {
@@ -74,6 +77,45 @@
                 {
                     MessageBox.Show(string.Format("Error while creating{0}! Details: {1}", newUser.Email, result.ReasonPhrase));
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog.Title = "Select an avatar.";
+            this.openFileDialog.FileName = "";
+            this.openFileDialog.Filter = "PNG Images|*.png|JPEG Images|*.jpg|GIF Images|*.gif|BITMAPS|*.bmp";
+
+            bool toUpload = false;
+            string imageLocation = string.Empty;
+
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                imageLocation = this.openFileDialog.FileName;
+
+                using (var fs = new System.IO.FileStream(imageLocation, System.IO.FileMode.Open))
+                {
+                    var bmp = new Bitmap(fs);
+                    this.pictureBox.Image = (Bitmap)bmp.Clone();
+                    toUpload = true;
+                }
+                
+            }
+            this.openFileDialog.Dispose();
+
+            if (toUpload)
+            {
+                DropboxHelper dh = new DropboxHelper();
+
+                BackgroundWorker bgw = new BackgroundWorker();
+                bgw.DoWork += delegate
+                {
+                    dh.Run().Wait();
+                    dh.UploadProfilePicture(imageLocation).Wait();
+                    MessageBox.Show("Uploaded pic to dropbox.", "Success");
+                };
+
+                bgw.RunWorkerAsync();
             }
         }
     }

@@ -293,7 +293,7 @@
 
             try
             {
-                CommitInfo commmitInfo = new CommitInfo(ProfilesFolder + "/" + fileName, null, true);
+                CommitInfo commmitInfo = new CommitInfo(ProfilesFolder + "/" + "avatar.png", null, true);
 
                 var fileStream = new FileStream(fileName, FileMode.Open);
 

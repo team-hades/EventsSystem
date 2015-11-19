@@ -1,9 +1,12 @@
 ﻿namespace EventsSystem.WindowsFormsClient.Forms
 {
     using Accounts;
+    using Data.Dropbox;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Drawing;
     using System.IO;
     using System.Net.Http;
     using System.Text;
@@ -26,6 +29,35 @@
             this.parent = (MainForm)this.MdiParent;
             this.parent.StatusLabel = this.LABEL;
             this.URI_TOKEN = new Uri(this.parent.BaseLink + "Token");
+
+            //Dropbox downloader
+            try
+            {
+                string imageLocation = "avatar.png";
+
+                DropboxHelper dh = new DropboxHelper();
+
+                BackgroundWorker bgw = new BackgroundWorker();
+                bgw.DoWork += delegate
+                {
+                    dh.Run().Wait();
+                    dh.Download(imageLocation).Wait();
+
+                    using (var fs = new System.IO.FileStream(imageLocation, System.IO.FileMode.Open))
+                    {
+                        var bmp = new Bitmap(fs);
+                        this.pictureBox.Image = (Bitmap)bmp.Clone();
+                    }
+
+                    MessageBox.Show("Downloaded pic from dropbox.", "Success");
+                };
+
+                bgw.RunWorkerAsync();
+            }
+            catch
+            {
+                //silent excception
+            }
         }
 
         private async void loginButton_Click(object sender, EventArgs e)

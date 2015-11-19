@@ -1,14 +1,13 @@
-﻿namespace EventsSystem.Tests.Controllers
+﻿namespace EventsSystem.Api.Tests.ControllersTests
 {
     using MyTested.WebApi;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Api.Controllers;
-    using System;
     using System.Net.Http;
 
     [TestClass]
-    public class TagsControllerShould
+    public class TagControllerTests
     {
         [TestMethod]
         public void CorrectlyMapTagsController()

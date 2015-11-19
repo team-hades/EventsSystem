@@ -267,6 +267,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\EventsSystem\Data\EventsSystem.Data.Dropbox\EventsSystem.Data.Dropbox.csproj">
+      <Project>{466eedb5-a75b-4578-8154-71f1ec4de379}</Project>
+      <Name>EventsSystem.Data.Dropbox</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\EventsSystem\EventsSystem.Common\EventsSystem.Common.csproj">
       <Project>{c1f0224c-dc57-443d-b13a-40578fc6878c}</Project>
       <Name>EventsSystem.Common</Name>

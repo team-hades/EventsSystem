@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateAccountForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.selectBtn = new System.Windows.Forms.Button();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
             this.createAccount = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,10 +41,13 @@
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.selectBtn);
+            this.groupBox1.Controls.Add(this.pictureBox);
             this.groupBox1.Controls.Add(this.textBoxConfirmPassword);
             this.groupBox1.Controls.Add(this.createAccount);
             this.groupBox1.Controls.Add(this.label3);
@@ -52,10 +57,30 @@
             this.groupBox1.Controls.Add(this.textBoxEmail);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(233, 127);
+            this.groupBox1.Size = new System.Drawing.Size(296, 127);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Create user account";
+            // 
+            // selectBtn
+            // 
+            this.selectBtn.Location = new System.Drawing.Point(224, 98);
+            this.selectBtn.Name = "selectBtn";
+            this.selectBtn.Size = new System.Drawing.Size(58, 20);
+            this.selectBtn.TabIndex = 9;
+            this.selectBtn.Text = "select";
+            this.selectBtn.UseVisualStyleBackColor = true;
+            this.selectBtn.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Location = new System.Drawing.Point(224, 19);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(58, 73);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 8;
+            this.pictureBox.TabStop = false;
             // 
             // textBoxConfirmPassword
             // 
@@ -121,18 +146,19 @@
             // 
             this.openFileDialog.FileName = "openFileDialog";
             // 
-            // CreateForm
+            // CreateAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(256, 145);
+            this.ClientSize = new System.Drawing.Size(313, 145);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CreateForm";
+            this.Name = "CreateAccountForm";
             this.Text = "Create an account";
             this.Load += new System.EventHandler(this.CreateForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,5 +174,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.Button createAccount;
         private System.Windows.Forms.TextBox textBoxConfirmPassword;
+        private System.Windows.Forms.Button selectBtn;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }

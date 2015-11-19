@@ -35,11 +35,14 @@
             this.usernameLabel = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.pictureBox);
             this.groupBox1.Controls.Add(this.loginButton);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.usernameLabel);
@@ -47,7 +50,7 @@
             this.groupBox1.Controls.Add(this.textBoxUserName);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(233, 107);
+            this.groupBox1.Size = new System.Drawing.Size(302, 107);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Credentials";
@@ -95,19 +98,30 @@
             this.textBoxUserName.Size = new System.Drawing.Size(150, 20);
             this.textBoxUserName.TabIndex = 0;
             // 
-            // loginForm
+            // pictureBox
+            // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Location = new System.Drawing.Point(229, 19);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(59, 75);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 5;
+            this.pictureBox.TabStop = false;
+            // 
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 126);
+            this.ClientSize = new System.Drawing.Size(325, 126);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "loginForm";
+            this.Name = "LoginForm";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.loginForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -120,5 +134,6 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.PictureBox pictureBox;
     }
 }
