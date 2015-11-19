@@ -1,31 +1,33 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
+	using System.Linq;
+	using System.Web.Http;
 
-    using AutoMapper.QueryableExtensions;
+	using AutoMapper.QueryableExtensions;
 
-    using EventsSystem.Data.Models;
-    using EventsSystem.Data.Data.Repositories;
-    using EventsSystem.Api.Models.Categories;
-    using EventsSystem.Api.Models.Events;
-    using System.Net;
-    using Infrastructure.Validation;
+	using EventsSystem.Data.Models;
+	using EventsSystem.Data.Data.Repositories;
+	using EventsSystem.Api.Models.Categories;
+	using EventsSystem.Api.Models.Events;
+	using System.Net;
+	using Infrastructure.Validation;
+	using System;
 
-    /// <summary>
-    /// Categories controller
-    /// </summary>
-    public class CategoriesController : BaseController
+	public class CategoriesController : BaseController
 	{
+		/// <summary>
+		/// Initialize a new instance of the <see cref="CategoriesController"/> class with provided data.
+		/// </summary>
+		/// <param name="data">The data with the <see cref="CategoriesController"/> depends to.</param>7
 		public CategoriesController(IEventsSystemData data)
 			: base(data)
 		{
 		}
 
-        /// <summary>
-        /// All categories  - public action
-        /// </summary>
-        /// <returns>all event categories by number of events</returns>
+		/// <summary>
+		/// Gets all categories from database.
+		/// </summary>
+		/// <returns>All found categories mapped to the response category model.</returns>
 		[HttpGet]
 		public IHttpActionResult Get()
 		{
@@ -33,7 +35,7 @@
 			var allCategories = this.data.Categories
 				.All()
 				.OrderBy(c => c.Events.Count)
-				.ProjectTo<CategoryModel>();
+				.ProjectTo<CategoryResponseModel>();
 
 
 			if (allCategories.Count() > 0)
@@ -44,11 +46,11 @@
 			return this.NotFound();
 		}
 
-        /// <summary>
-        /// Searches for category by Id - public action
-        /// </summary>
-        /// <param name="id">category Id</param>
-        /// <returns>All events in specific category ordered by date</returns>
+		/// <summary>
+		/// Gets all events which contain category with provided id. This action is not requiring authorisation.
+		/// </summary>
+		/// <param name="id">The id of the category to get events.</param>
+		/// <returns>All found events with the provided category id.</returns>
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
@@ -74,13 +76,13 @@
 			return this.NotFound();
 		}
 
-        /// <summary>
-        /// Searches for category by its name - public action
-        /// </summary>
-        /// <param name="name">category name</param>
-        /// <returns>All events in specific category ordered by date</returns>
+		/// <summary>
+		/// Gets all events which contain category with provided name. This action is not requiring authorisation.
+		/// </summary>
+		/// <param name="name">The name of the category to get events.</param>
+		/// <returns>All found events with the provided category name.</returns>
 		[HttpGet]
-		public IHttpActionResult Get(string name)
+		public IHttpActionResult Get([FromUri]string name)
 		{
 			var category = this.data.Categories.All().Where(c => c.Name == name).FirstOrDefault();
 
@@ -103,24 +105,29 @@
 			return this.NotFound();
 		}
 
-        /// <summary>
-        /// Creates new category - admin action
-        /// </summary>
-        /// <param name="id">Category id</param>
-        /// <param name="model">New category with name</param>
-        /// <returns>Added category</returns>
+		/// <summary>
+		/// Creates and saves a new category in the database.
+		/// </summary>
+		/// <param name="model">The category model which get from the user.</param>
+		/// <returns>The id of the new category. If the category with the provided name is already exist - redirects to the existing town.</returns>
 		[HttpPost]
         [ValidateModel]
-        public IHttpActionResult Post(int id, CategoryModel model)
+        public IHttpActionResult Post(CategorySaveModel model)
 		{
 			if (!this.User.IsInRole("Admin"))
 			{
 				return this.StatusCode(HttpStatusCode.Unauthorized);
 			}
 
-			var user = this.data.Users.All().FirstOrDefault();
+			var category = this.data.Categories.All().FirstOrDefault(x => x.Name == model.Name);
+			if (category != null)
+			{
+				var id = category.Id;
+				var uri = new Uri($"http://localhost:58368/api/categories/{id}");
+				return this.Redirect(uri);
+			}
 
-			// TODO: add this.mappingService.Map<>
+			var user = this.data.Users.All().FirstOrDefault();
 			var categoryToAdd = new Category
 			{
 				Name = model.Name,
@@ -135,15 +142,10 @@
             });
 		}
 
-        /// <summary>
-        /// Changes selected category - admin action
-        /// </summary>
-        /// <param name="id">category Id</param>
-        /// <param name="model">category model with cnages</param>
-        /// <returns>Updated category details</returns>
+        
 		[HttpPut]
         [ValidateModel]
-        public IHttpActionResult Put(int id, CategoryModel model)
+        public IHttpActionResult Put(int id, CategoryResponseModel model)
 		{
 			// TODO: check the current user is admin or user?
 
@@ -171,11 +173,7 @@
 			return this.Ok(categoryToUpdate);
 		}
 
-        /// <summary>
-        /// Changes selected category - admin action
-        /// </summary>
-        /// <param name="id">Category Id</param>
-        /// <returns>Deleted category details</returns>
+        
 		[HttpDelete]
 		public IHttpActionResult Delete(int id)
 		{

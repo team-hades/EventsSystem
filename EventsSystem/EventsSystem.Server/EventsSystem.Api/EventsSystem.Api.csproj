@@ -239,7 +239,8 @@
     <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Models\Accounts\AccountBindingModels.cs" />
     <Compile Include="Models\Accounts\AccountViewModels.cs" />
-    <Compile Include="Models\Categories\CategoryModel.cs" />
+    <Compile Include="Models\Categories\CategoryResponseModel.cs" />
+    <Compile Include="Models\Categories\CategorySaveModel.cs" />
     <Compile Include="Models\Comments\CommmentsResponseModel.cs" />
     <Compile Include="Models\Events\EventResponseModel.cs" />
     <Compile Include="Models\Events\EventSaveModel.cs" />

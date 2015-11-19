@@ -54,7 +54,7 @@
                 .ShouldMap("api/categories/1")
                 .WithHttpMethod(HttpMethod.Post)
                 .WithJsonContent(@"{ ""Name"": ""Test"" }")
-                .To<CategoriesController>(c => c.Post(1, new CategoryModel
+                .To<CategoriesController>(c => c.Post(1, new CategoryResponseModel
                 {
                     Name = "Test"
                 }));
@@ -68,7 +68,7 @@
                 .ShouldMap("api/categories/1")
                 .WithHttpMethod(HttpMethod.Put)
                 .WithJsonContent(@"{ ""Name"": ""NewTest"" }")
-                .To<CategoriesController>(c => c.Put(1, new CategoryModel
+                .To<CategoriesController>(c => c.Put(1, new CategoryResponseModel
                 {
                     Name = "NewTest"
                 }));
