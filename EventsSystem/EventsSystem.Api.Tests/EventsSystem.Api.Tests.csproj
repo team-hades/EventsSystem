@@ -120,6 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllersTests\CategoriesControllerTests.cs" />
+    <Compile Include="ControllersTests\CommentsControllerTests.cs" />
     <Compile Include="ControllersTests\TagControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ControllersTests\HomeControllerTest.cs" />
