@@ -110,7 +110,10 @@
 
 			this.data.Categories.Add(categoryToAdd);
 			this.data.Savechanges();
-			return this.Ok(categoryToAdd);
+			return this.Created("api/categories", new
+            {
+                CategoryId = categoryToAdd
+            });
 		}
 
 		[HttpPut]
