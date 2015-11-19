@@ -22,13 +22,5 @@
             this.eventsRepo = TestObjectFactory.GetEventRepository();
         }
 
-        [TestMethod]
-        public void TestMethod1()
-        {
-            //var usersRepository = TestObjectFactory.GetUsersRepository();
-
-
-
-        }
     }
 }

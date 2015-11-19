@@ -1,8 +1,7 @@
-﻿namespace EventsSystem.Api.Tests.RouteTests
+﻿namespace EventsSystem.Api.Tests.Controllers
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MyTested.WebApi;
-    using Controllers;
     using System.Net.Http;
     using Models.Events;
     using Api.Controllers;
@@ -55,20 +54,19 @@
                 .To<EventsController>(c => c.AllByCategoryAndTown("SomeCategory", "SomeCity"));
         }
 
-
-        //[TestMethod]
-        //public void PostShouldMapCorrectly()
-        //{
-        //    MyWebApi
-        //        .Routes()
-        //        .ShouldMap("api/events")
-        //        .WithHttpMethod(HttpMethod.Post)
-        //        .WithJsonContent(@"{ ""Name"": ""Test"", ""Private"": true }")
-        //        .To<EventsController>(c => c.Post(new SaveProjectRequestModel
-        //        {
-        //            Name = "Test",
-        //            Private = true
-        //        }));
-        //}
+        [TestMethod]
+        public void PostShouldMapCorrectly()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/events")
+                .WithHttpMethod(HttpMethod.Post)
+                .WithJsonContent(@"{ ""Name"": ""Test"", ""IsPrivate"": true }")
+                .To<EventsController>(c => c.Post(new EventSaveModel
+                {
+                    Name = "Test",
+                    IsPrivate = true
+                }));
+        }
     }
 }
