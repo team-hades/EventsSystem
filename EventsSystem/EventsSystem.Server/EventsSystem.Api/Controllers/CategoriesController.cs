@@ -1,20 +1,21 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-	using System.Linq;
-	using System.Web.Http;
+    using System.Linq;
+    using System.Web.Http;
 
-	using AutoMapper.QueryableExtensions;
+    using AutoMapper.QueryableExtensions;
 
-	using EventsSystem.Data.Models;
-	using EventsSystem.Data.Data.Repositories;
-	using EventsSystem.Api.Models.Categories;
-	using EventsSystem.Api.Models.Events;
-	using System.Net;
+    using EventsSystem.Data.Models;
+    using EventsSystem.Data.Data.Repositories;
+    using EventsSystem.Api.Models.Categories;
+    using EventsSystem.Api.Models.Events;
+    using System.Net;
+    using Infrastructure.Validation;
 
     /// <summary>
     /// Categories controller
     /// </summary>
-	public class CategoriesController : BaseController
+    public class CategoriesController : BaseController
 	{
 		public CategoriesController(IEventsSystemData data)
 			: base(data)
@@ -109,17 +110,12 @@
         /// <param name="model">New category with name</param>
         /// <returns>Added category</returns>
 		[HttpPost]
-		public IHttpActionResult Post(int id, CategoryModel model)
+        [ValidateModel]
+        public IHttpActionResult Post(int id, CategoryModel model)
 		{
 			if (!this.User.IsInRole("Admin"))
 			{
 				return this.StatusCode(HttpStatusCode.Unauthorized);
-			}
-
-			//TODO: Check if model is null? 
-			if (!this.ModelState.IsValid)
-			{
-				return this.BadRequest(this.ModelState);
 			}
 
 			var user = this.data.Users.All().FirstOrDefault();
@@ -146,7 +142,8 @@
         /// <param name="model">category model with cnages</param>
         /// <returns>Updated category details</returns>
 		[HttpPut]
-		public IHttpActionResult Put(int id, CategoryModel model)
+        [ValidateModel]
+        public IHttpActionResult Put(int id, CategoryModel model)
 		{
 			// TODO: check the current user is admin or user?
 

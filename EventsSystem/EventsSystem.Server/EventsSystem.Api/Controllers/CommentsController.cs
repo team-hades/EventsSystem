@@ -3,9 +3,10 @@
     using System;
     using System.Web.Http;
     using Models.Comments;
-    using EventsSystem.Data.Data.Repositories;
+    using Data.Data.Repositories;
     using Data.Models;
     using System.Linq;
+    using Infrastructure.Validation;
 
     /// <summary>
     /// Responsible for comments actions
@@ -21,13 +22,14 @@
 
         /// <summary>
         /// Post new comment in specific event
+        /// http://localhost:58368/api/comments/35
         /// </summary>
         /// <param name="eventId">The event Id</param>
         /// <param name="model">Comment model (requires comment content)</param>
         /// <returns>New comment id</returns>
         [HttpPost]
         [Route("{eventId}")]
-        // http://localhost:58368/api/comments/35
+        [ValidateModel]
         public IHttpActionResult PostComment(int eventId, [FromBody] CommmentsResponseModel model)
         {
             if (!this.ModelState.IsValid)
@@ -64,13 +66,14 @@
 
         /// <summary>
         /// Change comment in specific event
+        /// http://localhost:58368/api/comments/35
         /// </summary>
         /// <param name="eventId">The event Id</param>
         /// <param name="model">Comment model (requires comment content)</param>
         /// <returns>Updated comment id</returns>
         [HttpPut]
         [Route("{commentId}")]
-        // http://localhost:58368/api/comments/35
+        [ValidateModel]
         public IHttpActionResult UpdateComment(int commentId, [FromBody] CommmentsResponseModel model)
         {
             if (!this.ModelState.IsValid)
