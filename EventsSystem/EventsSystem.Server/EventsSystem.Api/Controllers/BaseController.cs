@@ -4,6 +4,9 @@
 
 	using EventsSystem.Data.Data.Repositories;
 
+    /// <summary>
+    /// Base controller to pass IEventSystemData to child controlleers 
+    /// </summary>
 	public class BaseController : ApiController
 	{
 		protected IEventsSystemData data;

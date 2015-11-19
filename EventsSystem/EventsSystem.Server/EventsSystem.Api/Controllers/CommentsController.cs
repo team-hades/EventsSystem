@@ -7,6 +7,9 @@
     using Data.Models;
     using System.Linq;
 
+    /// <summary>
+    /// Responsible for comments actions
+    /// </summary>
     [RoutePrefix("api/comments")]
     public class CommentsController : BaseController
     {
@@ -16,6 +19,12 @@
         {
         }
 
+        /// <summary>
+        /// Post new comment in specific event
+        /// </summary>
+        /// <param name="eventId">The event Id</param>
+        /// <param name="model">Comment model (requires comment content)</param>
+        /// <returns>New comment id</returns>
         [HttpPost]
         [Route("{eventId}")]
         // http://localhost:58368/api/comments/35
@@ -50,6 +59,12 @@
             return this.Ok(commentToAdd.Id);
         }
 
+        /// <summary>
+        /// Change comment in specific event
+        /// </summary>
+        /// <param name="eventId">The event Id</param>
+        /// <param name="model">Comment model (requires comment content)</param>
+        /// <returns>Updated comment id</returns>
         [HttpPut]
         [Route("{commentId}")]
         // http://localhost:58368/api/comments/35
@@ -75,6 +90,12 @@
             return this.Ok(commentToUpdate.Id);
         }
 
+        /// <summary>
+        /// Deletes comment in specific event
+        /// </summary>
+        /// <param name="eventId">The event Id</param>
+        /// <param name="model">Comment Id</param>
+        /// <returns>Deleted comment confirmation</returns>
         [HttpDelete]
         [Route("{eventId}")]
         // http://localhost:58368/api/comments/7?commentId=35

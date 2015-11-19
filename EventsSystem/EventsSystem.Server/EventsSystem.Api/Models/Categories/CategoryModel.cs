@@ -10,8 +10,6 @@
 
 	public class CategoryModel : IMapFrom<Category>, IHaveCustomMappings
 	{
-		private object e;
-
 		[Required]
 		[MinLength(ValidationConstants.MinCategoryNameLenght)]
 		[MaxLength(ValidationConstants.MaxCategoryNameLenght)]

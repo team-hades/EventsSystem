@@ -11,6 +11,9 @@
 	using EventsSystem.Api.Models.Events;
 	using System.Net;
 
+    /// <summary>
+    /// Responsible for categories actions
+    /// </summary>
 	public class CategoriesController : BaseController
 	{
 		public CategoriesController(IEventsSystemData data)
@@ -18,6 +21,10 @@
 		{
 		}
 
+        /// <summary>
+        /// All categories  - public action
+        /// </summary>
+        /// <returns>all event categories by number of events</returns>
 		[HttpGet]
 		public IHttpActionResult Get()
 		{
@@ -36,6 +43,11 @@
 			return this.NotFound();
 		}
 
+        /// <summary>
+        /// Searches for category by Id - public action
+        /// </summary>
+        /// <param name="id">category Id</param>
+        /// <returns>All events in specific category ordered by date</returns>
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
@@ -61,6 +73,11 @@
 			return this.NotFound();
 		}
 
+        /// <summary>
+        /// Searches for category by its name - public action
+        /// </summary>
+        /// <param name="name">category name</param>
+        /// <returns>All events in specific category ordered by date</returns>
 		[HttpGet]
 		public IHttpActionResult Get(string name)
 		{
@@ -85,6 +102,12 @@
 			return this.NotFound();
 		}
 
+        /// <summary>
+        /// Creates new category - admin action
+        /// </summary>
+        /// <param name="id">Category id</param>
+        /// <param name="model">New category with name</param>
+        /// <returns>Added category</returns>
 		[HttpPost]
 		public IHttpActionResult Post(int id, CategoryModel model)
 		{
@@ -113,6 +136,12 @@
 			return this.Ok(categoryToAdd);
 		}
 
+        /// <summary>
+        /// Changes selected category - admin action
+        /// </summary>
+        /// <param name="id">category Id</param>
+        /// <param name="model">category model with cnages</param>
+        /// <returns>Updated category details</returns>
 		[HttpPut]
 		public IHttpActionResult Put(int id, CategoryModel model)
 		{
@@ -142,6 +171,11 @@
 			return this.Ok(categoryToUpdate);
 		}
 
+        /// <summary>
+        /// Changes selected category - admin action
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <returns>Deleted category details</returns>
 		[HttpDelete]
 		public IHttpActionResult Delete(int id)
 		{

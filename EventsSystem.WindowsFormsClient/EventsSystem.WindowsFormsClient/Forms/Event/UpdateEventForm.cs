@@ -89,7 +89,7 @@
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show("Could\'t pull and populate data!", ex.Message);
             }
         }
 
@@ -116,7 +116,7 @@
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Could\'t pull and populate data!", "Error");
+                MessageBox.Show("Could\'t pull and populate data!", ex.Message);
             }
         }
 

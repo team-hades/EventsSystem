@@ -8,6 +8,9 @@
 	using EventsSystem.Api.Models.Tags;
 	using EventsSystem.Data.Data.Repositories;
 
+    /// <summary>
+    /// Tags(event) controller
+    /// </summary>
     public class TagsController : BaseController
     {
         public TagsController(IEventsSystemData data)
@@ -15,6 +18,10 @@
         {
         }
 
+        /// <summary>
+        /// All tags - public action
+        /// </summary>
+        /// <returns>All tags</returns>
         [HttpGet]
         public IHttpActionResult Get()
         {
@@ -23,7 +30,11 @@
             return this.Ok(tags);
         }
 
-        // this way you can insert in this method :)
+        /// <summary>
+        /// All events by tag name - public action
+        /// </summary>
+        /// <param name="name">Tag name</param>
+        /// <returns>All tagged events</returns>
         // http://localhost:58368/api/tags?name=red
         [HttpGet]
         public IHttpActionResult Get([FromUri]string name)
@@ -38,6 +49,11 @@
             return this.Ok(tag.Events);
         }
 
+        /// <summary>
+        /// All tags by id - oublic action
+        /// </summary>
+        /// <param name="id">Tag Id</param>
+        /// <returns>All tagged events</returns>
         [HttpGet]
         [Route("api/tags/{id}")]
 		public IHttpActionResult Get(int id)

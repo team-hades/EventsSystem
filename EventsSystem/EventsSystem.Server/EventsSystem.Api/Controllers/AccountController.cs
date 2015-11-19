@@ -21,6 +21,9 @@
 	using EventsSystem.Api.Models.Accounts;
 	using EventsSystem.Data.Models;
 
+    /// <summary>
+    /// Users controller for maintaining authotication
+    /// </summary>
 	[Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -68,7 +71,11 @@
             };
         }
 
-        // POST api/Account/Logout
+        /// <summary>
+        /// Logount current user
+        /// POST api/Account/Logout
+        /// </summary>
+        /// <returns>OK action status</returns>
         [Route("Logout")]
         public IHttpActionResult Logout()
         {
@@ -76,7 +83,11 @@
             return Ok();
         }
 
-        // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        /// <summary>
+        /// ManageInfo for user
+        /// GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
+        /// </summary>
+        /// <returns>ManageInfoViewModel</returns>
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
         {
@@ -116,7 +127,12 @@
             };
         }
 
-        // POST api/Account/ChangePassword
+        /// <summary>
+        /// Change password action
+        /// POST api/Account/ChangePassword
+        /// </summary>
+        /// <param name="model">ChangePassowrdModel</param>
+        /// <returns>OK status action</returns>
         [Route("ChangePassword")]
         public async Task<IHttpActionResult> ChangePassword(ChangePasswordBindingModel model)
         {
@@ -136,7 +152,12 @@
             return Ok();
         }
 
-        // POST api/Account/SetPassword
+        /// <summary>
+        /// Set new password action
+        /// POST api/Account/SetPassword
+        /// </summary>
+        /// <param name="model">SetPasswordBindingModel</param>
+        /// <returns>OK status action</returns>
         [Route("SetPassword")]
         public async Task<IHttpActionResult> SetPassword(SetPasswordBindingModel model)
         {
@@ -155,7 +176,12 @@
             return Ok();
         }
 
-        // POST api/Account/AddExternalLogin
+        /// <summary>
+        /// External login feature
+        /// POST api/Account/AddExternalLogin
+        /// </summary>
+        /// <param name="model">AddExternalLoginBindingModel</param>
+        /// <returns>OK status action</returns>
         [Route("AddExternalLogin")]
         public async Task<IHttpActionResult> AddExternalLogin(AddExternalLoginBindingModel model)
         {
@@ -193,7 +219,12 @@
             return Ok();
         }
 
-        // POST api/Account/RemoveLogin
+        /// <summary>
+        /// Remove login feature
+        /// POST api/Account/RemoveLogin
+        /// </summary>
+        /// <param name="model">RemoveLoginBindingModel</param>
+        /// <returns>OK status action</returns>
         [Route("RemoveLogin")]
         public async Task<IHttpActionResult> RemoveLogin(RemoveLoginBindingModel model)
         {
@@ -320,7 +351,12 @@
             return logins;
         }
 
-        // POST api/Account/Register
+        /// <summary>
+        /// Register new account - public action
+        /// POST api/Account/Register
+        /// </summary>
+        /// <param name="model">RegisterBindingModel (Email, Password, confirmPassword)</param>
+        /// <returns>OK action status</returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -342,7 +378,12 @@
             return Ok();
         }
 
-        // POST api/Account/RegisterExternal
+        /// <summary>
+        /// External register new account - Override Authentication
+        /// POST api/Account/RegisterExternal
+        /// </summary>
+        /// <param name="model">DefaultAuthenticationTypes</param>
+        /// <returns>OK action status</returns>
         [OverrideAuthentication]
         [HostAuthentication(DefaultAuthenticationTypes.ExternalBearer)]
         [Route("RegisterExternal")]

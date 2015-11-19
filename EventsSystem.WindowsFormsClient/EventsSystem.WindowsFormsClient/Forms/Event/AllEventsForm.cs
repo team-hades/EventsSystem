@@ -11,7 +11,6 @@
     public partial class AllEventsForm : Form
     {
         private Uri URI_EVENTS;
-        private readonly string LABEL = "in Events";
         private MainForm parent;
 
         public AllEventsForm()
