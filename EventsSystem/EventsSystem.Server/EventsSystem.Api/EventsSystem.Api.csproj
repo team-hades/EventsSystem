@@ -243,6 +243,7 @@
     <Compile Include="Models\Comments\CommmentsResponseModel.cs" />
     <Compile Include="Models\Events\EventResponseModel.cs" />
     <Compile Include="Models\Events\EventSaveModel.cs" />
+    <Compile Include="Models\Events\EventsForUserResponseModel.cs" />
     <Compile Include="Models\Events\EventTagModel.cs" />
     <Compile Include="Models\Ratings\RatingResponseModel.cs" />
     <Compile Include="Models\Tags\TagResponseModel.cs" />

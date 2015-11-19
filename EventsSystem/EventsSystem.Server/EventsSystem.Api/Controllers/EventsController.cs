@@ -57,7 +57,7 @@
 				var allEventsWithTagedUser = currentUser.Events
 				.OrderByDescending(e => e.StartDate)
 				.AsQueryable()
-				.ProjectTo<EventResponseModel>()
+				.ProjectTo<EventsForUserResponseModel>()
 				.ToList();
 
 				if (allEventsWithTagedUser.Count() > 0)
@@ -323,9 +323,12 @@
 			var currentUserName = this.User.Identity.Name;
 			var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
 
-			eventToJoin.Users.Add(currentUser);
-			this.data.Events.Update(eventToJoin);
-			this.data.Savechanges();
+            //eventToJoin.Users.Add(currentUser);
+            //this.data.Events.Update(eventToJoin);
+            //this.data.Savechanges();
+
+            currentUser.Events.Add(eventToJoin);
+            this.data.Savechanges();
 
 			return this.Ok(eventToJoin.Id);
 		}
