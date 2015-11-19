@@ -92,7 +92,7 @@ Application for managing events with desktop client.
 |GET|api/categories|Gets all categories|
 |GET|api/categories/{categoryID}|Gets all events, sorted by date, from Category with ID = categoryID|
 |GET|api/towns|Gets all towns|
-|GET|api/towns/{townID}|Gets all events, sorted by date, from Town with ID = townID|
+|GET|api/towns/{townID}|Gets the town with all events, sorted by date, from Town with ID = townID|
 |GET|api/tags|Gets all tags|
 |GET|api/tags/{tagID}|Gets all events, sorted by date, that have Tag with ID = tagID|
 
