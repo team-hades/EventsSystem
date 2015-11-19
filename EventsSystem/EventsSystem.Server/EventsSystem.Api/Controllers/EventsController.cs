@@ -1,9 +1,9 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
+	using System.Linq;
+	using System.Web.Http;
 
-    using AutoMapper.QueryableExtensions;
+	using AutoMapper.QueryableExtensions;
 
 	using EventsSystem.Api.Infrastructure.Mapping;
 	using EventsSystem.Api.Models.Events;
@@ -12,11 +12,12 @@
 	using EventsSystem.Data.Models;
 	using System.Collections.Generic;
 	using AutoMapper;
+	using Infrastructure.Validation;
 
-    /// <summary>
-    /// Responsible for Events actions main prefix api/events
-    /// </summary>
-    [RoutePrefix("api/events")]
+	/// <summary>
+	/// Responsible for Events actions main prefix api/events
+	/// </summary>
+	[RoutePrefix("api/events")]
 	public class EventsController : BaseController
 	{
 		IMappingService mapservices;
