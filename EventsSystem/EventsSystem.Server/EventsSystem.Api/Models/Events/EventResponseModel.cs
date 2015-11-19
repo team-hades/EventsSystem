@@ -27,7 +27,7 @@
 
         public string Category { get; set;}
 
-        public float Rating { get; set; }
+        public float? Rating { get; set; }
 
         public object CommentsCount { get; set; }
 
@@ -43,7 +43,7 @@
 				.ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name))
 				.ForMember(e => e.Tags, opts => opts.MapFrom(e => e.Tags.Select(t => t.Name)))
 				.ForMember(e => e.Comments, opts => opts.MapFrom(t => t.Comments))
-                .ForMember(e=> e.Rating, opts => opts.MapFrom(r => r.Ratings.Select(re => re.Value).Average()));
+                .ForMember(e=> e.Rating, opts => opts.MapFrom(r => r.Ratings.Where(re => re != null).Select(s => s.Value).Average()));
         }
     }
 }
