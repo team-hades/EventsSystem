@@ -1,22 +1,23 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
-    using System.Linq;
-    using System.Web.Http;
+	using System.Linq;
+	using System.Web.Http;
 
-    using AutoMapper.QueryableExtensions;
+	using AutoMapper.QueryableExtensions;
 
-    using EventsSystem.Api.Infrastructure.Mapping;
-    using EventsSystem.Api.Models.Events;
-    using Providers;
-    using EventsSystem.Data.Data.Repositories;
-    using EventsSystem.Data.Models;
-    using System.Collections.Generic;
-    using AutoMapper;
+	using EventsSystem.Api.Infrastructure.Mapping;
+	using EventsSystem.Api.Models.Events;
+	using Providers;
+	using EventsSystem.Data.Data.Repositories;
+	using EventsSystem.Data.Models;
+	using System.Collections.Generic;
+	using AutoMapper;
+	using System;
 
-    /// <summary>
-    /// Responsible for Events actions main prefix api/events
-    /// </summary>
-    [RoutePrefix("api/events")]
+	/// <summary>
+	/// Responsible for Events actions main prefix api/events
+	/// </summary>
+	[RoutePrefix("api/events")]
 	public class EventsController : BaseController
 	{
 		IMappingService mapservices;
@@ -27,13 +28,13 @@
 			this.mapservices = mapservices;
 		}
 
-        /// <summary>
-        /// All listed events  - public / admin / registered users action
-        /// </summary>
-        /// <returns>All events ordered by start date (for admin)</returns>
-        /// <returns>All user events (for registered user with created events)</returns>
-        /// <returns>All tagged events (for registered user without created events)</returns>
-        /// <returns>Top 10 public events ordered by start date (for visitors)</returns>
+		/// <summary>
+		/// All listed events  - public / admin / registered users action
+		/// </summary>
+		/// <returns>All events ordered by start date (for admin)</returns>
+		/// <returns>All user events (for registered user with created events)</returns>
+		/// <returns>All tagged events (for registered user without created events)</returns>
+		/// <returns>Top 10 public events ordered by start date (for visitors)</returns>
 		[HttpGet]
 		public IHttpActionResult All()
 		{
@@ -78,11 +79,11 @@
 			return this.Ok(allVisibleEvents);
 		}
 
-        /// <summary>
-        /// All listed events by Id  - public action
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns>All events by Id</returns>
+		/// <summary>
+		/// All listed events by Id  - public action
+		/// </summary>
+		/// <param name="id"></param>
+		/// <returns>All events by Id</returns>
 		[HttpGet]
 		public IHttpActionResult All(int id)
 		{
@@ -98,11 +99,11 @@
 			return this.Ok(eventToReturn);
 		}
 
-        /// <summary>
-        /// Paging - All listed events by page  - public action 
-        /// </summary>
-        /// <param name="page">Specific page to display</param>
-        /// <returns>10 events from specific page</returns>
+		/// <summary>
+		/// Paging - All listed events by page  - public action 
+		/// </summary>
+		/// <param name="page">Specific page to display</param>
+		/// <returns>10 events from specific page</returns>
 		[HttpGet]
 		public IHttpActionResult AllByPage(string page)
 		{
@@ -125,11 +126,11 @@
 			return this.Ok(eventToReturn);
 		}
 
-        /// <summary>
-        /// All events by Category
-        /// </summary>
-        /// <param name="category">Specific category</param>
-        /// <returns>First 10 events in the specific category by date</returns>
+		/// <summary>
+		/// All events by Category
+		/// </summary>
+		/// <param name="category">Specific category</param>
+		/// <returns>First 10 events in the specific category by date</returns>
 		[HttpGet]
 		public IHttpActionResult AllByCategoryByCategory(string category)
 		{
@@ -147,11 +148,11 @@
 			return this.Ok(eventsFromCategory);
 		}
 
-        /// <summary>
-        /// All events by town - public action
-        /// </summary>
-        /// <param name="town">Specific town</param>
-        /// <returns>First 10 events by town ordered by start date</returns>
+		/// <summary>
+		/// All events by town - public action
+		/// </summary>
+		/// <param name="town">Specific town</param>
+		/// <returns>First 10 events by town ordered by start date</returns>
 		[HttpGet]
 		public IHttpActionResult AllByCategoryByTown(string town)
 		{
@@ -169,12 +170,12 @@
 			return this.Ok(eventsFromCategory);
 		}
 
-        /// <summary>
-        /// All events by town and category - public action
-        /// </summary>
-        /// <param name="category">Specific category</param>
-        /// <param name="town">Specific town</param>
-        /// <returns>All events ordered by start date</returns>
+		/// <summary>
+		/// All events by town and category - public action
+		/// </summary>
+		/// <param name="category">Specific category</param>
+		/// <param name="town">Specific town</param>
+		/// <returns>All events ordered by start date</returns>
 		[HttpGet]
 		public IHttpActionResult AllByCategoryAndTown(string category, string town)
 		{
@@ -191,12 +192,12 @@
 			return this.Ok(eventsFromCategory);
 		}
 
-        /// <summary>
-        /// Adding new event - authorised action
-        /// </summary>
-        /// <param name="model">Expects event model</param>
-        /// <returns>Added event Id</returns>
-        /// <returns>PubNub notification with event name</returns>
+		/// <summary>
+		/// Adding new event - authorised action
+		/// </summary>
+		/// <param name="model">Expects event model</param>
+		/// <returns>Added event Id</returns>
+		/// <returns>PubNub notification with event name</returns>
 		[HttpPost]
 		public IHttpActionResult Post(EventSaveModel model)
 		{
@@ -210,49 +211,55 @@
 			var currentUserName = this.User.Identity.Name;
 			var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
 
-            var eventToAdd = this.mapservices.Map<Event>(model);
-            eventToAdd.CategoryId = category.Id;
-            eventToAdd.TownId = town.Id;
+			var eventToAdd = this.mapservices.Map<Event>(model);
+			eventToAdd.CategoryId = category.Id;
+			eventToAdd.TownId = town.Id;
 
-            if (model.Tags != null)
+			if (model.Tags != null)
 			{
-				var tagsFromDb = this.data.Tags.All().ToList();
-				var tagsToAdd = new List<Tag>();
-
-				foreach (var tag in model.Tags)
-				{
-					var tagFromDb = tagsFromDb.FirstOrDefault(t => t.Name == tag);
-
-					if (tagFromDb == null)
-					{
-						tagsToAdd.Add(new Tag { Name = tag });
-					}
-					else
-					{
-						tagsToAdd.Add(tagFromDb);
-					}
-				}
-
+				IList<Tag> tagsToAdd = this.GetTags(model.Tags);
 				eventToAdd.Tags = tagsToAdd;
             }
 
 			this.data.Events.Add(eventToAdd);
 			this.data.Savechanges();
-            
-            PubNubNotificationProvider.Notify(eventToAdd.Name);
 
-            return this.Created("api/events", new
-            {
-                EventId = eventToAdd.Id
-            });
+			PubNubNotificationProvider.Notify(eventToAdd.Name);
+
+			return this.Created("api/events", new
+			{
+				EventId = eventToAdd.Id
+			});
 		}
 
-        /// <summary>
-        /// Changes specific event - authorised action
-        /// </summary>
-        /// <param name="id">Event id to change</param>
-        /// <param name="model">New event model</param>
-        /// <returns>Updated event Id</returns>
+		private IList<Tag> GetTags(IList<string> tags)
+		{
+			var tagsFromDb = this.data.Tags.All().ToList();
+			var tagsToAdd = new List<Tag>();
+
+			foreach (var tag in tags)
+			{
+				var tagFromDb = tagsFromDb.FirstOrDefault(t => t.Name == tag);
+
+				if (tagFromDb == null)
+				{
+					tagsToAdd.Add(new Tag { Name = tag });
+				}
+				else
+				{
+					tagsToAdd.Add(tagFromDb);
+				}
+			}
+
+			return tagsToAdd;
+		}
+
+		/// <summary>
+		/// Changes specific event - authorised action
+		/// </summary>
+		/// <param name="id">Event id to change</param>
+		/// <param name="model">New event model</param>
+		/// <returns>Updated event Id</returns>
 		[HttpPut]
 		public IHttpActionResult Put(int id, EventSaveModel model)
 		{
@@ -276,7 +283,7 @@
 			eventToUpdate.StartDate = model.StartDate;
 			eventToUpdate.EndDate = model.EndDate;
 			eventToUpdate.TownId = town.Id;
-			eventToUpdate.CategoryId = category.Id;            
+			eventToUpdate.CategoryId = category.Id;
 
 			this.data.Events.Update(eventToUpdate);
 			this.data.Savechanges();
@@ -284,11 +291,11 @@
 			return this.Ok(eventToUpdate.Id);
 		}
 
-        /// <summary>
-        /// Deletes an event - authorised action
-        /// </summary>
-        /// <param name="id">Event Id</param>
-        /// <returns>Delete notification</returns>
+		/// <summary>
+		/// Deletes an event - authorised action
+		/// </summary>
+		/// <param name="id">Event Id</param>
+		/// <returns>Delete notification</returns>
 		[HttpDelete]
 		public IHttpActionResult Delete(int id)
 		{
@@ -305,12 +312,12 @@
 			return this.Ok("Event was deleted");
 		}
 
-        /// <summary>
-        /// Join an event - authorised action
-        /// </summary>
-        /// <param name="eventId">Event Id</param>
-        /// <returns>Event Id</returns>
-        [Authorize]
+		/// <summary>
+		/// Join an event - authorised action
+		/// </summary>
+		/// <param name="eventId">Event Id</param>
+		/// <returns>Event Id</returns>
+		[Authorize]
 		[HttpPost]
 		[Route("join/{eventId}")]
 		public IHttpActionResult Join(int eventId)
@@ -337,12 +344,12 @@
 			return this.Ok(eventToJoin.Id);
 		}
 
-        /// <summary>
-        /// Leave an event  - authorised action
-        /// </summary>
-        /// <param name="eventId">Event Id</param>
-        /// <returns>Successfull leave notification</returns>
-        [Authorize]
+		/// <summary>
+		/// Leave an event  - authorised action
+		/// </summary>
+		/// <param name="eventId">Event Id</param>
+		/// <returns>Successfull leave notification</returns>
+		[Authorize]
 		[HttpPut]
 		[Route("leave/{eventId}")]
 		public IHttpActionResult Leave(int eventId)
@@ -369,13 +376,13 @@
 			return this.Ok("Leave");
 		}
 
-        /// <summary>
-        /// Rate an event - authorised action
-        /// </summary>
-        /// <param name="eventId">Event Id</param>
-        /// <param name="rating">Rating (0 - 5)</param>
-        /// <returns>Rated event Id</returns>
-        [Authorize]
+		/// <summary>
+		/// Rate an event - authorised action
+		/// </summary>
+		/// <param name="eventId">Event Id</param>
+		/// <param name="rating">Rating (0 - 5)</param>
+		/// <returns>Rated event Id</returns>
+		[Authorize]
 		[HttpPost]
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult Rate(int eventId, int rating)
@@ -413,13 +420,13 @@
 			return this.Ok(eventWithRating.Id);
 		}
 
-        /// <summary>
-        /// Updating an event rate
-        /// </summary>
-        /// <param name="eventId">Event Id</param>
-        /// <param name="rating">Rating (0 - 5)</param>
-        /// <returns>Rated event Id</returns>
-        [Authorize]
+		/// <summary>
+		/// Updating an event rate
+		/// </summary>
+		/// <param name="eventId">Event Id</param>
+		/// <param name="rating">Rating (0 - 5)</param>
+		/// <returns>Rated event Id</returns>
+		[Authorize]
 		[HttpPut]
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult UpdateRate(int eventId, int rating)
@@ -436,17 +443,17 @@
 				return this.BadRequest();
 			}
 
-            var currentUserName = this.User.Identity.Name;
-            var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
+			var currentUserName = this.User.Identity.Name;
+			var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
 
-            var ratingToUpdate = eventWithRating.Ratings.Where(e => e.UserId == currentUser.Id).FirstOrDefault();
+			var ratingToUpdate = eventWithRating.Ratings.Where(e => e.UserId == currentUser.Id).FirstOrDefault();
 
-            ratingToUpdate.Value = rating;
+			ratingToUpdate.Value = rating;
 
-            this.data.Ratings.Update(ratingToUpdate);
-            this.data.Savechanges();
+			this.data.Ratings.Update(ratingToUpdate);
+			this.data.Savechanges();
 
-            return this.Ok(ratingToUpdate.Value);
+			return this.Ok(ratingToUpdate.Value);
 		}
 	}
 }

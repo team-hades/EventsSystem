@@ -4,12 +4,13 @@
 	using System.Collections.Generic;
 	using EventsSystem.Data.Models;
 	using System.Data.Entity;
+	using System.Linq;
 
 	public class EventsSystemData : IEventsSystemData
 	{
 		private readonly DbContext context;
 		private readonly IDictionary<Type, object> repositories;
-		
+
 		public EventsSystemData()
 		{
 			this.context = new EventsSystemDbContext();
@@ -48,7 +49,7 @@
 			}
 		}
 
-		
+
 		public IRepository<Comment> Comments
 		{
 			get
