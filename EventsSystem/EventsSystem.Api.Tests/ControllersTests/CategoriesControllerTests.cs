@@ -54,7 +54,7 @@
                 .ShouldMap("api/categories/1")
                 .WithHttpMethod(HttpMethod.Post)
                 .WithJsonContent(@"{ ""Name"": ""Test"" }")
-                .To<CategoriesController>(c => c.Post(1, new CategoryResponseModel
+                .To<CategoriesController>(c => c.Post(new CategorySaveModel
                 {
                     Name = "Test"
                 }));

@@ -1,6 +1,8 @@
 ﻿namespace EventsSystem.Api.Controllers
 {
+	using System;
 	using System.Linq;
+	using System.Net;
 	using System.Web.Http;
 
 	using AutoMapper.QueryableExtensions;
@@ -9,9 +11,7 @@
 	using EventsSystem.Data.Data.Repositories;
 	using EventsSystem.Api.Models.Categories;
 	using EventsSystem.Api.Models.Events;
-	using System.Net;
-	using Infrastructure.Validation;
-	using System;
+	using EventsSystem.Api.Infrastructure.Validation;
 
 	public class CategoriesController : BaseController
 	{
@@ -31,7 +31,7 @@
 		[HttpGet]
 		public IHttpActionResult Get()
 		{
-			
+
 			var allCategories = this.data.Categories
 				.All()
 				.OrderBy(c => c.Events.Count)
@@ -54,26 +54,19 @@
 		[HttpGet]
 		public IHttpActionResult Get(int id)
 		{
-			var category = this.data.Categories.All().Where(c => c.Id == id).FirstOrDefault();
+			var category = this.data
+				.Categories
+				.All()
+				.Where(c => c.Id == id)
+				.ProjectTo<CategoryResponseModel>()
+				.FirstOrDefault();
 
 			if (category == null)
 			{
 				return this.NotFound();
 			}
-			
-			// TODO: this is trow, when i get events from the category i cannot map them to the EventResponseModel?!
-			var events = data.Events
-				.All()
-				.Where(e => e.Category == category)
-				.OrderByDescending(e => e.StartDate)
-				.ProjectTo<EventResponseModel>();
 
-			if (events.Count() > 0)
-			{
-				return this.Ok(events);
-			}
-
-			return this.NotFound();
+			return this.Ok(category);
 		}
 
 		/// <summary>
@@ -84,25 +77,19 @@
 		[HttpGet]
 		public IHttpActionResult Get([FromUri]string name)
 		{
-			var category = this.data.Categories.All().Where(c => c.Name == name).FirstOrDefault();
+			var category = this.data
+				.Categories
+				.All()
+				.Where(c => c.Name == name)
+				.ProjectTo<CategoryResponseModel>()
+				.FirstOrDefault();
 
 			if (category == null)
 			{
 				return this.NotFound();
 			}
 
-			var events = data.Events
-				.All()
-				.Where(e => e.Category == category)
-				.OrderByDescending(e => e.StartDate)
-				.ProjectTo<EventResponseModel>();
-
-			if (events.Count() > 0)
-			{
-				return this.Ok(events);
-			}
-
-			return this.NotFound();
+			return this.Ok(category);
 		}
 
 		/// <summary>
@@ -111,8 +98,8 @@
 		/// <param name="model">The category model which get from the user.</param>
 		/// <returns>The id of the new category. If the category with the provided name is already exist - redirects to the existing town.</returns>
 		[HttpPost]
-        [ValidateModel]
-        public IHttpActionResult Post(CategorySaveModel model)
+		[ValidateModel]
+		public IHttpActionResult Post(CategorySaveModel model)
 		{
 			if (!this.User.IsInRole("Admin"))
 			{
@@ -137,20 +124,16 @@
 			this.data.Categories.Add(categoryToAdd);
 			this.data.Savechanges();
 			return this.Created("api/categories", new
-            {
-                CategoryId = categoryToAdd
-            });
+			{
+				CategoryId = categoryToAdd
+			});
 		}
 
-        
-		[HttpPut]
-        [ValidateModel]
-        public IHttpActionResult Put(int id, CategoryResponseModel model)
-		{
-			// TODO: check the current user is admin or user?
 
-			// TODO: Is here the right place to update the events of the concrete category?
-			// TODO: or just to update only the category's name
+		[HttpPut]
+		[ValidateModel]
+		public IHttpActionResult Put(int id, CategoryResponseModel model)
+		{
 			if (!this.User.IsInRole("Admin"))
 			{
 				return this.StatusCode(HttpStatusCode.Unauthorized);
@@ -165,20 +148,16 @@
 			{
 				return this.NotFound();
 			}
-			// TODO: add this.mappingService.Map<>
 			categoryToUpdate.Name = model.Name;
 			data.Savechanges();
 
-			// TODO: return as normal way
 			return this.Ok(categoryToUpdate);
 		}
 
-        
+
 		[HttpDelete]
 		public IHttpActionResult Delete(int id)
 		{
-			// TODO: check the current user is admin or user?
-
 			if (!this.User.IsInRole("Admin"))
 			{
 				return this.StatusCode(HttpStatusCode.Unauthorized);
@@ -193,11 +172,10 @@
 			{
 				return this.NotFound();
 			}
-			// TODO: add this.mappingService.Map<>
+
 			this.data.Categories.Delete(categoryToDelete);
 			this.data.Savechanges();
 
-			// TODO: return as normal way
 			return this.Ok(categoryToDelete);
 		}
 	}

@@ -55,10 +55,10 @@
 				var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
 
 				var allEventsWithTagedUser = currentUser.Events
-				.OrderByDescending(e => e.StartDate)
-				.AsQueryable()
-				.ProjectTo<EventsForUserResponseModel>()
-				.ToList();
+					.OrderByDescending(e => e.StartDate)
+					.AsQueryable()
+					.ProjectTo<EventsForUserResponseModel>()
+					.ToList();
 
 				if (allEventsWithTagedUser.Count() > 0)
 				{
