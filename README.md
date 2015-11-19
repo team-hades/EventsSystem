@@ -4,9 +4,20 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/lece5hskefnj5al9/branch/master?svg=true)](https://ci.appveyor.com/project/georgimanov/eventssystem/branch/master)
 ---
 
+## Team Members
+* Georgi Yonchev 
+* Georgi Manov
+* Nikolay Iliev
+* Chavdar Angelov
+* Nikolay Petrov
+* Viktor Velchev
+
+
 ![Draft image for Events System](/EventsSystemDrawing.jpeg)
 
 ## Events System Description
+
+Application for managing events with desktop client. 
 
 `User Roles`
  * NotRegistered - not registered user
@@ -42,7 +53,8 @@
 `Comment`
 * has user, event and content
 
- `Notifications` - are displayed on the page when new event is published.
+`Notifications`
+* are displayed on the page when new event is published.
 
 ## Applicataion Logic 
 
