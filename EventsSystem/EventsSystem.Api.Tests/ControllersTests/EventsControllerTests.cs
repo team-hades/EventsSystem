@@ -68,5 +68,55 @@
                     IsPrivate = true
                 }));
         }
+
+        [TestMethod]
+        public void TestDeleteShouldMapCorrectly()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/events/1")
+                .WithHttpMethod(HttpMethod.Delete)
+                .To<EventsController>(c => c.Delete(1));
+        }
+
+        [TestMethod]
+        public void TestJoinEventShouldMapCorrectly()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/events/join/1")
+                .WithHttpMethod(HttpMethod.Post)
+                .To<EventsController>(c => c.Join(1));
+        }
+
+        [TestMethod]
+        public void TestLeaveEventShouldMapCorrectly()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/events/leave/1")
+                .WithHttpMethod(HttpMethod.Put)
+                .To<EventsController>(c => c.Leave(1));
+        }
+
+        [TestMethod]
+        public void TestRateEventShouldMapCorrectly()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/events/rate/1/1")
+                .WithHttpMethod(HttpMethod.Post)
+                .To<EventsController>(c => c.Rate(1, 1));
+        }
+
+        [TestMethod]
+        public void TestUpdateRateEventShouldMapCorrectly()
+        {
+            MyWebApi
+                .Routes()
+                .ShouldMap("api/events/rate/1/1")
+                .WithHttpMethod(HttpMethod.Put)
+                .To<EventsController>(c => c.UpdateRate(1, 1));
+        }
     }
 }

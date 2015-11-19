@@ -119,10 +119,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControllersTests\ValuesController.cs" />
+    <Compile Include="ControllersTests\CategoriesControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ControllersTests\HomeControllerTest.cs" />
-    <Compile Include="ControllersTests\ValuesControllerTest.cs" />
     <Compile Include="ControllersTests\EventsControllerTests.cs" />
     <Compile Include="TestsInit.cs" />
   </ItemGroup>
