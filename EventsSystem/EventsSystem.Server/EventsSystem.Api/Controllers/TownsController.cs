@@ -9,6 +9,7 @@
     using EventsSystem.Api.Models.Towns;
     using Data.Models;
     using System;
+    using Infrastructure.Validation;
 
     public class TownsController : BaseController
     {
@@ -65,20 +66,11 @@
             return this.Ok(town);
         }
 
+        // TODO: add attribute [Authorize]
         [HttpPost]
+        [ValidateModel]
         public IHttpActionResult Post(TownSaveModel model)
         {
-            if (true)
-            {
-                // user is not admin
-                // return this.Unauthorized();
-            }
-
-            if (!this.ModelState.IsValid)
-            {
-                return this.BadRequest(this.ModelState);
-            }
-
             var town = this.data.Towns.All().FirstOrDefault(x => x.Name == model.Name);
             if (town != null)
             {

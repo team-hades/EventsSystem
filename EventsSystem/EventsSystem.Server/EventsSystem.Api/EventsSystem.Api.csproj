@@ -236,6 +236,7 @@
     <Compile Include="Infrastructure\Mapping\IMappingService.cs" />
     <Compile Include="Infrastructure\Mapping\MappingService.cs" />
     <Compile Include="Infrastructure\ObjectFactory.cs" />
+    <Compile Include="Infrastructure\Validation\ValidateModelAttribute.cs" />
     <Compile Include="Models\Accounts\AccountBindingModels.cs" />
     <Compile Include="Models\Accounts\AccountViewModels.cs" />
     <Compile Include="Models\Categories\CategoryModel.cs" />
