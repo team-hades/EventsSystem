@@ -241,7 +241,10 @@
             
             PubNubNotificationProvider.Notify(eventToAdd.Name);
 
-            return this.Ok(eventToAdd.Id);
+            return this.Created("api/events", new
+            {
+                EventId = eventToAdd.Id
+            });
 		}
 
         /// <summary>

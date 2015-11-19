@@ -56,7 +56,10 @@
             this.data.Comments.Add(commentToAdd);
             this.data.Savechanges();
 
-            return this.Ok(commentToAdd.Id);
+            return this.Created("api/commets/{eventId}", new
+            {
+                CommentId = commentToAdd.Id
+            });
         }
 
         /// <summary>
@@ -112,6 +115,6 @@
             this.data.Savechanges();
 
             return this.Ok("This comment was deleted");
-        }       
+        }
     }
 }

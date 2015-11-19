@@ -10,7 +10,9 @@
 
 	public class TownResponseModel : IMapFrom<Town>, IHaveCustomMappings
 	{
-		public string Name { get; set; }
+        public int Id { get; set; }
+
+        public string Name { get; set; }
 
 		public int EventsCount { get; set; }
 
