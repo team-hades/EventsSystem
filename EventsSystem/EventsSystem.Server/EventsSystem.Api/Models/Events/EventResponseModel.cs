@@ -27,7 +27,7 @@
 
         public string Category { get; set;}
 
-        public float? Rating { get; set; }
+        public float Rating { get; set; }
 
         public object CommentsCount { get; set; }
 
@@ -37,13 +37,13 @@
 
 		public void CreateMappings(IConfiguration config)
         {
-			config.CreateMap<Event, EventResponseModel>()
-				.ForMember(e => e.CommentsCount, opts => opts.MapFrom(c => c.Comments.Count))
-				.ForMember(e => e.Town, opts => opts.MapFrom(t => t.Town.Name))
-				.ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name))
-				.ForMember(e => e.Tags, opts => opts.MapFrom(e => e.Tags.Select(t => t.Name)))
-				.ForMember(e => e.Comments, opts => opts.MapFrom(t => t.Comments))
-                .ForMember(e=> e.Rating, opts => opts.MapFrom(r => r.Ratings.Where(re => re != null).Select(s => s.Value).Average()));
+            config.CreateMap<Event, EventResponseModel>()
+                .ForMember(e => e.CommentsCount, opts => opts.MapFrom(c => c.Comments.Count))
+                .ForMember(e => e.Town, opts => opts.MapFrom(t => t.Town.Name))
+                .ForMember(e => e.Category, opts => opts.MapFrom(t => t.Category.Name))
+                .ForMember(e => e.Tags, opts => opts.MapFrom(e => e.Tags.Select(t => t.Name)))
+                .ForMember(e => e.Comments, opts => opts.MapFrom(t => t.Comments))
+                .ForMember(e => e.Rating, opts => opts.MapFrom(e => e.Ratings.Any() ? e.Ratings.Average(r => r.Value) : 0.0f));
         }
     }
 }
