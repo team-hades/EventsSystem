@@ -12,7 +12,7 @@
 	using System.Net;
 
     /// <summary>
-    /// Responsible for categories actions
+    /// Categories controller
     /// </summary>
 	public class CategoriesController : BaseController
 	{
