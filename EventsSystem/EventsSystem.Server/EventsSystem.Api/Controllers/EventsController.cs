@@ -12,7 +12,6 @@
 	using EventsSystem.Data.Models;
 	using System.Collections.Generic;
 	using AutoMapper;
-	using System;
 
 	/// <summary>
 	/// Responsible for Events actions main prefix api/events
@@ -52,20 +51,20 @@
 			if (this.User.Identity.IsAuthenticated)
 			{
 				var currentUserName = this.User.Identity.Name;
-				var currentUserID = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
+				var currentUser = this.data.Users.All().Where(u => u.UserName == currentUserName).FirstOrDefault();
 
-				var allEventsWithTagedUser = this.data.Events
-				.All()
-				.Where(ev => ev.Users.Contains(currentUserID))
-				.OrderByDescending(d => d.StartDate)
-				.ProjectTo<EventResponseModel>();
+				var allEventsWithTagedUser = currentUser.Events
+				.OrderByDescending(e => e.StartDate)
+				.AsQueryable()
+				.ProjectTo<EventResponseModel>()
+				.ToList();
 
 				if (allEventsWithTagedUser.Count() > 0)
 				{
 					return this.Ok(allEventsWithTagedUser);
 				}
 
-				return this.BadRequest();
+				return this.BadRequest("No events were found.");
 			}
 
 			// Non Registered users will see only top 10 non private events
@@ -92,7 +91,7 @@
 			if (eventToReturn == null)
 			{
 				// TODO Add some message
-				return this.BadRequest();
+				return this.BadRequest("No events were found.");
 			}
 
 			// TODO we need to include a collection of comments in the model to work
@@ -111,19 +110,19 @@
 			int defaultPageSize = 10;
 
 			// TODO check if skip and take work
-			var eventToReturn = this.data.Events.All()
+			var eventsToReturn = this.data.Events.All()
 				.OrderByDescending(e => e.StartDate)
 				.Skip(defaultPageSize * pageSize)
 				.Take(defaultPageSize)
 				.ProjectTo<EventResponseModel>();
 
-			if (eventToReturn == null)
+			if (eventsToReturn == null)
 			{
 				// TODO Add some message
-				return this.BadRequest();
+				return this.BadRequest("No events were not found.");
 			}
 
-			return this.Ok(eventToReturn);
+			return this.Ok(eventsToReturn);
 		}
 
 		/// <summary>
@@ -142,7 +141,7 @@
 
 			if (eventsFromCategory == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("No events were found.");
 			}
 
 			return this.Ok(eventsFromCategory);
@@ -164,7 +163,7 @@
 
 			if (eventsFromCategory == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("No events were found.");
 			}
 
 			return this.Ok(eventsFromCategory);
@@ -186,7 +185,7 @@
 
 			if (eventsFromCategory == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("No events were found.");
 			}
 
 			return this.Ok(eventsFromCategory);
@@ -217,9 +216,25 @@
 
 			if (model.Tags != null)
 			{
-				IList<Tag> tagsToAdd = this.GetTags(model.Tags);
+				var tagsFromDb = this.data.Tags.All().ToList();
+				var tagsToAdd = new List<Tag>();
+
+				foreach (var tag in model.Tags)
+				{
+					var tagFromDb = tagsFromDb.FirstOrDefault(t => t.Name == tag);
+
+					if (tagFromDb == null)
+					{
+						tagsToAdd.Add(new Tag { Name = tag });
+					}
+					else
+					{
+						tagsToAdd.Add(tagFromDb);
+					}
+				}
+
 				eventToAdd.Tags = tagsToAdd;
-            }
+			}
 
 			this.data.Events.Add(eventToAdd);
 			this.data.Savechanges();
@@ -230,28 +245,6 @@
 			{
 				EventId = eventToAdd.Id
 			});
-		}
-
-		private IList<Tag> GetTags(IList<string> tags)
-		{
-			var tagsFromDb = this.data.Tags.All().ToList();
-			var tagsToAdd = new List<Tag>();
-
-			foreach (var tag in tags)
-			{
-				var tagFromDb = tagsFromDb.FirstOrDefault(t => t.Name == tag);
-
-				if (tagFromDb == null)
-				{
-					tagsToAdd.Add(new Tag { Name = tag });
-				}
-				else
-				{
-					tagsToAdd.Add(tagFromDb);
-				}
-			}
-
-			return tagsToAdd;
 		}
 
 		/// <summary>
@@ -272,7 +265,7 @@
 
 			if (eventToUpdate == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("The event was not found.");
 			}
 
 			var town = this.data.Towns.All().Where(t => t.Name == model.Town).FirstOrDefault();
@@ -303,7 +296,7 @@
 
 			if (eventToDelete == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("The event was not found.");
 			}
 
 			this.data.Events.Delete(eventToDelete);
@@ -331,7 +324,7 @@
 
 			if (eventToJoin == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("The event was not found.");
 			}
 
 			var currentUserName = this.User.Identity.Name;
@@ -363,7 +356,7 @@
 
 			if (eventToLeave == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("The event was not found.");
 			}
 
 			var currentUserName = this.User.Identity.Name;
@@ -377,12 +370,12 @@
 		}
 
 		/// <summary>
-		/// Rate an event - authorised action
+		/// Rate an event - required authorisation.
 		/// </summary>
-		/// <param name="eventId">Event Id</param>
-		/// <param name="rating">Rating (0 - 5)</param>
-		/// <returns>Rated event Id</returns>
-		[Authorize]
+		/// <param name="eventId">Id of the event to be rated.</param>
+		/// <param name="rating">Rating between 1 and 5, inclusive.</param>
+		/// <returns>Id of the event which is rated.</returns>
+		//[Authorize]
 		[HttpPost]
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult Rate(int eventId, int rating)
@@ -392,16 +385,16 @@
 			//	return this.BadRequest("You have to be logged in to do this operation");
 			//}
 
-			if (rating < 0 || rating > 5)
+			if (rating <= 0 || rating > 5)
 			{
-				return this.BadRequest();
+				return this.BadRequest("Rating must be integer between 1 and 5, inclusive.");
 			}
 
 			var eventWithRating = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();
 
 			if (eventWithRating == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("The event was not found.");
 			}
 
 			var currentUserName = this.User.Identity.Name;
@@ -417,30 +410,30 @@
 			this.data.Ratings.Add(ratingToAdd);
 			this.data.Savechanges();
 
-			return this.Ok(eventWithRating.Id);
+			return this.Ok(mapservices.Map<EventResponseModel>(eventWithRating));
 		}
 
 		/// <summary>
-		/// Updating an event rate
+		/// Update an event's rate - required authorisation.
 		/// </summary>
-		/// <param name="eventId">Event Id</param>
-		/// <param name="rating">Rating (0 - 5)</param>
-		/// <returns>Rated event Id</returns>
+		/// <param name="eventId">Id of the event to be rated.</param>
+		/// <param name="rating">Rating between 1 and 5, inclusive.</param>
+		/// <returns>Id of the event which is rated.</returns>
 		[Authorize]
 		[HttpPut]
 		[Route("rate/{eventId}/{rating}")]
 		public IHttpActionResult UpdateRate(int eventId, int rating)
 		{
-			if (rating < 0 || rating > 5)
+			if (rating <= 0 || rating > 5)
 			{
-				return this.BadRequest();
+				return this.BadRequest("Rating must be integer between 1 and 5, inclusive.");
 			}
 
 			var eventWithRating = this.data.Events.All().Where(ev => ev.Id == eventId).FirstOrDefault();
 
 			if (eventWithRating == null)
 			{
-				return this.BadRequest();
+				return this.BadRequest("The event was not found.");
 			}
 
 			var currentUserName = this.User.Identity.Name;
@@ -453,7 +446,7 @@
 			this.data.Ratings.Update(ratingToUpdate);
 			this.data.Savechanges();
 
-			return this.Ok(ratingToUpdate.Value);
+			return this.Ok(mapservices.Map<EventResponseModel>(eventWithRating));
 		}
 	}
 }
