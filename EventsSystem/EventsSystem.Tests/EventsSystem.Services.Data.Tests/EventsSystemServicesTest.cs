@@ -10,8 +10,6 @@
     [TestClass]
     public class EventsSystemServicesTest
     {
-        private IEventsSystemData eventsService;
-
         private InMemoryRepository<Event> eventsRepo;
         private InMemoryRepository<User> userRepo;
 

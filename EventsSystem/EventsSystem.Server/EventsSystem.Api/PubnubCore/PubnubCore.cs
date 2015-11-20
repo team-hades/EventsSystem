@@ -1166,7 +1166,7 @@ namespace PubNubMessaging.Core
 								(-1 == _pubnubNetworkTcpCheckIntervalInSeconds) ? -1 : _pubnubNetworkTcpCheckIntervalInSeconds * 1000,
 								(-1 == _pubnubNetworkTcpCheckIntervalInSeconds) ? -1 : _pubnubNetworkTcpCheckIntervalInSeconds * 1000);
 							requestHeatbeatTimer.Dispose ();
-						} catch (ObjectDisposedException ex) {
+						} catch (ObjectDisposedException) {
 							//Known exception to be ignored
                             //LoggingMethod.WriteToLog (string.Format ("DateTime {0} Error while accessing requestHeatbeatTimer object in TerminateLocalClientHeartbeatTimer {1}", DateTime.Now.ToString (), ex.ToString ()), LoggingMethod.LevelInfo);
 						}
